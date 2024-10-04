@@ -1,0 +1,23 @@
+<header class="little-header">
+    <div class="logo-container">
+        <img src="LittlePaws04.svg" alt="logo" class="logo-little">
+        <h1 class="little-logo">Little Paws</h1>
+    </div>
+  
+    <nav [ngClass]="{ 'open': isOpen }" class="little-nav">
+        <button class="close-button" (click)="toggleMenu()">✖</button>
+        <ul class="little-menu">
+            <li class="little-menu-li">
+                <a class="little-menu-li-a" (click)="enviarInicio($event)">Inicio</a>
+            </li>
+            <li class="little-menu-li">
+                <a class="little-menu-li-a" (click)="enviarAdopcion($event)">Adopción</a>
+            </li>
+            <li class="little-menu-li">
+                <a class="little-menu-li-a" (click)="enviarDonaciones($event)">Donaciones</a>
+            </li>
+        </ul>
+    </nav>
+  
+    <button class="little-hamburger" (click)="toggleMenu()">☰</button>
+</header>
