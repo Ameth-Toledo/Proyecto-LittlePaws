@@ -27,6 +27,10 @@
     gap: 2rem;
 }
 
+.detail-title {
+    flex: 1; /* Permitir que tome espacio disponible */
+}
+
 .detail-title-bienvenida {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
@@ -191,6 +195,12 @@
     border: 3px solid green;
 }
 
+
+.adopcion-container {
+    display: flex; /* Usar flexbox para alinear horizontalmente */
+    justify-content: flex-start; /* Alinear a la izquierda */
+    gap: 1rem; /* Espacio entre las imágenes de adopción */
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
