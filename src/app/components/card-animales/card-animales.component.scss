@@ -1,0 +1,77 @@
+.card-animales {
+    display: flex; /* Utiliza flexbox para organizar el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    background-color: #2C3742;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    transition: transform 0.3s;
+    max-width: 600px; /* Ancho máximo para las tarjetas */
+    margin: 1rem auto; /* Margen automático para centrar */
+}
+
+.card-animales:hover {
+    transform: scale(1.05);
+}
+
+.image-animales {
+    border-radius: 15px;
+    width: 150px; /* Ajusta el ancho de la imagen */
+    height: auto;
+    margin-right: 20px; /* Espaciado a la derecha de la imagen */
+}
+
+.info-animales {
+    flex: 1; /* Permite que el contenedor de información ocupe el espacio restante */
+}
+
+.name-animales {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.raza, .refugio, .edad {
+    font-size: 18px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.raza i, .refugio i, .edad i {
+    margin-right: 10px;
+    color: #00BFFF;
+}
+
+@media (max-width: 768px) {
+    .card-animales {
+        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+        text-align: center; /* Centra el texto */
+        max-width: 90%; /* Ancho máximo reducido para móviles */
+        margin: 1rem auto; /* Centra en la página */
+    }
+
+    .image-animales {
+        margin: 0 0 10px 0; /* Elimina el margen derecho y añade margen inferior */
+        width: 100%; /* Ancho completo para la imagen en móviles */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+    .name-animales {
+        font-size: 20px; /* Tamaño de fuente reducido para el nombre */
+    }
+
+    .raza, .refugio, .edad {
+        font-size: 16px; /* Tamaño de fuente reducido para las secciones */
+    }
+}
+
+@media (max-width: 480px) {
+    .name-animales {
+        font-size: 18px; /* Tamaño de fuente aún más pequeño */
+    }
+
+    .raza, .refugio, .edad {
+        font-size: 14px; /* Tamaño de fuente más pequeño */
+    }
+}

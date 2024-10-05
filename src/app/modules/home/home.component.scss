@@ -1,1 +1,163 @@
-/**/
+.barra-bann {
+    width: 80vw; 
+    height: 80px;
+    background-color: #323f52;
+    z-index: 1;
+    position: absolute; 
+    top: -45px; 
+    left: 35%; 
+    transform: translateX(-50%); 
+    font-family: 'Poppins', sans-serif;
+    font-size: 34px;
+    font-weight: bold;
+    color: #f0a500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5rem auto;
+    margin-left: 120px;
+    gap: 2rem;
+}
+
+.detail-title-bienvenida {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.detail-title-parrafo {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
+
+.social-title {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 1.7rem;
+}
+
+.social-title-enlaces {
+    color: #00E8F8;
+    font-size: 1.7rem;
+    border: 1.6px solid #00E8F8;
+    border-radius: 50%;
+    padding: 0.5rem;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.social-title-enlaces:hover {
+    color: #1F252E;
+    background-color: #00E8F8;
+    box-shadow: 0 0 20px #00E8F8;
+}
+
+.bann-imagenn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 40%;
+}
+
+.bann-imagen-dog {
+    width: 100%;
+    height: auto;
+}
+
+.barra-bann {
+    width: 80%;
+    height: 80px;
+    background-color: #323f52;
+    z-index: -1;
+    margin-top: -30px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-size: 34px;
+    font-weight: bold;
+    color: #f0a500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile {
+    display: none; /* Ocultar por defecto en pantallas grandes */
+}
+
+.adopcion-mobile {
+    width: 100px; /* Ajustar el tamaño de la imagen */
+    height: 100px; /* Hacer la altura igual al ancho para mantener proporción */
+    object-fit: cover; /* Asegurar que la imagen mantenga su proporción dentro del círculo */
+    border-radius: 50%; /* Hacer la imagen circular */
+    border: 3px solid #00E8F8; /* Agregar un borde para resaltar la imagen */
+    box-shadow: 0 0 15px rgba(0, 232, 248, 0.5); /* Agregar sombra suave para darle un efecto de estado */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        padding: 0 1rem;
+    }
+
+    .detail-title-bienvenida {
+        font-size: 2rem;
+    }
+
+    .detail-title-parrafo {
+        font-size: 0.9rem;
+    }
+
+    .social-title {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .social-title-enlaces {
+        width: 40px;
+        height: 40px;
+        padding: 0.4rem;
+    }
+
+    .bann-imagenn {
+        display: none; /* Ocultar banner en pantallas móviles */
+    }
+
+    .barra-bann {
+        width: 70%;
+        font-size: 28px;
+    }
+
+    .bann-imagen-dog {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Mostrar solo en pantallas móviles */
+    .mobile {
+        display: flex; /* Mostrar la imagen circular en pantallas móviles */
+        justify-content: center; /* Centrar la imagen */
+        margin-top: 2rem; /* Añadir espacio arriba de la imagen */
+    }
+}
