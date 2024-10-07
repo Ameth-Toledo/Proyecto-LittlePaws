@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { IndicesAbandonoComponent } from "../../components/indices-abandono/indices-abandono.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CardAnimalesComponent, FooterComponent],
+  imports: [HeaderComponent, CardAnimalesComponent, FooterComponent, IndicesAbandonoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
