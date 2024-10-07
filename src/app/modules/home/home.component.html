@@ -8,14 +8,17 @@
         <p class="detail-title-parrafo">El paraíso donde comienzan las historias felices.<br> Patitas que buscan un hogar.</p>
         <div class="social-title">
             <a href="https://www.facebook.com/" class="social-title-enlaces"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://t.me/" class="social-title-enlaces"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.tiktok.com/" class="social-title-enlaces"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.instagram.com/" class="social-title-enlaces"><i class="fab fa-instagram"></i></a>
             <a href="https://web.whatsapp.com/" class="social-title-enlaces"><i class="fab fa-whatsapp"></i></a>
         </div>
+
     </div>
     <div class="bann-imagenn">
         <img src="perros/bann.png" alt="" class="bann-imagen-dog">
-        <div class="barra-bann">¡Adoptame!</div>
+        <div class="barra-bann">
+            <h1 class="adoptame">¡Adoptame!</h1>
+        </div>
     </div>
 
     <!-- Contenedor para las imágenes de adopción -->
@@ -52,4 +55,61 @@
     </div>
 </div>
 
-<app-card-animales imgSrc="perros/perro01.webp"/>
+<!-- Contenedor para las cards de animales -->
+<div class="animales-container">
+    <app-card-animales imgSrc="perros/perro01.webp" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="1 año"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro02.jpg" 
+    name="Pepito" 
+    namaPet="Pepito"
+    refugio="Santa Teresa"
+    edad="10 años"
+    raza="desconicido"/>   
+    <app-card-animales imgSrc="perros/perro03.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro04.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro05.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro06.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+</div>
+
+<h1 class="ubication-veterinaria-principal">
+    <i class="fas fa-dog"></i> Clinica Veterinaria ZOO
+</h1>
+
+<div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.7379938843965!2d-93.07624892395266!3d16.73991988404096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ed27a3971854c5%3A0xb2c29fa8a91f274f!2sCl%C3%ADnica%20Veterinaria%20Zoo%20Hospital!5e0!3m2!1ses!2smx!4v1728265209762!5m2!1ses!2smx" 
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade" 
+        class="map-veterinaria">
+    </iframe>
+</div>
+
+<app-footer/>

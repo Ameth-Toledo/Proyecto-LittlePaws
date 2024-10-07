@@ -1,0 +1,140 @@
+.footer-class-footer {
+    background-color: #2c3e50; /* Color de fondo oscuro */
+    color: white; /* Color del texto */
+    padding: 40px 20px; /* Espaciado interior */
+    text-align: center; /* Centrar el texto */
+    border-top: 2px solid #00E8F8; /* Línea en la parte superior */
+}
+
+.footer-content-footer {
+    display: flex; /* Utilizar flexbox para organizar los elementos */
+    justify-content: space-between; /* Espacio entre secciones */
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten en múltiples líneas */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+.footer-section-footer {
+    flex: 1; /* Cada sección ocupa el mismo espacio */
+    min-width: 220px; /* Ancho mínimo para evitar que se colapsen */
+    margin: 10px; /* Espaciado entre secciones */
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+.footer-heading-footer {
+    font-family: 'Poppins';
+    font-size: 20px; /* Tamaño del encabezado */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: #00E8F8; /* Color del encabezado */
+}
+
+.footer-text-footer {
+    font-family: 'Poppins';
+    font-size: 14px; /* Tamaño del texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+.subscribe-form-footer {
+    display: flex; /* Para alinear el input y el botón */
+    gap: 10px; /* Espacio entre input y botón */
+}
+
+.subscribe-input-footer {
+    font-family: 'Poppins';
+    padding: 5px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    flex: 1; /* El input ocupa todo el espacio disponible */
+}
+
+.subscribe-button-footer {
+    width: 150px;
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    background-color: #00E8F8; /* Color de fondo del botón */
+    color: rgb(0, 0, 0); /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave al cambiar el color */
+}
+
+.subscribe-button-footer:hover {
+    background-color: #1abc9c; /* Color más oscuro al pasar el ratón */
+}
+
+.footer-icons-footer {
+    display: flex; /* Alinear los iconos de redes sociales en fila */
+    gap: 15px; /* Espacio entre iconos */
+    justify-content: flex-start; /* Alinear iconos a la izquierda */
+}
+
+.icon-link-footer {
+    color: white; /* Color de los iconos */
+    font-size: 24px; /* Tamaño de los iconos */
+    transition: color 0.3s; /* Transición suave al cambiar el color */
+}
+
+.icon-link-footer:hover {
+    color: #00E8F8; /* Color de los iconos al pasar el ratón */
+}
+
+.footer-bottom-footer {
+    margin-top: 20px; /* Espacio superior */
+}
+
+.footer-bottom-text-footer {
+    font-family: 'Poppins';
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+/* Estilo para el área de comentarios en el footer */
+.comentarios {
+    width: calc(100% - 20px); /* Ajustar el ancho del textarea */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    margin-top: 15px; /* Espacio superior */
+}
+
+.send-comentario {
+    background-color: #00E8F8; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el ratón */
+    margin-top: 10px; /* Espacio superior */
+    transition: background-color 0.3s; /* Transición suave al cambiar el color */
+}
+
+.send-comentario:hover {
+    background-color: #1abc9c; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .footer-content-footer {
+        flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+        align-items: center; /* Centrar secciones */
+    }
+
+    .footer-section-footer {
+        text-align: center; /* Centrar texto en secciones */
+        margin: 5px 0; /* Espaciado entre secciones en columna */
+    }
+
+    .subscribe-form-footer {
+        flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+    }
+
+    .subscribe-input-footer {
+        width: 100%; /* Hacer que el input ocupe el 100% */
+        margin-bottom: 10px; /* Espacio inferior */
+    }
+
+    .subscribe-button-footer {
+        width: 100%; /* Botón también ocupa el 100% */
+    }
+}

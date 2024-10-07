@@ -3,16 +3,17 @@
     <div class="info-animales">
         <h1 class="name-animales">{{ name }}</h1>
         <h2 class="raza">
-            <i class="fas fa-dog"></i> Nombre:  
+            <i class="fas fa-dog"></i> Nombre: {{namaPet}}
         </h2>
         <h2 class="refugio">
-            <i class="fas fa-plus-circle"></i> Refugio:
+            <i class="fas fa-plus-circle"></i> Refugio: {{refugio}}
         </h2>
         <h2 class="edad">
-            <i class="fas fa-paw"></i> Edad:
+            <i class="fas fa-paw"></i> Edad:{{edad}}
         </h2>
         <h2 class="raza">
-            <i class="fas fa-certificate"></i> Raza:
+            <i class="fas fa-certificate"></i> Raza: {{raza}}
         </h2>
+        <button class="adop-btn" (click)="enviarAdopcio($event)">¡Adoptar!</button>
     </div>
 </div>

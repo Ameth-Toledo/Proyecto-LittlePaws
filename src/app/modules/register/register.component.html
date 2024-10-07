@@ -1,7 +1,7 @@
 <app-header/>
 <div class="form-container">
     <form action="a" class="form-centered">
-        <h1 class="">Login</h1>
+        <h1 class="">Register</h1>
         <div class="input-group">
             <input type="text" id="email" class="input-group_input" required />
             <label for="email" class="input-group_label">Ingrese su correo</label>
@@ -13,8 +13,8 @@
             <i class="fas fa-eye toggle-password" (click)="togglePassword()" aria-hidden="true"></i>
         </div>
 
-        <button class="ingresar-btn">Ingresar</button>
-        <a href="" (click)="enviarRegister($event)">Registrarse</a>
+        <button class="register-btn">Registrarse</button>
+        <a href="" (click)="enviarLogin($event)">Registrarse</a>
     </form>
 </div>
 <app-footer/>

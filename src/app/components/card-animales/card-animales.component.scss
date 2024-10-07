@@ -1,77 +1,98 @@
 .card-animales {
-    display: flex; /* Utiliza flexbox para organizar el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
+    display: flex;
+    align-items: center;
     background-color: #2C3742;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px; /* Mantener un padding interno */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: #FFFFFF;
     transition: transform 0.3s;
-    max-width: 600px; /* Ancho máximo para las tarjetas */
-    margin: 1rem auto; /* Margen automático para centrar */
-}
-
-.card-animales:hover {
-    transform: scale(1.05);
+    max-width: 600px; /* Tamaño máximo para pantallas grandes */
+    margin: 0.05rem auto; /* Margen reducido entre tarjetas */
 }
 
 .image-animales {
     border-radius: 15px;
-    width: 150px; /* Ajusta el ancho de la imagen */
-    height: auto;
-    margin-right: 20px; /* Espaciado a la derecha de la imagen */
+    width: 150px; /* Tamaño fijo para la imagen */
+    height: 150px; /* Tamaño fijo para la imagen */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; /* Reduce el margen a la derecha */
+    margin-bottom: 10px; /* Margen en la parte inferior para separación del texto */
 }
 
 .info-animales {
-    flex: 1; /* Permite que el contenedor de información ocupe el espacio restante */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .name-animales {
+    font-family: 'Poppins';
     font-size: 24px;
-    margin: 10px 0;
+    margin: 2px 0; /* Margen superior e inferior reducido */
 }
 
 .raza, .refugio, .edad {
+    font-family: 'Poppins';
     font-size: 18px;
-    margin: 5px 0;
+    margin: 2px 0; /* Margen superior e inferior reducido */
     display: flex;
     align-items: center;
 }
 
 .raza i, .refugio i, .edad i {
-    margin-right: 10px;
+    margin-right: 5px;
     color: #00BFFF;
 }
 
+.adop-btn {
+    background-color: #00BFFF;
+    border: none;
+    width: 100%; /* Mantén el 100% para que el botón ocupe todo el ancho */
+    height: 40px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    margin-top: 5px; /* Mantener un margen superior, pero sin margen lateral */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.adop-btn:hover {
+    background-color: #008ac6;
+}
+
+/* Estilos responsive para pantallas más pequeñas (tablets y móviles) */
 @media (max-width: 768px) {
     .card-animales {
-        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
-        text-align: center; /* Centra el texto */
-        max-width: 90%; /* Ancho máximo reducido para móviles */
-        margin: 1rem auto; /* Centra en la página */
+        background-color: transparent;
+        flex-direction: column;
+        text-align: center;
+        max-width: 90%; /* Ampliar un poco más el uso de ancho en pantallas pequeñas */
+        margin: 0.3rem auto; /* Reduce el margen entre tarjetas en vista responsive */
+        padding: 15px; 
+        transform: scale(0.95); /* Ajustar un poco el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .image-animales {
-        margin: 0 0 10px 0; /* Elimina el margen derecho y añade margen inferior */
-        width: 100%; /* Ancho completo para la imagen en móviles */
-        height: auto; /* Mantiene la proporción de la imagen */
+        width: 400px; /* Tamaño fijo de la imagen en pantallas pequeñas */
+        height: 200px; /* Tamaño fijo de la imagen en pantallas pequeñas */
+        margin: 0 auto; /* Centra la imagen */
+        margin-bottom: 10px; /* Mantiene el margen inferior */
+        object-fit: cover; /* Asegúrate de que la imagen se ajuste bien */
     }
 
     .name-animales {
-        font-size: 20px; /* Tamaño de fuente reducido para el nombre */
+        font-size: 24px; /* Ajustar el tamaño de la fuente para que no se vea tan grande */
     }
 
     .raza, .refugio, .edad {
-        font-size: 16px; /* Tamaño de fuente reducido para las secciones */
-    }
-}
-
-@media (max-width: 480px) {
-    .name-animales {
-        font-size: 18px; /* Tamaño de fuente aún más pequeño */
+        font-size: 18px; /* Mantener el tamaño de fuente consistente con la vista original */
     }
 
-    .raza, .refugio, .edad {
-        font-size: 14px; /* Tamaño de fuente más pequeño */
+    .adop-btn {
+        width: 100%; /* Mantiene el botón ocupando todo el ancho */
+        height: 50px; /* Mantener altura consistente */
+        font-size: 18px; /* Ajustar tamaño de fuente para mejor legibilidad */
+        margin-top: 10px; /* Un poco más de espacio en la parte superior */
     }
 }

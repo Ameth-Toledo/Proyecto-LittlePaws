@@ -87,7 +87,7 @@
 }
 
 .barra-bann {
-    width: 80%;
+    width: 250%;
     height: 80px;
     background-color: #323f52;
     z-index: -1;
@@ -100,7 +100,12 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
+}
+
+.adoptame {
+    font-size: 45px;
+    margin-right: 200px;
 }
 
 .mobile {
@@ -202,6 +207,51 @@
     gap: 1rem; /* Espacio entre las imágenes de adopción */
 }
 
+/*nuevo*/
+.animales-container {
+    display: flex;
+    justify-content: center; /* Centra las cards horizontalmente */
+    gap: 1rem; /* Espacio entre las cards */
+    flex-wrap: wrap; /* Permite que las cards se ajusten a múltiples filas si es necesario */
+    margin: 20px 0; /* Añade un margen arriba y abajo del contenedor */
+}
+
+.ubication-veterinaria-principal {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem; /* Tamaño de texto reducido para mejor adaptabilidad */
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center; /* Centramos el contenido */
+    align-items: center;
+}
+
+.ubication-veterinaria-principal i {
+    margin-right: 10px;
+    color: white; /* Color del ícono blanco */
+    font-size: 1.5rem; /* Tamaño del ícono */
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #00E8F8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.map-veterinaria {
+    border: none;
+    width: 100%; /* Ocupa el 100% del contenedor */
+    height: 400px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .main-title {
@@ -250,4 +300,14 @@
         justify-content: center; /* Centrar la imagen */
         margin-top: 2rem; /* Añadir espacio arriba de la imagen */
     }
+
+    .ubication-veterinaria-principal {
+        font-size: 1.5rem; /* Reducción de tamaño en pantallas más pequeñas */
+        padding: 5px 15px;
+    }
+
+    .map-veterinaria {
+        height: 300px; /* Reducimos la altura en pantallas pequeñas */
+    }
+
 }
