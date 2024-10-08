@@ -40,7 +40,7 @@
             <label for="agreement" class="form-label-agreement">
                 <input type="checkbox" id="agreement" name="agreement" class="form-checkbox-adoption" required> 
                 Acepto los 
-                <a href="/terms-and-conditions" class="terms-label">términos y condiciones</a> de la adopción.
+                <a (click)="enviarTerminos($event)" class="terms-label">términos y condiciones</a> de la adopción.
             </label>
         </div>
 

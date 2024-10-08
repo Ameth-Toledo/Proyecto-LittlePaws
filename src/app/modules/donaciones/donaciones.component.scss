@@ -1,0 +1,16 @@
+.card-donaciones-container {
+    display: flex;                  /* Activar Flexbox */
+    justify-content: flex-start;    /* Alinear las tarjetas al inicio */
+    flex-wrap: wrap;                /* Permitir que las tarjetas se ajusten a la siguiente línea si es necesario */
+    gap: 20px;                      /* Espaciado entre tarjetas */
+    padding: 20px;                  /* Espacio interno del contenedor */
+}
+
+/* Estilos para las tarjetas */
+.card-donaciones {
+    flex: 1 1 300px;                /* Las tarjetas pueden crecer, encogerse y tienen un ancho base de 300px */
+    max-width: 400px;               /* Ancho máximo para las tarjetas */
+    box-sizing: border-box;         /* Incluye padding y border en el tamaño total */
+    margin: 10px;                   /* Margen entre tarjetas */
+}
+

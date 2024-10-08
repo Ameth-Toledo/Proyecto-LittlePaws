@@ -1,0 +1,107 @@
+.card-donaciones {
+    font-family: 'Poppins', sans-serif; /* Tipografía Poppins */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%); /* Degradado de arriba hacia abajo */
+    padding: 20px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    max-width: 400px; /* Limita el ancho máximo de la tarjeta */
+    margin: 20px auto; /* Centra la tarjeta en el contenedor */
+    text-align: center; /* Centra el texto */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para hover */
+}
+
+.card-donaciones:hover {
+    transform: translateY(-10px); /* Efecto hover: subir la tarjeta */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Efecto hover: aumentar sombra */
+}
+
+/* Imagen de la causa */
+.imagen-causa {
+    width: 100%; /* Ancho del 100% para ajustar al contenedor */
+    max-height: 200px; /* Limitar la altura máxima */
+    object-fit: cover; /* Cubrir el área definida sin distorsionar la imagen */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    margin-bottom: 15px; /* Margen inferior para separar de otros elementos */
+}
+
+/* Título de la donación */
+.titulo-donacion {
+    color: white; /* Color del título */
+    font-size: 24px; /* Tamaño de la fuente del título */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Descripción de la causa */
+.descripcion-causa {
+    color: #ffffffb3; /* Blanco con opacidad */
+    font-size: 16px; /* Tamaño de la fuente de la descripción */
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+/* Barra de progreso de donación */
+.barra-donacion {
+    background-color: #333; /* Color de fondo de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+    height: 20px; /* Altura de la barra */
+    width: 100%; /* Ancho de la barra */
+    margin-bottom: 10px; /* Margen inferior */
+    overflow: hidden; /* Oculta el exceso de contenido */
+}
+
+.progreso-donacion {
+    background-color: #00E8F8; /* Color del progreso (Teal) */
+    height: 100%; /* Altura del 100% de la barra */
+    width: 0; /* Será ajustado dinámicamente */
+    border-radius: 10px; /* Bordes redondeados para el progreso */
+    transition: width 0.5s ease-in-out; /* Transición suave del progreso */
+}
+
+/* Meta y cantidad donada */
+.donacion-meta {
+    color: white; /* Color del texto de meta */
+    font-size: 14px; /* Tamaño de fuente */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Botón de donar */
+.donacion-btn {
+    background-color: #008080; /* Color del botón (Teal) */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 12px 25px; /* Espaciado del botón */
+    border-radius: 25px; /* Botón redondeado */
+    font-size: 16px; /* Tamaño de la fuente del botón */
+    font-weight: 600; /* Peso de la fuente */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    transition: background-color 0.3s ease-in-out, transform 0.2s; /* Transición para el hover */
+}
+
+.donacion-btn:hover {
+    background-color: #006666; /* Cambiar a teal más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto hover: agrandar ligeramente */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-donaciones {
+        max-width: 80%; /* Ajustar el ancho máximo */
+        margin: 10px auto; /* Espaciado más pequeño en móvil */
+    }
+
+    .titulo-donacion {
+        font-size: 20px; /* Disminuir el tamaño del título */
+    }
+
+    .descripcion-causa {
+        font-size: 14px; /* Disminuir el tamaño de la descripción */
+    }
+
+    .donacion-meta {
+        font-size: 12px; /* Disminuir el tamaño del texto de la meta */
+    }
+
+    .donacion-btn {
+        padding: 10px 20px; /* Ajustar el padding del botón */
+        font-size: 14px; /* Disminuir el tamaño del botón */
+    }
+}

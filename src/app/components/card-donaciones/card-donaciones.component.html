@@ -1,0 +1,22 @@
+<div class="card-donaciones">
+    <img class="imagen-causa" [src]="imagenCausa" alt="Causa de la donación" />
+    <h1 class="titulo-donacion">{{ tituloDonacion }}</h1>
+    <p class="descripcion-causa">{{ descripcionCausa }}</p>
+
+    <div class="barra-donacion">
+        <div class="progreso-donacion" [ngStyle]="{ 'width': porcentajeDonacion + '%' }"></div>
+    </div>
+    <p class="donacion-meta">Meta: {{ metaDonacion }} | Donado: {{ cantidadDonada }}</p>
+    
+    <button class="donacion-btn" (click)="abrirModal()">Donar</button>
+</div>
+
+<div class="modal" *ngIf="modalAbierto">
+    <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h2 class="modal-titulo">Donación para {{ tituloDonacion }}</h2>
+        <label class="modal-label" for="cantidadDonacion">Cantidad a donar:</label>
+        <input class="modal-input" type="number" id="cantidadDonacion" [(ngModel)]="cantidadDonacion" />
+        <button class="modal-btn" (click)="realizarDonacion()">Donar</button>
+    </div>
+</div>
