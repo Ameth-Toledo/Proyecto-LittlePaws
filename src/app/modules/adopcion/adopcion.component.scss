@@ -16,50 +16,59 @@
 
 .adoption-form-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px; /* Aumenta el max-width para pantallas grandes */
     margin: 40px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #1F252E; /* Color oscuro */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Asegura que el padding no exceda el ancho */
-    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+    border-radius: 16px; 
 }
 
 .form-title {
     font-family: 'Poppins', sans-serif;
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
     color: #00E8F8; /* Color celeste */
 }
 
 .adoption-form {
     display: flex;
-    flex-direction: column; 
+    flex-wrap: wrap; /* Permite que los inputs se alineen en varias filas */
+    gap: 20px;
 }
 
 .form-group-adoption {
-    margin-bottom: 15px;
+    flex: 1 1 calc(50% - 10px); /* Cada input ocupa la mitad del contenedor, menos el margen */
 }
 
 .form-label-adoption {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #00E8F8; /* Color celeste */
 }
 
 .form-input-adoption, 
 .form-textarea-adoption {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #00E8F8; /* Color celeste */
-    border-radius: 4px;
+    padding: 15px; /* Aumenta el padding para un input más grande */
+    font-size: 18px; /* Aumenta el tamaño de fuente para más legibilidad */
+    border: 1px solid #00E8F8; 
+    border-radius: 8px; 
     box-sizing: border-box;
     background-color: #1F252E; /* Fondo oscuro */
     color: #FFF; /* Texto blanco */
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        border-color: #00b7c5; /* Color de borde al enfocar */
+        outline: none; /* Sin contorno al enfocar */
+    }
+}
+
+/* El textarea ocupa todo el ancho */
+.form-group-adoption-full {
+    flex: 1 1 100%; /* Asegura que ocupe una fila completa */
 }
 
 .form-checkbox-adoption {
@@ -72,22 +81,34 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     color: #00E8F8; /* Color celeste */
+    font-size: 16px;
+    flex: 1 1 100%; /* Se coloca en una fila completa */
 }
 
 .submit-btn-adoption {
-    padding: 10px;
-    font-size: 18px;
+    padding: 15px; /* Aumenta el padding para un botón más grande */
+    font-size: 18px; /* Aumenta el tamaño de fuente para el botón */
     font-family: 'Poppins', sans-serif;
     background-color: #00E8F8; /* Botón celeste */
     color: #1F252E; /* Texto oscuro */
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    flex: 1 1 100%; /* Asegura que el botón ocupe toda una fila */
+
+    &:hover {
+        background-color: #00b7c5; /* Color más oscuro al pasar el ratón */
+        transform: scale(1.05); /* Efecto de escalado al pasar el ratón */
+    }
 }
 
-.submit-btn-adoption:hover {
-    background-color: #00b7c5; /* Botón un poco más oscuro al pasar */
+/* Enlace de términos y condiciones */
+.terms-label {
+    color: #00E8F8; /* Mismo color que el texto del formulario */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+    margin-left: 5px; /* Espacio a la izquierda del enlace */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
 }
 
 /* Responsivo para pantallas más pequeñas */
@@ -95,21 +116,23 @@
     .adoption-form-container {
         width: 90%; 
         padding: 15px;
-        margin: 20px auto; /* Reduce el margen superior e inferior */
+        margin: 20px auto; 
     }
 
     .form-title {
-        font-size: 24px;
+        font-size: 24px; /* Mantiene el tamaño del título en pantallas pequeñas */
     }
 
-    .form-input-adoption, 
-    .form-textarea-adoption {
-        padding: 8px;
-        font-size: 14px;
+    .adoption-form {
+        flex-direction: column; /* Los inputs se alinean en una columna en pantallas pequeñas */
+    }
+
+    .form-group-adoption {
+        flex: 1 1 100%; /* Cada input ocupa el ancho completo en pantallas pequeñas */
     }
 
     .submit-btn-adoption {
-        padding: 8px;
-        font-size: 16px;
+        font-size: 16px; /* Mantiene el tamaño de fuente del botón en pantallas pequeñas */
+        padding: 10px; /* Mantiene el padding del botón en pantallas pequeñas */
     }
 }
