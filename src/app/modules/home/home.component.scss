@@ -252,6 +252,23 @@
     height: 400px;
 }
 
+.ver-mas-veterinarias {
+    background-color: #00BFFF;
+    border: none;
+    width: 300px;
+    height: 50px;
+    color: black;
+    font-family: 'Poppins';
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ver-mas-veterinarias:hover {
+    background-color: #12b3e9;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .main-title {
@@ -294,7 +311,6 @@
         height: auto;
     }
 
-    /* Mostrar solo en pantallas móviles */
     .mobile {
         display: flex; /* Mostrar la imagen circular en pantallas móviles */
         justify-content: center; /* Centrar la imagen */
@@ -308,6 +324,12 @@
 
     .map-veterinaria {
         height: 300px; /* Reducimos la altura en pantallas pequeñas */
+    }
+
+    .ver-mas-veterinarias {
+        font-size: 14px;
+        width: 200px;
+        height: 50px;
     }
 
 }

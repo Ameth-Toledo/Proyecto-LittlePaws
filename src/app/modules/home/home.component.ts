@@ -3,6 +3,7 @@ import { HeaderComponent } from "../../components/header/header.component";
 import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { IndicesAbandonoComponent } from "../../components/indices-abandono/indices-abandono.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -48,5 +49,12 @@ export class HomeComponent {
         this.closeModal(); // Cerrar el modal después de 30 segundos
       }
     }, intervalDuration); // Intervalo de actualización de la barra de progreso
+  }
+
+  constructor(private router: Router) {}
+
+  enviarVeterinarias(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/perfil-veterinaria']);
   }
 }

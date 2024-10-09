@@ -1,0 +1,30 @@
+<div class="perfil">
+    <img [src]="imgSrc" alt="perfil de veterinaria" class="perfil-imagen">
+    <div class="perfil-info">
+        <h1 class="name-veterinaria">{{nameVeterinaria}}</h1>
+        <h3 class="descripcion-veterinaria">{{descripcionVeterinaria}}</h3>
+        
+        <!-- Información de contacto -->
+        <div class="contacto-veterinaria">
+            <p class="contacto-veterinaria-parrafo"><strong>Teléfono:</strong> {{telefonoVeterinaria}}</p>
+            <p class="contacto-veterinaria-parrafo"><strong>Email:</strong> {{emailVeterinaria}}</p>
+            <p class="contacto-veterinaria-parrafo"><strong>Dirección:</strong> {{direccionVeterinaria}}</p>
+        </div>
+        
+        <!-- Horario de atención -->
+        <div class="horario-veterinaria">
+            <p class="horario-veterinaria-parrafo"><strong>Horario de atención:</strong></p>
+            <p class="horario-veterinaria-parrafo">{{horarioVeterinaria}}</p>
+        </div>
+        
+        <!-- Redes sociales -->
+        <div class="redes-sociales">
+            <a href="#" target="_blank" class="social-link">Facebook</a>
+            <a href="#" target="_blank" class="social-link">Instagram</a>
+            <a href="#" target="_blank" class="social-link">Twitter</a>
+        </div>
+        
+        <!-- Botón de acción -->
+        <button class="btn-solicitar-cita">Solicitar Cita</button>
+    </div>
+</div>

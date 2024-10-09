@@ -81,6 +81,47 @@
     transform: scale(1.05); /* Efecto hover: agrandar ligeramente */
 }
 
+/*modal ventana*/
+
+.modal {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%);
+}
+
+.modal-titulo {
+    font-family: 'Poppins', sans-serif;
+    color: #00E8F8;
+    text-align: center;
+}
+
+.modal-label {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.modal-input  {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-btn {
+    width: 300px;
+    height: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: #008080;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .card-donaciones {
