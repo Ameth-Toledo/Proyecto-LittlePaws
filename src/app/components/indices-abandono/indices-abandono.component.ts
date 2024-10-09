@@ -10,7 +10,6 @@ import { Chart, LinearScale, BarElement, Title, BarController, CategoryScale } f
 })
 export class IndicesAbandonoComponent implements OnInit {
   ngOnInit() {
-    // Registrar las escalas y otros elementos que utilizarás
     Chart.register(LinearScale, BarElement, BarController, Title, CategoryScale);
     
     this.createChart();

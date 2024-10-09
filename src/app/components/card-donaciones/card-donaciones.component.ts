@@ -27,16 +27,15 @@ export class CardDonacionesComponent {
 
   cerrarModal() {
     this.modalAbierto = false;
-    this.cantidadDonacion = null; // Reinicia la cantidad al cerrar
+    this.cantidadDonacion = null;
   }
 
   realizarDonacion() {
     if (this.cantidadDonacion) {
-      // Lógica para procesar la donación
       console.log(`Donación de ${this.cantidadDonacion} realizada.`);
-      this.cerrarModal(); // Cierra el modal después de realizar la donación
+      this.cerrarModal(); 
     } else {
-      alert("Por favor, ingresa una cantidad válida."); // Alerta si no se ingresa cantidad
+      alert("Por favor, ingresa una cantidad válida."); 
     }
   }
 }

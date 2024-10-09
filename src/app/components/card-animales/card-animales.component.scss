@@ -3,21 +3,21 @@
     align-items: center;
     background-color: #2C3742;
     border-radius: 15px;
-    padding: 10px; /* Mantener un padding interno */
+    padding: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: #FFFFFF;
     transition: transform 0.3s;
-    max-width: 600px; /* Tamaño máximo para pantallas grandes */
-    margin: 0.05rem auto; /* Margen reducido entre tarjetas */
+    max-width: 600px; 
+    margin: 0.05rem auto; 
 }
 
 .image-animales {
     border-radius: 15px;
-    width: 150px; /* Tamaño fijo para la imagen */
-    height: 150px; /* Tamaño fijo para la imagen */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
-    margin-right: 10px; /* Reduce el margen a la derecha */
-    margin-bottom: 10px; /* Margen en la parte inferior para separación del texto */
+    width: 150px;
+    height: 150px; 
+    object-fit: cover; 
+    margin-right: 10px; 
+    margin-bottom: 10px;
 }
 
 .info-animales {
@@ -29,13 +29,13 @@
 .name-animales {
     font-family: 'Poppins';
     font-size: 24px;
-    margin: 2px 0; /* Margen superior e inferior reducido */
+    margin: 2px 0; 
 }
 
 .raza, .refugio, .edad {
     font-family: 'Poppins';
     font-size: 18px;
-    margin: 2px 0; /* Margen superior e inferior reducido */
+    margin: 2px 0;
     display: flex;
     align-items: center;
 }
@@ -48,11 +48,11 @@
 .adop-btn {
     background-color: #00BFFF;
     border: none;
-    width: 100%; /* Mantén el 100% para que el botón ocupe todo el ancho */
+    width: 100%; 
     height: 40px;
     border-radius: 10px;
     font-family: 'Poppins';
-    margin-top: 5px; /* Mantener un margen superior, pero sin margen lateral */
+    margin-top: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -61,38 +61,37 @@
     background-color: #008ac6;
 }
 
-/* Estilos responsive para pantallas más pequeñas (tablets y móviles) */
 @media (max-width: 768px) {
     .card-animales {
         background-color: transparent;
         flex-direction: column;
         text-align: center;
-        max-width: 90%; /* Ampliar un poco más el uso de ancho en pantallas pequeñas */
-        margin: 0.3rem auto; /* Reduce el margen entre tarjetas en vista responsive */
+        max-width: 90%; 
+        margin: 0.3rem auto; 
         padding: 15px; 
-        transform: scale(0.95); /* Ajustar un poco el tamaño de la tarjeta en pantallas pequeñas */
+        transform: scale(0.95); 
     }
     
     .image-animales {
-        width: 400px; /* Tamaño fijo de la imagen en pantallas pequeñas */
-        height: 200px; /* Tamaño fijo de la imagen en pantallas pequeñas */
-        margin: 0 auto; /* Centra la imagen */
-        margin-bottom: 10px; /* Mantiene el margen inferior */
-        object-fit: cover; /* Asegúrate de que la imagen se ajuste bien */
+        width: 400px; 
+        height: 200px; 
+        margin: 0 auto; 
+        margin-bottom: 10px; 
+        object-fit: cover; 
     }
 
     .name-animales {
-        font-size: 24px; /* Ajustar el tamaño de la fuente para que no se vea tan grande */
+        font-size: 24px; 
     }
 
     .raza, .refugio, .edad {
-        font-size: 18px; /* Mantener el tamaño de fuente consistente con la vista original */
+        font-size: 18px; 
     }
 
     .adop-btn {
-        width: 100%; /* Mantiene el botón ocupando todo el ancho */
-        height: 50px; /* Mantener altura consistente */
-        font-size: 18px; /* Ajustar tamaño de fuente para mejor legibilidad */
-        margin-top: 10px; /* Un poco más de espacio en la parte superior */
+        width: 100%; 
+        height: 50px; 
+        font-size: 18px; 
+        margin-top: 10px; 
     }
 }

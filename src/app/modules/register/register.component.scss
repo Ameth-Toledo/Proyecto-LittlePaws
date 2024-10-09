@@ -37,19 +37,17 @@
     background-color: #000;
 }
 
-/**/
-
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Solo afecta al contenedor del formulario */
+    height: 100vh;
 }
 
 .form-centered {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espacio entre los campos del formulario */
+    gap: 20px; 
 }
 
 .register-btn {

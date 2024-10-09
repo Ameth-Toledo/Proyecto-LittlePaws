@@ -28,7 +28,7 @@
 }
 
 .detail-title {
-    flex: 1; /* Permitir que tome espacio disponible */
+    flex: 1;
 }
 
 .detail-title-bienvenida {
@@ -109,35 +109,33 @@
 }
 
 .mobile {
-    display: none; /* Ocultar por defecto en pantallas grandes */
+    display: none;
 }
 
 .adopcion-mobile {
-    width: 100px; /* Ajustar el tamaño de la imagen */
-    height: 100px; /* Hacer la altura igual al ancho para mantener proporción */
-    object-fit: cover; /* Asegurar que la imagen mantenga su proporción dentro del círculo */
-    border-radius: 50%; /* Hacer la imagen circular */
-    border: 3px solid #00E8F8; /* Agregar un borde para resaltar la imagen */
-    box-shadow: 0 0 15px rgba(0, 232, 248, 0.5); /* Agregar sombra suave para darle un efecto de estado */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #00E8F8;
+    box-shadow: 0 0 15px rgba(0, 232, 248, 0.5);
 }
 
-
-/* Modal Styling */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
 
 .modal.show {
-    display: flex; /* Mostrar el modal cuando esté abierto */
+    display: flex;
 }
 
 .modal-content {
@@ -172,7 +170,6 @@
     color: #333;
 }
 
-/* Barra de progreso */
 .progress-bar {
     width: 100%;
     background-color: #ddd;
@@ -186,39 +183,35 @@
 .progress {
     height: 100%;
     background-color: #00E8F8;
-    width: 0%; /* Inicialmente vacía */
+    width: 0%;
     transition: width 0.5s ease;
 }
 
-/* Imagen cuando está marcada como vista */
 .adopcion-mobile.viewed {
-    border: 3px solid green; /* Cambiar el borde para indicar que ha sido vista */
+    border: 3px solid green;
 }
 
-/* Imagen en el modal cuando está vista */
 .modal-image.viewed {
     border: 3px solid green;
 }
 
-
 .adopcion-container {
-    display: flex; /* Usar flexbox para alinear horizontalmente */
-    justify-content: flex-start; /* Alinear a la izquierda */
-    gap: 1rem; /* Espacio entre las imágenes de adopción */
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
 }
 
-/*nuevo*/
 .animales-container {
     display: flex;
-    justify-content: center; /* Centra las cards horizontalmente */
-    gap: 1rem; /* Espacio entre las cards */
-    flex-wrap: wrap; /* Permite que las cards se ajusten a múltiples filas si es necesario */
-    margin: 20px 0; /* Añade un margen arriba y abajo del contenedor */
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 20px 0;
 }
 
 .ubication-veterinaria-principal {
     font-family: 'Poppins', sans-serif;
-    font-size: 2rem; /* Tamaño de texto reducido para mejor adaptabilidad */
+    font-size: 2rem;
     font-weight: 700;
     color: white;
     text-align: center;
@@ -227,14 +220,14 @@
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: center; /* Centramos el contenido */
+    justify-content: center;
     align-items: center;
 }
 
 .ubication-veterinaria-principal i {
     margin-right: 10px;
-    color: white; /* Color del ícono blanco */
-    font-size: 1.5rem; /* Tamaño del ícono */
+    color: white;
+    font-size: 1.5rem;
 }
 
 .map-container {
@@ -246,9 +239,10 @@
     border-radius: 10px;
     overflow: hidden;
 }
+
 .map-veterinaria {
     border: none;
-    width: 100%; /* Ocupa el 100% del contenedor */
+    width: 100%;
     height: 400px;
 }
 
@@ -269,7 +263,6 @@
     background-color: #12b3e9;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .main-title {
         flex-direction: column;
@@ -298,7 +291,7 @@
     }
 
     .bann-imagenn {
-        display: none; /* Ocultar banner en pantallas móviles */
+        display: none;
     }
 
     .barra-bann {
@@ -312,18 +305,18 @@
     }
 
     .mobile {
-        display: flex; /* Mostrar la imagen circular en pantallas móviles */
-        justify-content: center; /* Centrar la imagen */
-        margin-top: 2rem; /* Añadir espacio arriba de la imagen */
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
     }
 
     .ubication-veterinaria-principal {
-        font-size: 1.5rem; /* Reducción de tamaño en pantallas más pequeñas */
+        font-size: 1.5rem;
         padding: 5px 15px;
     }
 
     .map-veterinaria {
-        height: 300px; /* Reducimos la altura en pantallas pequeñas */
+        height: 300px;
     }
 
     .ver-mas-veterinarias {
@@ -331,5 +324,4 @@
         width: 200px;
         height: 50px;
     }
-
 }

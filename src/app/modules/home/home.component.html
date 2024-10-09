@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <!-- Contenedor para las imágenes de adopción -->
+    <button (click)="enviarLogin($event)">Login</button>
     <div class="adopcion-container">
         <div class="mobile">
             <img src="mobile/adopcion1.jpg" alt="adopcion1" class="adopcion-mobile" (click)="openModal('mobile/adopcion1.jpg')">
@@ -38,16 +38,13 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div id="imageModal" class="modal" [class.show]="isModalOpen">
     <div class="modal-content">
-        <!-- Barra de progreso -->
         <div class="progress-bar">
             <div class="progress" [style.width.%]="progress"></div>
         </div>
         
         <span class="close" (click)="closeModal()">&times;</span>
-        <!-- Mostrar la imagen seleccionada dinámicamente -->
         <img [src]="selectedImage" alt="Imagen seleccionada" class="modal-image" [class.viewed]="imageViewed">
         <p class="modal-description">
             Este adorable perrito está buscando un hogar lleno de amor y cuidado. ¡Adóptalo y cambia su vida!
@@ -55,7 +52,6 @@
     </div>
 </div>
 
-<!-- Contenedor para las cards de animales -->
 <div class="animales-container">
     <app-card-animales imgSrc="perros/perro01.webp" 
     name="Alonso" 
