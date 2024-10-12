@@ -13,16 +13,13 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class RegisterComponent {
   constructor(private router : Router) {}
 
-  enviarLogin(event : Event) {
+  enviarLogin(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
-  passwordVisible: boolean = false;
-
-  togglePassword() {
-    this.passwordVisible = !this.passwordVisible;
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    passwordInput.type = this.passwordVisible ? 'text' : 'password';
+  togglePassword(inputId: string) {
+    const inputElement = document.getElementById(inputId) as HTMLInputElement;
+    inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
   }
 }

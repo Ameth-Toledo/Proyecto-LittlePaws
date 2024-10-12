@@ -155,3 +155,30 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .login-title {
+        font-size: 36px;
+    }
+
+    .input-group_input {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .ingresar-btn {
+        width: 100%;
+    }
+
+    .no-account-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
