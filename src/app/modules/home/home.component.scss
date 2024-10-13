@@ -263,6 +263,66 @@
     background-color: #12b3e9;
 }
 
+/*nuevo*/
+.recomendacion-adopcion {
+    width: 100%; 
+    padding: 40px 20px; 
+    box-sizing: border-box; 
+}
+
+.titulo-recomendacion {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px; 
+    text-align: center; 
+    color: #00BFFF;
+    margin-bottom: 20px; 
+}
+
+.subtitulo-recomendacion {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 30px; 
+    color: white;
+}
+
+.contenedor-adopcion {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.card {
+    background: none; 
+    border: 1px solid #00BFFF; 
+    border-radius: 5px; 
+    padding: 20px; 
+    margin: 0 10px; 
+    flex: 1; 
+    transition: transform 0.3s; 
+}
+
+.card:hover {
+    transform: translateY(-3px); 
+}
+
+.adoptar-recomendacion {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: white;
+}
+
+.parrafo-adopcion {
+    font-size: 16px; 
+    line-height: 1.5; 
+    text-align: left; 
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
 @media (max-width: 768px) {
     .main-title {
         flex-direction: column;
@@ -323,5 +383,32 @@
         font-size: 14px;
         width: 200px;
         height: 50px;
+    }
+
+    /**/
+    .contenedor-adopcion {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .card {
+        margin: 10px 0; 
+        width: 90%; 
+    }
+
+    .titulo-recomendacion {
+        font-size: 36px; 
+    }
+
+    .subtitulo-recomendacion {
+        font-size: 20px; 
+    }
+
+    .adoptar-recomendacion {
+        font-size: 20px; 
+    }
+
+    .parrafo-adopcion {
+        font-size: 14px; 
     }
 }

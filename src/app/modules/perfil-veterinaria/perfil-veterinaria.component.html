@@ -1,4 +1,4 @@
-<app-header/>
+<app-header />
 <app-veterinaria-head
     nameVeterinaria="Clinica Veterinaria Zoo"
     descripcionVeterinaria="Bienvenido!! "
@@ -6,8 +6,8 @@
     telefonoVeterinaria="961 000 0000"
     emailVeterinaria="veterinaria-zoo@gmail.com"
     direccionVeterinaria="12 de noviembre"
-    horarioVeterinaria="9 am - 12 pm"/>
-    
+    horarioVeterinaria="9 am - 12 pm" />
+
 <h1 class="ubication-veterinaria-principal">
     <i class="fas fa-dog"></i> Clinica Veterinaria ZOO
 </h1>
@@ -25,4 +25,20 @@
     </iframe>
 </div>
 
-<app-footer/>
+<div class="info-head">
+    <span 
+        class="info-option" 
+        [class.selected]="selectedOption === 'fotos'" 
+        (click)="selectOption('fotos')">Fotos
+    </span>
+    <span 
+        class="info-option" 
+        [class.selected]="selectedOption === 'publicaciones'" 
+        (click)="selectOption('publicaciones')">Publicaciones
+    </span>
+</div>
+
+<img src="Zoo/Zoo01.jpg" alt="Little-Paws"/>
+<img src="" alt="">
+
+<app-footer />
