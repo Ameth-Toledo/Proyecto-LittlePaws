@@ -22,4 +22,28 @@ export class RegisterComponent {
     const inputElement = document.getElementById(inputId) as HTMLInputElement;
     inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
   }
+
+  validarFormulario(event: Event) {
+    event.preventDefault(); // Evita el comportamiento por defecto del formulario
+
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+
+    if (!email || !password) {
+      this.mostrarModal();
+    } else {
+      // Aquí puedes manejar el inicio de sesión
+      console.log('Formulario enviado');
+    }
+  }
+
+  mostrarModal() {
+    const modal = document.getElementById('errorModal')!;
+    modal.style.display = 'flex'; // Muestra el modal
+  }
+
+  closeModal() {
+    const modal = document.getElementById('errorModal')!;
+    modal.style.display = 'none'; // Cierra el modal
+  }
 }
