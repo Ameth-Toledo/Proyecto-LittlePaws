@@ -29,7 +29,9 @@
     font-family: 'Poppins', sans-serif;
     color: white;
     font-size: 36px;
+    margin-top: -10px; /* Reduce el espacio superior */
 }
+
 
 .contacto-veterinaria-parrafo {
     font-family: 'Poppins', sans-serif;
@@ -72,6 +74,8 @@
     margin-top: 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    color: black;
+    font-weight: bold;
 }
 
 .btn-solicitar-cita:hover {
@@ -83,7 +87,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     .perfil-imagen {
@@ -95,6 +99,7 @@
     }
 
     .name-veterinaria {
+        margin-top: -40px;
         font-size: 30px; 
         margin-bottom: 2px; 
     }

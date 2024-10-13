@@ -34,7 +34,7 @@ export class HomeComponent {
   }
 
   startProgressBar() {
-    const totalDuration = 30; 
+    const totalDuration = 10; 
     const intervalDuration = 100; 
     let elapsedTime = 0;
     
