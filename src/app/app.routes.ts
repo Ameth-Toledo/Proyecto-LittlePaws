@@ -6,6 +6,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { TermsComponent } from './modules/terms/terms.component';
 import { PerfilVeterinariaComponent } from './modules/perfil-veterinaria/perfil-veterinaria.component';
+import { VeterinariasComponent } from './modules/veterinarias/veterinarias.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },
-    { path: "perfil-veterinaria", component: PerfilVeterinariaComponent }
+    { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent },
+    { path: "veterinarias", component: VeterinariasComponent }
 ];

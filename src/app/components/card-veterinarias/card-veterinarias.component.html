@@ -1,0 +1,8 @@
+<div class="card-veterinarias">
+    <h1 class="name-veterinarias">{{ nameVeterinaria }}</h1>
+    <img [src]="ImgSrc" alt="veterinarias-LittlePaws" class="imagen-veterinarias">
+    <p class="veterinarias">
+        <i class="fas fa-clock clock-icon"></i>{{Horario}}
+    </p>
+    <a (click)="enviarVeterinarias($event)" class="ver-mas-veterinarias">Ver más...</a>
+</div>
