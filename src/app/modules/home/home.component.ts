@@ -52,7 +52,7 @@ export class HomeComponent {
 
   enviarVeterinarias(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/veterinarias']);
+    this.router.navigate(['/']);
   }
 
   enviarLogin(event: Event) {

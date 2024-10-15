@@ -11,6 +11,7 @@ import { VeterinariaHeadComponent } from "../../components/veterinaria-head/vete
   styleUrl: './perfil-veterinaria.component.scss'
 })
 export class PerfilVeterinariaComponent {
+  //logica del head de abajo
   selectedOption: string = 'fotos';
 
   selectOption(option : string): void {

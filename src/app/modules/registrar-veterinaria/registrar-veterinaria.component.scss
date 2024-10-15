@@ -1,0 +1,53 @@
+.header-fixed {
+  position: relative;
+  z-index: 1000;
+}
+
+.footer-fixed {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.menu-vertical {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%);
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box; /* Asegura que el padding no expanda el menú */
+}
+
+.menu-vertical-ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.menu-vertical-li {
+  width: 100%;
+  padding: 15px 20px; 
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  box-sizing: border-box; /* Mantiene el padding dentro del ancho */
+}
+
+.menu-vertical-li-i {
+  margin-right: 10px;
+}
+
+.menu-vertical-li:hover {
+  background-color: rgba(0, 128, 128, 0.8);
+  padding-left: 20px; /* Se ajusta para que no exceda el ancho */
+}

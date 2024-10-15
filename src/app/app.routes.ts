@@ -7,6 +7,7 @@ import { RegisterComponent } from './modules/register/register.component';
 import { TermsComponent } from './modules/terms/terms.component';
 import { PerfilVeterinariaComponent } from './modules/perfil-veterinaria/perfil-veterinaria.component';
 import { VeterinariasComponent } from './modules/veterinarias/veterinarias.component';
+import { RegistrarVeterinariaComponent } from './modules/registrar-veterinaria/registrar-veterinaria.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -17,5 +18,7 @@ export const routes: Routes = [
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },
     { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent },
-    { path: "veterinarias", component: VeterinariasComponent }
+    { path: "veterinarias", component: VeterinariasComponent },
+    //Administracion 
+    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent }
 ];
