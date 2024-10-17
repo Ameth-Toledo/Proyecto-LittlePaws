@@ -4,11 +4,12 @@ import { CardAnimalesComponent } from "../../components/card-animales/card-anima
 import { FooterComponent } from "../../components/footer/footer.component";
 import { IndicesAbandonoComponent } from "../../components/indices-abandono/indices-abandono.component";
 import { Router } from '@angular/router';
+import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, CardAnimalesComponent, FooterComponent, IndicesAbandonoComponent],
+  imports: [HeaderComponent, CardAnimalesComponent, FooterComponent, IndicesAbandonoComponent, ChatbotComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -52,7 +53,7 @@ export class HomeComponent {
 
   enviarVeterinarias(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/']);
+    this.router.navigate(['/veterinarias']);
   }
 
   enviarLogin(event: Event) {
