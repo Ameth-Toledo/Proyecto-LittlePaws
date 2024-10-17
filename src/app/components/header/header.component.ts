@@ -23,6 +23,11 @@ export class HeaderComponent {
     this.router.navigate(['/home']);
   }
 
+  enviarLogin(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/login']);
+  }
+
   enviarAdopcion(event: Event) {
     event.preventDefault();
     this.router.navigate(['/adopciones']);

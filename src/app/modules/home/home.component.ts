@@ -55,9 +55,4 @@ export class HomeComponent {
     event.preventDefault();
     this.router.navigate(['/veterinarias']);
   }
-
-  enviarLogin(event: Event) {
-    event.preventDefault();
-    this.router.navigate(['/login']);
-  }
 }
