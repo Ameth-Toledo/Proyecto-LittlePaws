@@ -56,10 +56,4 @@ export class HomeComponent {
     event.preventDefault();
     this.router.navigate(['/veterinarias']);
   }
-
-  isChatbotOpen = false;
-
-  toggleChatbot() {
-    this.isChatbotOpen = !this.isChatbotOpen;
-  }
 }

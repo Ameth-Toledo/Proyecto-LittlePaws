@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class ChatbotComponent {
   geminiService = inject(ChatbotApiService);
   chatbotResponses : string[] = [];
+  isChatOpen: boolean = false;
 
   async getAnswer() {
     const userInput = this.geminiService.form.get('userInput')?.value;
@@ -24,5 +25,9 @@ export class ChatbotComponent {
       this.chatbotResponses.push(`LittlePaws: ${cleanResponse}`);
       this.geminiService.form.reset();
     }
+  }
+
+  toggleChat() {
+    this.isChatOpen = !this.isChatOpen;
   }
 }

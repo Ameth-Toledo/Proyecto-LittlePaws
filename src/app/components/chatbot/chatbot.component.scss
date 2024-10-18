@@ -135,6 +135,35 @@
   word-wrap: break-word;
 }
 
+
+/**/
+.chat-wrapper {
+  position: fixed; /* Fijo para que permanezca en la pantalla */
+  left: 20px; /* Espacio desde la izquierda */
+  bottom: 20px; /* Espacio desde la parte inferior */
+  display: flex;
+  flex-direction: column; /* Apilar el botón y el chat verticalmente */
+  align-items: flex-start; /* Alinear a la izquierda */
+}
+
+.chat-toggle-btn {
+  background-color: #00E8F8; /* Color del botón */
+  color: #1F252E; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Espacio entre el botón y el chat */
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.chat-toggle-btn:hover {
+  background-color: #1F252E; /* Color al pasar el ratón */
+  color: #00E8F8; /* Cambiar el color del texto al pasar el ratón */
+}
+
+
 @media (max-width : 768px) {
   .chat-container {
     max-width: 400px;

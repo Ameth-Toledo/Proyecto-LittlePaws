@@ -1,21 +1,25 @@
-<div class="chat-container">
-    <div class="head-chatbot">
-        <h1 class="head-title">LittlePaws</h1>
-    </div>
-    <div class="messages">
-        <div *ngFor="let response of chatbotResponses" class="message" [ngClass]="{'user-message': response.startsWith('Tú:'), 'chatbot-message': response.startsWith('LittlePaws:')}">
-            <div class="message-content">
-                <i *ngIf="response.startsWith('Tú:')" class="fas fa-user user-icon"></i>
-                <img *ngIf="response.startsWith('LittlePaws:')" src="LittlePaws06.svg" alt="chatbot avatar" class="avatar">
-                <p class="respuesta-chat">{{ response }}</p>
+<div class="chat-wrapper">
+    <button (click)="toggleChat()" class="chat-toggle-btn">Abrir Chat</button>
+    <div *ngIf="isChatOpen" class="chat-container">
+        <div class="head-chatbot">
+            <h1 class="head-title">LittlePaws</h1>
+        </div>
+        <div class="messages">
+            <div *ngFor="let response of chatbotResponses" class="message" 
+                 [ngClass]="{'user-message': response.startsWith('Tú:'), 'chatbot-message': response.startsWith('LittlePaws:')}">
+                <div class="message-content">
+                    <i *ngIf="response.startsWith('Tú:')" class="fas fa-user user-icon"></i>
+                    <img *ngIf="response.startsWith('LittlePaws:')" src="LittlePaws06.svg" alt="chatbot avatar" class="avatar">
+                    <p class="respuesta-chat">{{ response }}</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <form [formGroup]="geminiService.form" (ngSubmit)="getAnswer()" class="input-form"> 
-        <input formControlName="userInput" type="text" placeholder="Escribe tu mensaje..." class="campo-chat"/>
-        <button type="submit" class="enviar-btn">
-            <i class="fas fa-paper-plane"></i>
-        </button>
-    </form>
+        <form [formGroup]="geminiService.form" (ngSubmit)="getAnswer()" class="input-form"> 
+            <input formControlName="userInput" type="text" placeholder="Escribe tu mensaje..." class="campo-chat"/>
+            <button type="submit" class="enviar-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
 </div>
