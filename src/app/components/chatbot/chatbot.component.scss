@@ -150,19 +150,20 @@
   background-color: #00E8F8; /* Color del botón */
   color: #1F252E; /* Color del texto */
   border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
+  border-radius: 50%; /* Redondear el botón */
+  padding: 15px; /* Espaciado para hacerlo más grande */
   cursor: pointer;
   margin-bottom: 10px; /* Espacio entre el botón y el chat */
   font-family: 'Poppins', sans-serif;
+  font-size: 24px; /* Tamaño de la fuente del ícono */
   transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
 .chat-toggle-btn:hover {
   background-color: #1F252E; /* Color al pasar el ratón */
   color: #00E8F8; /* Cambiar el color del texto al pasar el ratón */
 }
-
 
 @media (max-width : 768px) {
   .chat-container {
