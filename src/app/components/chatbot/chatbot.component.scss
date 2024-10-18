@@ -9,6 +9,10 @@
   flex-direction: column;
   height: 80vh;
   background-color: #ffffff;
+  position: absolute; /* Cambiado para posicionar correctamente respecto al contenedor */
+  bottom: 70px; /* Espaciado desde la parte inferior, para no superponerse al botón */
+  left: 20px; /* Alineación con el botón */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
 .head-chatbot {
@@ -135,8 +139,6 @@
   word-wrap: break-word;
 }
 
-
-/**/
 .chat-wrapper {
   position: fixed; /* Fijo para que permanezca en la pantalla */
   left: 20px; /* Espacio desde la izquierda */
@@ -165,7 +167,7 @@
   color: #00E8F8; /* Cambiar el color del texto al pasar el ratón */
 }
 
-@media (max-width : 768px) {
+@media (max-width: 768px) {
   .chat-container {
     max-width: 400px;
   }
@@ -174,10 +176,3 @@
     width: 250px;
   }
 }
-
-  /*
-  
-#1F252E
-#00E8F8
-
-*/
