@@ -1,0 +1,55 @@
+.card-denuncia {
+    background-color: #2C3742;  // Color de fondo
+    border: 1px solid #ddd;      // Borde claro para contraste
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Poppins', sans-serif;
+    color: #f0f0f0;              // Color de texto claro para contraste
+}
+
+.card-header {
+   background-color: #f0a500; // Color de fondo para el encabezado
+   padding: 10px;
+   border-radius: 6px 6px 0 0;
+   color: white;
+}
+
+.card-email,
+.card-ubicacion {
+   margin: 5px 0;
+   color: #fff; // Color de texto en el encabezado
+}
+  
+.card-title {
+   margin: 0;
+   font-size: 1.5rem;
+}
+
+.card-body {
+   padding: 10px;  
+}
+
+.card-descripcion,
+.card-text {
+   margin: 10px 0;
+   color: #f0f0f0; // Color de texto en el cuerpo
+}
+
+.card-imagen-container {
+    margin-top: 10px;
+}
+
+.card-imagen-label {
+    margin: 10px 0;
+    color: #f0f0f0; // Color de etiqueta para imagen
+}
+
+.denuncia-imagen {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ddd; // Borde claro para la imagen
+}

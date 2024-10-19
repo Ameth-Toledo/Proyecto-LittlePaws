@@ -37,4 +37,9 @@ export class HeaderComponent {
     event.preventDefault();
     this.router.navigate(['/donaciones']);
   }
+
+  enviarDenuncias(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/denuncias']);
+  }
 }

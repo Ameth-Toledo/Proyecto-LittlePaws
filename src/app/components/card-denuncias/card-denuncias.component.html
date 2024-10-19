@@ -1,0 +1,18 @@
+<div class="card-denuncia">
+    <div class="card-header">
+      <h3 class="card-title">Denuncia de {{ nombre }}</h3>
+      <p class="card-email"><strong>Correo Electrónico:</strong> {{ email }}</p>
+      <p class="card-ubicacion"><strong>Ubicación:</strong> {{ ubicacion }}</p>
+    </div>
+  
+    <div class="card-body">
+      <p class="card-descripcion"><strong>Descripción del maltrato:</strong></p>
+      <p class="card-text">{{ descripcion }}</p>
+      
+      <div *ngIf="imagenUrl" class="card-imagen-container">
+        <p class="card-imagen-label"><strong>Imagen Adjunta:</strong></p>
+        <img [src]="imagenUrl" alt="Imagen de la denuncia" class="denuncia-imagen">
+      </div>
+    </div>
+  </div>
+  

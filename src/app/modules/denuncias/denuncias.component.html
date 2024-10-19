@@ -1,1 +1,45 @@
-<p>denuncias works!</p>
+<app-header></app-header>
+
+<div class="denuncia-container">
+    <h1 class="tittle-denuncias">¡Denuncia ya!</h1>
+
+    <div class="denuncia-layout">
+        <form action="" class="denuncia-form">
+            <div class="input-group">
+                <input type="text" id="nombre" class="input-group_input" required />
+                <label for="nombre" class="input-group_label">Nombre Completo</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" class="input-group_input" required />
+                <label for="email" class="input-group_label">Correo Electrónico</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="ubicacion" class="input-group_input" required />
+                <label for="ubicacion" class="input-group_label">Ubicación</label>
+            </div>
+
+            <div class="input-group">
+                <textarea id="descripcion" class="input-group_input" rows="4" required></textarea>
+                <label for="descripcion" class="input-group_label">Descripción del maltrato</label>
+            </div>
+
+            <button type="submit" class="denuncia-btn">Denunciar</button>
+        </form>
+
+        <div class="container-denuncia-previa">
+            <img src="" alt="denuncia" class="denuncia-imagen">
+            <button type="button" class="agregar-denuncia-btn">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="modificar-btn">
+                <i class="fas fa-edit"></i>
+            </button>
+        </div>
+
+        <app-card-denuncias class="card-denuncia"></app-card-denuncias>
+    </div>
+</div>
+
+<app-footer></app-footer>
