@@ -37,7 +37,7 @@
     </form>
 </div>
 
-<!-- Modal -->
+<!-- Modal Error paaa-->
 <div id="errorModal" class="modal" style="display:none;">
     <div class="modal-content">
         <span class="close" (click)="closeModal()">&times;</span>
@@ -45,6 +45,39 @@
         <i class="fas fa-exclamation-circle" style="color:red; font-size: 48px;"></i>
         <p>Debe llenar todos los campos.</p>
         <button class="aceptar-btn" (click)="closeModal()">Aceptar</button>
+    </div>
+</div>
+
+<!-- Modal de advertencia no coinciden -->
+<div id="passwordMismatchModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" (click)="closePasswordMismatchModal()">&times;</span>
+        <h2>Advertencia</h2>
+        <i class="fas fa-exclamation-triangle" style="color:orange; font-size: 48px;"></i>
+        <p>Las contraseñas no coinciden. Por favor, verifica e inténtalo de nuevo.</p>
+        <button class="aceptar-btn" (click)="closePasswordMismatchModal()">Aceptar</button>
+    </div>
+</div>
+
+<!-- Modal de éxito -->
+<div id="successModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" (click)="closeSuccessModal()">&times;</span>
+        <h2>Registro Exitoso</h2>
+        <i class="fas fa-check-circle" style="color:green; font-size: 48px;"></i>
+        <p>¡Te has registrado con éxito!</p>
+        <button class="aceptar-btn" (click)="closeSuccessModal()">Aceptar</button>
+    </div>
+</div>
+
+<!-- Modal de error de email -->
+<div id="emailErrorModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" (click)="closeEmailErrorModal()">&times;</span>
+        <h2>Error</h2>
+        <i class="fas fa-exclamation-circle" style="color:red; font-size: 48px;"></i>
+        <p>El correo electrónico no es válido. Debe incluir un &#64;.</p>
+        <button class="aceptar-btn" (click)="closeEmailErrorModal()">Aceptar</button>
     </div>
 </div>
 

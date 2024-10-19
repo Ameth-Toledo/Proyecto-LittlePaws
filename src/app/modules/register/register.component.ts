@@ -24,26 +24,60 @@ export class RegisterComponent {
   }
 
   validarFormulario(event: Event) {
-    event.preventDefault(); // Evita el comportamiento por defecto del formulario
-
+    event.preventDefault(); 
+  
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
-
-    if (!email || !password) {
-      this.mostrarModal();
+    const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
+  
+    if (!email || !password || !passwordConfirm) {
+      this.mostrarModal(); 
+    } else if (!email.includes('@')) {
+      this.mostrarEmailErrorModal(); 
+    } else if (password !== passwordConfirm) {
+      this.mostrarPasswordMismatchModal(); 
     } else {
-      // Aquí puedes manejar el inicio de sesión
-      console.log('Formulario enviado');
+      this.mostrarSuccessModal();
     }
+  }
+  
+  mostrarEmailErrorModal() {
+    const modal = document.getElementById('emailErrorModal')!;
+    modal.style.display = 'flex'; // Mostrar el modal de error de email
+  }
+  
+  closeEmailErrorModal() {
+    const modal = document.getElementById('emailErrorModal')!;
+    modal.style.display = 'none'; // Cerrar el modal de error de email
+  }  
+  
+  mostrarPasswordMismatchModal() {
+    const modal = document.getElementById('passwordMismatchModal')!;
+    modal.style.display = 'flex'; 
+  }
+  
+  closePasswordMismatchModal() {
+    const modal = document.getElementById('passwordMismatchModal')!;
+    modal.style.display = 'none';
+  }  
+
+  mostrarSuccessModal() {
+    const modal = document.getElementById('successModal')!;
+    modal.style.display = 'flex';
+  }
+
+  closeSuccessModal() {
+    const modal = document.getElementById('successModal')!;
+    modal.style.display = 'none';
   }
 
   mostrarModal() {
     const modal = document.getElementById('errorModal')!;
-    modal.style.display = 'flex'; // Muestra el modal
+    modal.style.display = 'flex'; 
   }
 
   closeModal() {
     const modal = document.getElementById('errorModal')!;
-    modal.style.display = 'none'; // Cierra el modal
+    modal.style.display = 'none'; 
   }
 }
