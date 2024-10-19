@@ -1,17 +1,17 @@
 .card-denuncia {
-    background-color: #2C3742;  // Color de fondo
-    border: 1px solid #ddd;      // Borde claro para contraste
+    background-color: #2C3742;  
+    border: 1px solid #ddd;      
     border-radius: 8px;
     padding: 20px;
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
     font-family: 'Poppins', sans-serif;
-    color: #f0f0f0;              // Color de texto claro para contraste
+    color: #f0f0f0;              
 }
 
 .card-header {
-   background-color: #f0a500; // Color de fondo para el encabezado
+   background-color: #f0a500;  
    padding: 10px;
    border-radius: 6px 6px 0 0;
    color: white;
@@ -20,7 +20,7 @@
 .card-email,
 .card-ubicacion {
    margin: 5px 0;
-   color: #fff; // Color de texto en el encabezado
+   color: #fff;  
 }
   
 .card-title {
@@ -35,7 +35,7 @@
 .card-descripcion,
 .card-text {
    margin: 10px 0;
-   color: #f0f0f0; // Color de texto en el cuerpo
+   color: #f0f0f0;             
 }
 
 .card-imagen-container {
@@ -44,12 +44,39 @@
 
 .card-imagen-label {
     margin: 10px 0;
-    color: #f0f0f0; // Color de etiqueta para imagen
+    color: #f0f0f0;            
 }
 
 .denuncia-imagen {
-    width: 100px;
+    width: 100px;                
     height: 100px;
     object-fit: cover;
-    border: 1px solid #ddd; // Borde claro para la imagen
+    border: 1px solid #ddd;     
+}
+
+@media (max-width: 768px) {
+    .card-denuncia {
+        width: 90%;
+        padding: 15px;           
+        margin: 10px; 
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-email,
+    .card-ubicacion {
+        font-size: 0.9rem; 
+    }
+
+    .card-descripcion,
+    .card-text {
+        font-size: 0.9rem;       
+    }
+
+    .denuncia-imagen {
+        width: 80px;             
+        height: 80px;
+    }
 }

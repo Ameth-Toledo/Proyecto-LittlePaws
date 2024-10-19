@@ -25,17 +25,24 @@
                 <label for="descripcion" class="input-group_label">Descripción del maltrato</label>
             </div>
 
+            <!-- Input oculto para subir imágenes -->
+            <input type="file" id="imagenes" (change)="onFilesSelected($event)" multiple accept="image/*" style="display: none;">
+            <div class="button-group">
+                <button type="button" class="agregar-denuncia-btn" (click)="uploadImage()">
+                    <i class="fas fa-plus"></i> Agregar
+                </button>
+                <button type="button" class="modificar-btn" (click)="editImage()">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+            </div>
+
             <button type="submit" class="denuncia-btn">Denunciar</button>
         </form>
 
         <div class="container-denuncia-previa">
-            <img src="" alt="denuncia" class="denuncia-imagen">
-            <button type="button" class="agregar-denuncia-btn">
-                <i class="fas fa-plus"></i>
-            </button>
-            <button type="button" class="modificar-btn">
-                <i class="fas fa-edit"></i>
-            </button>
+            <div *ngFor="let img of selectedImages; let i = index" class="image-preview">
+                <img [src]="img" alt="denuncia" class="denuncia-imagen">
+            </div>
         </div>
 
         <app-card-denuncias class="card-denuncia"></app-card-denuncias>

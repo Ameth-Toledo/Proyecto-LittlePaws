@@ -94,12 +94,24 @@
     text-align: center;
 }
 
+.image-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .denuncia-imagen {
     width: 150px;
     height: 150px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     object-fit: cover;
+    border-radius: 4px; /* Añadido para bordes redondeados */
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; /* Espaciado entre los botones */
 }
 
 .agregar-denuncia-btn,
@@ -115,7 +127,7 @@
     font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 5px; /* Espacio entre el ícono y el texto */
+    gap: 5px;
 }
 
 .agregar-denuncia-btn:hover,
@@ -130,11 +142,11 @@
     }
 
     .denuncia-form {
-        width: 100%;
+        width: 80%;
     }
 
     .container-denuncia-previa {
-        width: 100%;
+        width: 90%;
     }
 
     .card-denuncia {
