@@ -1,18 +1,56 @@
 <div class="card-denuncia">
-    <div class="card-header">
-      <h3 class="card-title">Denuncia de {{ nombre }}</h3>
-      <p class="card-email"><strong>Correo Electrónico:</strong> {{ email }}</p>
-      <p class="card-ubicacion"><strong>Ubicación:</strong> {{ ubicacion }}</p>
-    </div>
-  
-    <div class="card-body">
-      <p class="card-descripcion"><strong>Descripción del maltrato:</strong></p>
-      <p class="card-text">{{ descripcion }}</p>
-      
-      <div *ngIf="imagenUrl" class="card-imagen-container">
-        <p class="card-imagen-label"><strong>Imagen Adjunta:</strong></p>
-        <img [src]="imagenUrl" alt="Imagen de la denuncia" class="denuncia-imagen">
+  <div class="card-header">
+    <h3 class="card-title">Denuncia de {{ nombre }}</h3>
+  </div>
+
+  <div class="card-body">
+    <p class="card-descripcion"><strong>Descripción del maltrato:</strong></p>
+    <p class="card-text">{{ descripcion }}</p>
+
+    <div *ngIf="imagenes && imagenes.length > 0" class="card-imagen-container">
+      <div class="imagenes-grid">
+        <!-- Primera imagen (3/4 de la tarjeta) -->
+        <div class="imagen-principal">
+          <img [src]="imagenes[0]" alt="Imagen principal de la denuncia" class="denuncia-imagen-grande" (click)="verImagenCompleta(imagenes[0])">
+        </div>
+
+        <!-- Imágenes 2 y 3 en una columna (1/4 de la tarjeta) -->
+        <div class="imagenes-secundarias">
+          <img *ngIf="imagenes[1]" [src]="imagenes[1]" alt="Imagen secundaria" class="denuncia-imagen-pequena" (click)="verImagenCompleta(imagenes[1])">
+          <img *ngIf="imagenes[2]" [src]="imagenes[2]" alt="Imagen secundaria" class="denuncia-imagen-pequena" (click)="verImagenCompleta(imagenes[2])">
+        </div>
+      </div>
+
+      <!-- Mostrar el signo '+' si hay más de 3 imágenes -->
+      <div *ngIf="imagenes.length > 3" class="mas-imagenes" (click)="toggleModal()">
+        <span>+{{ imagenes.length - 3 }}</span>
       </div>
     </div>
   </div>
-  
+
+  <!-- Modal para mostrar las imágenes adicionales -->
+  <div class="modal-denuncias" *ngIf="modalVisible">
+    <div class="modal-content">
+      <span class="close" (click)="toggleModal()">&times;</span>
+
+      <!-- Descripción del maltrato dentro de la ventana modal -->
+      <div class="modal-descripcion">
+        <p><strong>Descripción del maltrato:</strong></p>
+        <p>{{ descripcion }}</p>
+      </div>
+
+      <!-- Imágenes adicionales en la ventana modal -->
+      <div class="imagenes-adicionales">
+        <img *ngFor="let imagen of imagenes" [src]="imagen" alt="Imagen adicional" class="denuncia-imagen-modal" (click)="verImagenCompleta(imagen)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para imagen a pantalla completa -->
+  <div class="modal-imagen-completa" *ngIf="imagenCompletaVisible">
+    <div class="modal-imagen-content">
+      <span class="close" (click)="cerrarImagenCompleta()">&times;</span>
+      <img [src]="imagenSeleccionada" alt="Imagen completa" class="imagen-completa">
+    </div>
+  </div>
+</div>

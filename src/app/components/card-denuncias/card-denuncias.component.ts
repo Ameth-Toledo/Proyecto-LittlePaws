@@ -11,8 +11,24 @@ import { CommonModule } from '@angular/common';
 })
 export class CardDenunciasComponent {
   @Input() nombre!: string;
-  @Input() email!: string;
-  @Input() ubicacion!: string;
   @Input() descripcion!: string;
-  @Input() imagenUrl!: string;
+  @Input() imagenes!: string[]; 
+
+  modalVisible = false;  
+  imagenCompletaVisible = false;
+  imagenSeleccionada : string | null = null;
+
+  toggleModal() {
+    this.modalVisible = !this.modalVisible;  
+  }
+
+  verImagenCompleta(imagen : string) {
+    this.imagenSeleccionada = imagen;
+    this.imagenCompletaVisible = true;
+  }
+
+  cerrarImagenCompleta() {
+    this.imagenCompletaVisible = false;
+    this.imagenSeleccionada = null;
+  }
 }
