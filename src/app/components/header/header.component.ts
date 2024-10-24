@@ -42,4 +42,8 @@ export class HeaderComponent {
     event.preventDefault();
     this.router.navigate(['/denuncias']);
   }
+
+  isRouteActive(route : string): boolean {
+    return this.router.url === route;
+  }
 }
