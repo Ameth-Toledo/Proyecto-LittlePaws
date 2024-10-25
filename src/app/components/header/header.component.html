@@ -1,27 +1,30 @@
 <header class="little-header">
-    <div class="logo-container">
-      <img src="LittlePaws06.svg" alt="logo" class="logo-little">
-      <h1 class="little-logo">Little Paws</h1>
-    </div>
-  
-    <nav [ngClass]="{ 'open': isOpen }" class="little-nav">
-      <button class="close-button" (click)="toggleMenu()">✖</button>
-      <ul class="little-menu">
-        <li class="little-menu-li">
-          <a [ngClass]="{ 'active': isRouteActive('/home') }" class="little-menu-li-a" (click)="enviarInicio($event)">Inicio</a>
-        </li>
-        <li class="little-menu-li">
-          <a [ngClass]="{ 'active': isRouteActive('/adopciones') }" class="little-menu-li-a" (click)="enviarAdopcion($event)">Adopción</a>
-        </li>
-        <li class="little-menu-li">
-          <a [ngClass]="{ 'active': isRouteActive('/donaciones') }" class="little-menu-li-a" (click)="enviarDonaciones($event)">Donaciones</a>
-        </li>
-        <li class="little-menu-li">
-          <a [ngClass]="{ 'active': isRouteActive('/denuncias') }" class="little-menu-li-a" (click)="enviarDenuncias($event)">Denuncias</a>
-        </li>
-      </ul>
-    </nav>
-    <button class="login-btn" (click)="enviarLogin($event)">Login</button>
-    <button class="little-hamburger" (click)="toggleMenu()">☰</button>
-  </header>
-  
+  <div class="logo-container">
+    <img src="LittlePaws06.svg" alt="logo" class="logo-little">
+    <h1 class="little-logo">Little Paws</h1>
+  </div>
+
+  <nav [ngClass]="{ 'open': isOpen }" class="little-nav">
+    <button class="close-button" (click)="toggleMenu()">✖</button>
+    <ul class="little-menu">
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active': isRouteActive('/home') }" class="little-menu-li-a" (click)="enviarInicio($event)">Inicio</a>
+      </li>
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active': isRouteActive('/adopciones') }" class="little-menu-li-a" (click)="enviarAdopcion($event)">Adopción</a>
+      </li>
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active': isRouteActive('/donaciones') }" class="little-menu-li-a" (click)="enviarDonaciones($event)">Donaciones</a>
+      </li>
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active': isRouteActive('/denuncias') }" class="little-menu-li-a" (click)="enviarDenuncias($event)">Denuncias</a>
+      </li>
+    </ul>
+  </nav>
+
+  <button class="login-btn" (click)="enviarLogin($event)">
+    <i [class]="isUserLoggedIn ? 'fas fa-sign-out-alt' : 'fas fa-sign-in-alt'"></i>
+    {{ isUserLoggedIn ? 'Cerrar sesión' : 'Login' }}
+  </button>
+  <button class="little-hamburger" (click)="toggleMenu()">☰</button>
+</header>

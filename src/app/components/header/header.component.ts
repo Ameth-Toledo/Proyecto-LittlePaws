@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   isOpen: boolean = false;
+  isUserLoggedIn : boolean = false;
 
   constructor(private router: Router) {}
 
@@ -25,7 +26,11 @@ export class HeaderComponent {
 
   enviarLogin(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/login']);
+    if (this.isUserLoggedIn) {
+      this.logout(); 
+    } else {
+      this.router.navigate(['/login']); 
+    }
   }
 
   enviarAdopcion(event: Event) {
@@ -45,5 +50,16 @@ export class HeaderComponent {
 
   isRouteActive(route : string): boolean {
     return this.router.url === route;
+  }
+
+  //para ver el local
+  ngOnInit() {
+    this.isUserLoggedIn = !!localStorage.getItem('session');
+  }
+
+  logout() {
+    localStorage.removeItem('session');
+    this.isUserLoggedIn = false;
+    this.router.navigate(['/home']);
   }
 }

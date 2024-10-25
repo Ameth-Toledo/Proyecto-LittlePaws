@@ -9,6 +9,7 @@ import { PerfilVeterinariaComponent } from './modules/perfil-veterinaria/perfil-
 import { VeterinariasComponent } from './modules/veterinarias/veterinarias.component';
 import { RegistrarVeterinariaComponent } from './modules/registrar-veterinaria/registrar-veterinaria.component';
 import { DenunciasComponent } from './modules/denuncias/denuncias.component';
+import { EntidadComponent } from './modules/entidad/entidad.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -22,5 +23,6 @@ export const routes: Routes = [
     { path: "veterinarias", component: VeterinariasComponent },
     //Administracion 
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent },
-    { path: "denuncias", component: DenunciasComponent }
+    { path: "denuncias", component: DenunciasComponent },
+    { path: "entidad-littlepaws", component: EntidadComponent }
 ];

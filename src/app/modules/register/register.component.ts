@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 
+//agregare aqui la clase pa que prueve que si jala XD
+interface User {
+  username : string;
+  email : string;
+  password : string;
+}
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -11,6 +18,10 @@ import { HeaderComponent } from '../../components/header/header.component';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+  //agregare esto para probar con un arreglo que se guarden los usuarios
+  usuarios : User[] = [];
+
+  //de aqui pa abajo ni hay que moverle XD ya jalaaaaa
   constructor(private router : Router) {}
 
   enviarLogin(event: Event) {
@@ -23,32 +34,47 @@ export class RegisterComponent {
     inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
   }
 
+  //aqui modificare el metodo pa ver si jala tambien
   validarFormulario(event: Event) {
-    event.preventDefault(); 
-  
+    event.preventDefault();
+
+    const username = (document.getElementById('user') as HTMLInputElement).value;
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
-  
-    if (!email || !password || !passwordConfirm) {
+
+    if (!username || !email || !password || !passwordConfirm) {
       this.mostrarModal(); 
-    } else if (!email.includes('@')) {
+    } 
+    else if (!email.includes('@')) {
       this.mostrarEmailErrorModal(); 
-    } else if (password !== passwordConfirm) {
+    } 
+    else if (password !== passwordConfirm) {
       this.mostrarPasswordMismatchModal(); 
-    } else {
-      this.mostrarSuccessModal();
+    } 
+    else {
+      const nuevoUsuario: User = {
+        username: username,
+        email: email,
+        password: password,
+      };
+      
+      this.usuarios.push(nuevoUsuario);
+
+      console.log('Usuarios registrados:', this.usuarios); 
+
+      this.mostrarSuccessModal(); 
     }
   }
   
   mostrarEmailErrorModal() {
     const modal = document.getElementById('emailErrorModal')!;
-    modal.style.display = 'flex'; // Mostrar el modal de error de email
+    modal.style.display = 'flex'; 
   }
   
   closeEmailErrorModal() {
     const modal = document.getElementById('emailErrorModal')!;
-    modal.style.display = 'none'; // Cerrar el modal de error de email
+    modal.style.display = 'none'; 
   }  
   
   mostrarPasswordMismatchModal() {
