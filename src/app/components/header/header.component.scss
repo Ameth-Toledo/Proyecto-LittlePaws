@@ -139,6 +139,10 @@
         flex: 1;
     }
 
+    .logo-little {
+        width: 40px;
+    }
+
     .little-nav {
         position: absolute;
         top: 60px;
@@ -177,5 +181,9 @@
     .little-menu-li-a {
         font-size: 1rem;
         color: #f0a500;
+    }
+
+    .little-logo {
+        font-size: 20px;
     }
 }

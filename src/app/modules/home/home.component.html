@@ -119,10 +119,43 @@
         class="map-veterinaria">
     </iframe>
 </div>
-
-<button  class="ver-mas-veterinarias" (click)="enviarVeterinarias($event)">ver mas veterinarias</button>
 <!-- agregar apartado de denuncias 💬-->
 <!-- agregar apartado de extraviadas -->
-  
+<section class="info-section">
+    <div class="container-home">
+        <h1 class="info-tittle">LittlePaws</h1>
+        <p class="info-description">Descubre las clinicas veterinarias asociadas a LittlePaws</p>
+        <button class="cta-button" (click)="enviarVeterinarias($event)">Explorar</button>
+    </div>
+</section>
+
+
+<div class="animales-container">
+    <app-card-animales imgSrc="perros/perro01.webp" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="1 año"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro02.jpg" 
+    name="Pepito" 
+    namaPet="Pepito"
+    refugio="Santa Teresa"
+    edad="10 años"
+    raza="desconicido"/>   
+    <app-card-animales imgSrc="perros/perro04.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+    <app-card-animales imgSrc="perros/perro06.jpeg" 
+    name="Alonso" 
+    namaPet="Alonso"
+    refugio="Santa Cruz"
+    edad="13"
+    raza="desconicido"/>
+</div>
+
 <app-chatbot></app-chatbot>
 <app-footer/>

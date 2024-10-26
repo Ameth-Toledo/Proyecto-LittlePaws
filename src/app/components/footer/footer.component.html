@@ -20,10 +20,30 @@
                 <a href="#" class="icon-link-footer"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="icon-link-footer"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="icon-link-footer"><i class="fab fa-linkedin-in"></i></a>
+
+                <i class="fas fa-share-alt icon-link-footer" (click)="openModal()"></i>
             </div>
         </div>
     </div>
     <div class="footer-bottom-footer">
         <p class="footer-bottom-text-footer">© 2024 LittlePaws. Todos los derechos reservados.</p>
     </div>
+
+    <div class="modal-footer" [class.show]="isModalOpen">
+        <div class="modal-content-footer">
+            <h2 class="modal-shared">LittlePaws</h2>
+            <p class="messaje-shared">¡Gracias por compartir!</p>
+            <img src="QR/LittlePaws.svg" alt="Imagen de agradecimiento" class="modal-image-footer">
+            <div class="modal-link-footer">
+                <a href="https://ameth-toledo.github.io/prueba/" target="_blank" class="link-copied">https://ameth-toledo.github.io/prueba/</a>
+                <i class="fas fa-copy icon-copy-footer" (click)="copyLink()"></i>
+            </div>
+            <button (click)="closeModal()" class="close-shared">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="alert-copied" *ngIf="isAlertVisible">
+        <p class="exit-copied">Enlace copiado correctamente al portapeles</p>
+    </div>
+
 </footer>
