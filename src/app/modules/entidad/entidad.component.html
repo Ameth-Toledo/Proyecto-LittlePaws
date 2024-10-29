@@ -1,7 +1,19 @@
-<app-header/>
+<app-header-entidad></app-header-entidad>
 
-<div class="">
-    
+<div class="main-content">
+    <button class="hamburger-menu" (click)="toggleSidebar()">☰</button>
+    <div class="side-bar" [ngClass]="{ 'open': isSidebarOpen }">
+        <button class="close-button" (click)="toggleSidebar()">✖</button>
+        <ul class="side-bar-content">
+            <li class="side-bar-item" (click)="enviarDenuncias($event)">Denuncias</li>
+            <li class="side-bar-item">Agregar Mascotas</li>
+            <li class="side-bar-item">Ver Mascotas</li>
+            <li class="side-bar-item">Editar Mascotas</li>
+            <li class="side-bar-item">Eliminar Mascotas</li>
+        </ul>
+    </div>
 </div>
 
-<app-footer/>
+
+
+<app-footer></app-footer>

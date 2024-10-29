@@ -26,3 +26,4 @@ export const routes: Routes = [
     { path: "denuncias", component: DenunciasComponent },
     { path: "entidad-littlepaws", component: EntidadComponent }
 ];
+

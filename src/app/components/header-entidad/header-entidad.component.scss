@@ -1,0 +1,184 @@
+.little-header-container {
+    background-color: #323f52;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid #4a90e2;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 10px;
+    color: #f0a500;
+}
+
+.navigation-bar {
+    display: flex;
+    align-items: center;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-item {
+    font-size: 1rem;
+}
+
+.menu-link {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+    color: #f0a500;
+    font-weight: bold;
+}
+
+.menu-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #f0a500;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.menu-link:hover::after {
+    width: 100%;
+}
+
+.menu-link.active {
+    color: #f0a500;
+    font-weight: bold;
+    border-bottom: 2px solid #f0a500;
+}
+
+.hamburger-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logo-img {
+    width: 80px;
+}
+
+.close-menu-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+.login-button {
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0389b6;
+}
+
+@media (max-width: 1024px) {
+    .menu-list {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .close-menu-button {
+        display: block;
+    }
+
+    .little-header-container {
+        padding: 10px 15px;
+    }
+
+    .logo-section {
+        flex: 1;
+    }
+
+    .logo-img {
+        width: 40px;
+    }
+
+    .navigation-bar {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background-color: #323f52;
+        transition: height 0.3s ease;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 20px;
+    }
+
+    .navigation-bar.open {
+        height: 200px;
+    }
+
+    .menu-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hamburger-button {
+        display: block;
+    }
+
+    .login-button {
+        border: none;
+        padding: 8px 15px;
+        font-size: 12px;
+        width: auto;
+        height: auto;
+    }
+
+    .menu-link {
+        font-size: 1rem;
+        color: #f0a500;
+    }
+
+    .header-logo-text {
+        font-size: 20px;
+    }
+}
