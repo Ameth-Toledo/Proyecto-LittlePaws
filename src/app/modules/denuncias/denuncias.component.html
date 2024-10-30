@@ -1,63 +1,52 @@
 <app-header></app-header>
 
 <div class="denuncia-container">
-    <h1 class="tittle-denuncias">¡Denuncia ya!</h1>
+  <h1 class="tittle-denuncias">¡Denuncia ya!</h1>
 
-    <div class="denuncia-layout">
-        <form action="" class="denuncia-form">
-            <div class="input-group">
-                <input type="text" id="nombre" class="input-group_input" required />
-                <label for="nombre" class="input-group_label">Nombre Completo</label>
-            </div>
+  <div class="denuncia-layout">
+    <form (ngSubmit)="submitDenuncia()" class="denuncia-form">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="denunciaRequest.motivo" name="motivo" class="input-group_input" required />
+        <label for="motivo" class="input-group_label">Motivo</label>
+      </div>
 
-            <div class="input-group">
-                <input type="email" id="email" class="input-group_input" required />
-                <label for="email" class="input-group_label">Correo Electrónico</label>
-            </div>
+      <div class="input-group">
+        <input type="number" [(ngModel)]="denunciaRequest.id_usuario" name="id_usuario" class="input-group_input" required />
+        <label for="id_usuario" class="input-group_label">ID Usuario</label>
+      </div>
 
-            <div class="input-group">
-                <input type="text" id="ubicacion" class="input-group_input" required />
-                <label for="ubicacion" class="input-group_label">Ubicación</label>
-            </div>
+      <div class="input-group">
+        <input type="number" [(ngModel)]="denunciaRequest.id_institucion" name="id_institucion" class="input-group_input" required />
+        <label for="id_institucion" class="input-group_label">ID Institución</label>
+      </div>
 
-            <div class="input-group">
-                <textarea id="descripcion" class="input-group_input" rows="4" required></textarea>
-                <label for="descripcion" class="input-group_label">Descripción del maltrato</label>
-            </div>
+      <div class="input-group">
+        <input type="number" [(ngModel)]="denunciaRequest.id_mascota" name="id_mascota" class="input-group_input" required />
+        <label for="id_mascota" class="input-group_label">ID Mascota</label>
+      </div>
 
-            <!-- Input oculto para subir imágenes -->
-            <input type="file" id="imagenes" (change)="onFilesSelected($event)" multiple accept="image/*" style="display: none;">
-            <div class="button-group">
-                <button type="button" class="agregar-denuncia-btn" (click)="uploadImage()">
-                    <i class="fas fa-plus"></i> Agregar
-                </button>
-                <button type="button" class="modificar-btn" (click)="editImage()">
-                    <i class="fas fa-edit"></i> Editar
-                </button>
-            </div>
+      <div class="input-group">
+        <textarea [(ngModel)]="denunciaRequest.descripcion" name="descripcion" class="input-group_input" rows="4" required></textarea>
+        <label for="descripcion" class="input-group_label">Descripción del maltrato</label>
+      </div>
 
-            <button type="submit" class="denuncia-btn">Denunciar</button>
-        </form>
+      <input type="file" id="imagenes" (change)="onFilesSelected($event)" multiple accept="image/*" style="display: none;" />
+      <div class="button-group">
+        <button type="button" class="agregar-denuncia-btn" (click)="uploadImage()">
+          <i class="fas fa-plus"></i> Agregar Imágenes
+        </button>
+        <button type="submit" class="agregar-denuncia-btn">
+          <i class="fas fa-paper-plane"></i> Enviar Denuncia
+        </button>
+      </div>
+    </form>
 
-        <div class="container-denuncia-previa">
-            <div *ngFor="let img of selectedImages; let i = index" class="image-preview">
-                <img [src]="img" alt="denuncia" class="denuncia-imagen">
-            </div>
-        </div>
-
-        <app-card-denuncias class="card-denuncia"></app-card-denuncias>
+    <div class="image-preview">
+      <div *ngFor="let image of selectedImages">
+        <img [src]="image" class="image-thumbnail" />
+      </div>
     </div>
+  </div>
 </div>
-<app-card-denuncias
-  nombre="Ameth"
-  email="233363@ids.upchiapas.edu.mx"
-  ubicacion="12 de Noviembre"
-  descripcion="se maltrata al animal"
-  [imagenes]="[
-    'banners/adopcion-banner.jpg',
-    'banners/banner1.webp',
-    'banners/adopcion-banner.avif',
-    'donaciones/Backend.webp'
-  ]"/>
 
 <app-footer></app-footer>

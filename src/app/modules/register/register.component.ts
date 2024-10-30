@@ -28,18 +28,19 @@ export class RegisterComponent {
     event.preventDefault();
 
     const username = (document.getElementById('user') as HTMLInputElement).value;
+    const lastname = (document.getElementById('lastname') as HTMLInputElement).value;
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
 
-    if (!username || !email || !password || !passwordConfirm) {
+    if (!username || !lastname || !email || !password || !passwordConfirm) {
       this.mostrarModal();
     } else if (!email.includes('@')) {
       this.mostrarEmailErrorModal();
     } else if (password !== passwordConfirm) {
       this.mostrarPasswordMismatchModal();
     } else {
-      this.registerService.addUser({ username, email, password }).subscribe(
+      this.registerService.addUser({ username,lastname, email, password }).subscribe(
         () => {
           console.log('Usuario registrado en la base de datos');
           this.mostrarSuccessModal();

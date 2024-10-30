@@ -4,6 +4,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RegisterService } from '../../services/register/register.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   passwordVisible: boolean = false;
   modalMessage : string = '';
 
-  constructor(private router : Router) {
+  constructor(private router : Router,  private registerService: RegisterService) {
     const session = localStorage.getItem('session');
     if (session) {
       const sessionData = JSON.parse(session);
@@ -51,18 +52,17 @@ export class LoginComponent {
       this.mostrarModal();
       return; 
     }
-  
-    if (email === '233363@ids.upchiapas.edu.mx' && password === '233363') {
-      //pa probar la sesion con localstorage
-      localStorage.setItem('session', JSON.stringify({ email: email, role: 'user' }));
-      this.router.navigate(['/home']);
-    } else if (email === '233362@ids.upchiapas.edu.mx' && password === '233362') {
-      localStorage.setItem('session', JSON.stringify({ email: email, role: 'admin' }));
-      this.router.navigate(['/entidad-littlepaws']);
-    } else {
-      this.modalMessage = 'Credenciales incorrectas.'; 
-      this.mostrarModal();
-    }
+
+    this.registerService.login({ email, password }).subscribe(
+      () => {
+        console.log('Usuario registrado en la base de datos');
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error('Error en el registro:', error);
+        this.mostrarModal();
+      }
+    );
   }
 
   mostrarModal() {

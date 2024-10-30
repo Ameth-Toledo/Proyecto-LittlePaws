@@ -8,7 +8,7 @@ import { catchError, tap } from 'rxjs/operators'; // Asegúrate de importar esto
   providedIn: 'root'
 })
 export class RegisterService {
-  private url: string = 'http://127.0.0.1:8000/register';
+  private url: string = 'http://127.0.0.1:8000';
 
   constructor(private http: HttpClient) {}
 
@@ -33,23 +33,30 @@ export class RegisterService {
   }
 
   login(loginRequest: { email: string; password: string }): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.url}/login/`, loginRequest).pipe( // Corregido: Usa backticks ` para plantilla de cadena
+    return this.http.post<LoginResponse>(`${this.url}/login/`, loginRequest).pipe(
       tap((response) => {
         console.log('Token:', response.token); 
         localStorage.setItem('access_token', response.token); 
+        localStorage.setItem('user_id', response.id.toString()); // Access id directly from response
+        localStorage.setItem('username', response.username); // Access username directly
+        localStorage.setItem('lastname', response.lastname); // Access lastname directly
+        localStorage.setItem('email', response.email); // Access email directly
       }),
       catchError((error) => {
         console.error('Error en login:', error);
         throw error; 
       })
     );
-  }
+  
+}
+
+
 
   getAuthToken() {
     return localStorage.getItem('access_token') || ''; 
   }
   
-  addUser(registerRequest: { username: string; email: string; password: string }): Observable<any> {
+  addUser(registerRequest: { username: string; lastname : string ; email: string; password: string }): Observable<any> {
     return this.http.post(`${this.url}/register/`, registerRequest, { headers: this.getHeaders() }); // Corregido: Usa backticks ` para plantilla de cadena
   }
 }
