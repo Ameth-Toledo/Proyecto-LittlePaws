@@ -1,19 +1,19 @@
 <app-header-entidad></app-header-entidad>
 
+<!--
 <div class="main-content">
-    <button class="hamburger-menu" (click)="toggleSidebar()">☰</button>
+    <button class="hamburger-menu" (click)="toggleSidebar()"><i class="fas fa-bars"></i></button>
     <div class="side-bar" [ngClass]="{ 'open': isSidebarOpen }">
-        <button class="close-button" (click)="toggleSidebar()">✖</button>
+        <button class="close-button" (click)="toggleSidebar()"><i class="fas fa-times"></i></button>
         <ul class="side-bar-content">
-            <li class="side-bar-item" (click)="enviarDenuncias($event)">Denuncias</li>
-            <li class="side-bar-item">Agregar Mascotas</li>
-            <li class="side-bar-item">Ver Mascotas</li>
-            <li class="side-bar-item">Editar Mascotas</li>
-            <li class="side-bar-item">Eliminar Mascotas</li>
+            <li class="side-bar-item" (click)="openModal('Bandeja')"><i class="fas fa-inbox"></i> Bandeja</li>
+            <li class="side-bar-item" (click)="enviarDenuncias($event)"><i class="fas fa-exclamation-circle"></i> Denuncias</li>
+            <li class="side-bar-item"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
+            <li class="side-bar-item"><i class="fas fa-eye"></i> Ver Mascotas</li>
+            <li class="side-bar-item"><i class="fas fa-edit"></i> Editar Mascotas</li>
+            <li class="side-bar-item"><i class="fas fa-trash-alt"></i> Eliminar Mascotas</li>
         </ul>
     </div>
-</div>
-
-
-
+-->
+    
 <app-footer></app-footer>

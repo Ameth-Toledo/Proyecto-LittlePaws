@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EntidadComponent {
   isSidebarOpen = false;
+  isModalOpen = false;
 
   constructor(private router: Router) {}
 
@@ -20,6 +21,16 @@ export class EntidadComponent {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
+  openModal(section: string) {
+    if (section === 'Bandeja') {
+      this.isModalOpen = true;
+    }
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+  
   enviarDenuncias(event: Event) {
     event.preventDefault();
     this.router.navigate(['/denuncias']);
