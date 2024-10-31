@@ -16,11 +16,11 @@ import { CommonModule } from '@angular/common';
 })
 export class DenunciasComponent {
   denunciaRequest: Denuncias = {
-    id_usuario: 1, // Cambia esto según el contexto del usuario logueado
+    id_usuario: 1,
     motivo: '',
-    id_institucion: 1, // Cambia esto según el contexto de la institución
+    id_institucion: 1, 
     descripcion: '',
-    id_mascota: 0, // Asegúrate de que este valor se asigne correctamente
+    id_mascota: 0, 
     imagen: ''
   };
 
@@ -42,7 +42,7 @@ export class DenunciasComponent {
       });
 
       Promise.all(fileReaders).then(images => {
-        this.selectedImages = this.selectedImages.concat(images); // Combina nuevas imágenes con las existentes
+        this.selectedImages = this.selectedImages.concat(images); 
       }).catch(error => {
         console.error('Error leyendo archivos:', error);
       });
@@ -50,13 +50,11 @@ export class DenunciasComponent {
   }
 
   submitDenuncia(): void {
-    // Asegúrate de que el id_mascota tenga un valor antes de enviarlo
-    this.denunciaRequest.imagen = this.selectedImages.join(','); // Enviar imágenes como una cadena separada por comas
+    this.denunciaRequest.imagen = this.selectedImages.join(','); 
     this.denunciasService.createDenuncia(this.denunciaRequest).subscribe({
       next: (response: DenunciaResponse) => {
         console.log('Denuncia creada:', response);
-        // Opcionalmente navegar o mostrar un mensaje de éxito
-        this.router.navigate(['/some-route']); // Cambia a la ruta deseada
+        this.router.navigate(['/some-route']); 
       },
       error: (error: any) => {
         console.error('Error al crear la denuncia:', error);
@@ -67,7 +65,7 @@ export class DenunciasComponent {
   uploadImage(): void {
     const input = document.getElementById('imagenes') as HTMLInputElement;
     if (input) {
-      input.click(); // Abrir el explorador de archivos
+      input.click(); 
     }
   }
 }
