@@ -3,6 +3,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
 import { HeaderEntidadComponent } from "../../components/header-entidad/header-entidad.component";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-entidad',
@@ -12,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './entidad.component.scss'
 })
 export class EntidadComponent {
+  @Input() nameVeterinaria : string = '';
+
   isSidebarOpen = false;
   isModalOpen = false;
 

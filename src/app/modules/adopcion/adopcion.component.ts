@@ -24,20 +24,20 @@ export class AdopcionComponent implements OnInit {
     private adopcionService: AdopcionService
   ) {
     this.adopcionForm = this.fb.group({
-      id_mascota: [1, Validators.required],
+      id_mascota: [ null , Validators.required],
       id_usuario: [localStorage.getItem('user_id'), Validators.required],
       fecha_adopcion: [new Date().toISOString().split('T')[0], Validators.required],
       curp: ['', [Validators.required, Validators.pattern(/^[A-Z0-9]{18}$/)]],
       imagen: ['http://example.com/image.png'],
       seguimiento: ['Pending'],
-      observaciones: ['First adoption attempt', Validators.required],
-      condiciones: ['Adopter must provide a suitable home.', Validators.required],
+      observaciones: [' ', Validators.required],
+      condiciones: [' ', Validators.required],
       status: ['pending', Validators.required],
       name: [localStorage.getItem('username'), Validators.required],
       email: [localStorage.getItem('email'), [Validators.required, Validators.email]],
-      direccion: ['123 Main St, Springfield', Validators.required],
-      cellphone: ['5551234', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      agreement: [false, Validators.requiredTrue]  // Add this line
+      direccion: [' ', Validators.required],
+      cellphone: [' ', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      agreement: [false, Validators.requiredTrue]  
     });
   }
 
@@ -51,7 +51,7 @@ export class AdopcionComponent implements OnInit {
   onSubmit() {
     if (this.adopcionForm.valid) {
       const formData = this.adopcionForm.value;
-      console.log('Form Data to Submit:', formData); // Log the data to inspect
+      console.log('Form Data to Submit:', formData); 
       this.adopcionService.createAdopcion(formData).subscribe(
         (response: any) => {
           console.log('Adopción creada con éxito:', response);
@@ -67,4 +67,23 @@ export class AdopcionComponent implements OnInit {
       console.log('Formulario no válido');
     }
   }
+
+  resetForm() {
+    this.adopcionForm.reset({
+      id_mascota: null,
+      id_usuario: null,
+      fecha_adopcion: '',
+      curp: '',
+      imagen: '',
+      seguimiento: '',
+      observaciones: '',
+      condiciones: '',
+      status: '',
+      name: '',
+      email: '',
+      direccion: '',
+      cellphone: '',
+      agreement: false
+    });
+  }  
 }

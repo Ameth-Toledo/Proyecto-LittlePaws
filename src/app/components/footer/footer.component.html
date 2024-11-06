@@ -7,9 +7,9 @@
         
         <div class="footer-section-footer subscribe-footer">
             <h2 class="footer-heading-footer">Ayudanos a mejorar</h2>
-            <form action="#" class="subscribe-form-footer">
-                <textarea name="" id="" class="subscribe-input-footer" placeholder="Ingrese su comentario"></textarea>
-                <button type="submit" class="subscribe-button-footer">Enviar</button>
+            <form (ngSubmit)="enviarComentario()" class="subscribe-form-footer">
+                <textarea [(ngModel)]="comentarioRequest.comentario" name="comentario" id="" class="subscribe-input-footer" placeholder="Ingrese su comentario"></textarea>
+                <button type="submit" class="subscribe-button-footer" (click)="openThanksModal()">Enviar</button>
             </form>
         </div>
 
@@ -33,7 +33,7 @@
         <div class="modal-content-footer">
             <h2 class="modal-shared">LittlePaws</h2>
             <p class="messaje-shared">¡Gracias por compartir!</p>
-            <img src="QR/LittlePaws.svg" alt="Imagen de agradecimiento" class="modal-image-footer">
+            <img src="QR/LittlePaws.png" alt="QR-LittlePaws" class="modal-image-footer">
             <div class="modal-link-footer">
                 <a href="https://ameth-toledo.github.io/prueba/" target="_blank" class="link-copied">https://ameth-toledo.github.io/prueba/</a>
                 <i class="fas fa-copy icon-copy-footer" (click)="copyLink()"></i>
@@ -46,4 +46,12 @@
         <p class="exit-copied">Enlace copiado correctamente al portapeles</p>
     </div>
 
+    <div class="modal-footer-thanks" [class.show]="isThanksModalOpen">
+        <div class="modal-content-footer-thanks">
+          <h2 class="modal-heading-thanks"><i class="fas fa-paw"></i> LittlePaws</h2>
+          <p class="modal-message-thanks">Gracias por tu comentario, nos ayuda mucho para mejorar.</p>
+          <button (click)="closeThanksModal()" class="close-button-thanks">Cerrar</button>
+        </div>
+      </div>      
+    
 </footer>
