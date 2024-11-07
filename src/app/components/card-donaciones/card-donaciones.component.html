@@ -11,6 +11,7 @@
     <button class="donacion-btn" (click)="abrirModal()">Donar</button>
 </div>
 
+<!-- Modal principal de donación -->
 <div class="modal" *ngIf="modalAbierto">
     <div class="modal-content">
         <span class="close" (click)="cerrarModal()">&times;</span>
@@ -18,5 +19,35 @@
         <label class="modal-label" for="cantidadDonacion">Cantidad a donar:</label>
         <input class="modal-input" type="number" id="cantidadDonacion" [(ngModel)]="cantidadDonacion" />
         <button class="modal-btn" (click)="realizarDonacion()">Donar</button>
+    </div>
+</div>
+
+<!-- Modal de éxito -->
+<div class="modal" *ngIf="modalExito">
+    <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h2 class="modal-titulo">LittlePaws</h2>
+        <p class="modal-mensaje">¡Muchas gracias! por tu donación al: {{ tituloDonacion }}</p>
+        <i class="fas fa-check-circle icono-exito"></i>
+    </div>
+</div>
+
+<!-- Modal de error -->
+<div class="modal" *ngIf="modalError">
+    <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h2 class="modal-titulo">LittlePaws</h2>
+        <p class="modal-mensaje">Opps! Ha ocurrido un error con la donación, intenta de nuevo más tarde, por favor.</p>
+        <i class="fas fa-times-circle icono-error"></i>
+    </div>
+</div>
+
+<!-- Modal de advertencia -->
+<div class="modal" *ngIf="modalAdvertencia">
+    <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h2 class="modal-titulo">LittlePaws</h2>
+        <p class="modal-mensaje">Opps! Por favor ingresa una cantidad válida que no sea negativa e intenta de nuevo.</p>
+        <i class="fas fa-exclamation-circle icono-advertencia"></i>
     </div>
 </div>

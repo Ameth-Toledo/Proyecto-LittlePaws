@@ -4,27 +4,10 @@
         <h1 class="header-logo-text">Little Paws</h1>
     </div>
 
-    <nav [ngClass]="{ 'open': isOpen }" class="navigation-bar">
-        <button class="close-menu-button" (click)="toggleMenu()">✖</button>
-        <ul class="menu-list">
-            <li class="menu-item">
-                <a [ngClass]="{ 'active': isRouteActive('/home') }" class="menu-link" (click)="enviarInicio($event)">Inicio</a>
-            </li>
-            <li class="menu-item">
-                <a [ngClass]="{ 'active': isRouteActive('/adopciones') }" class="menu-link" (click)="enviarAdopcion($event)">Adopción</a>
-            </li>
-            <li class="menu-item">
-                <a [ngClass]="{ 'active': isRouteActive('/donaciones') }" class="menu-link" (click)="enviarDonaciones($event)">Donaciones</a>
-            </li>
-            <li class="menu-item">
-                <a [ngClass]="{ 'active': isRouteActive('/denuncias') }" class="menu-link" (click)="enviarDenuncias($event)">Denuncias</a>
-            </li>
-        </ul>
-    </nav>
+    <h1 class="name-entidad">Bienvenido: {{ nameEntidad }}</h1>
 
     <button class="login-button" (click)="enviarLogin($event)">
         <i [class]="isUserLoggedIn ? 'fas fa-sign-out-alt' : 'fas fa-sign-in-alt'"></i>
         {{ isUserLoggedIn ? 'Cerrar sesión' : 'Login' }}
     </button>
-    <button class="hamburger-button" (click)="toggleMenu()">☰</button>
 </header>

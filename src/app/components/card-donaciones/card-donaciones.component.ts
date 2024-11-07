@@ -19,7 +19,11 @@ export class CardDonacionesComponent {
   @Input() cantidadDonada : string = '';
 
   modalAbierto: boolean = false;
-  cantidadDonacion: number | null = null;
+  modalExito : boolean = false;
+  modalError : boolean = false;
+  modalAdvertencia : boolean = false;
+
+  cantidadDonacion: number | null = null;  // Puede ser null
 
   abrirModal() {
     this.modalAbierto = true;
@@ -27,15 +31,20 @@ export class CardDonacionesComponent {
 
   cerrarModal() {
     this.modalAbierto = false;
-    this.cantidadDonacion = null;
+    this.modalExito = false;
+    this.modalError = false;
+    this.modalAdvertencia = false;
+    this.cantidadDonacion = null;  
   }
 
   realizarDonacion() {
-    if (this.cantidadDonacion) {
-      console.log(`Donación de ${this.cantidadDonacion} realizada.`);
-      this.cerrarModal(); 
+    if (this.cantidadDonacion !== null && this.cantidadDonacion > 0) {
+        console.log(`Donación de ${this.cantidadDonacion} realizada.`);
+        this.modalExito = true;
+    } else if (this.cantidadDonacion !== null && this.cantidadDonacion <= 0) {
+        this.modalAdvertencia = true;
     } else {
-      alert("Por favor, ingresa una cantidad válida."); 
+        this.modalError = true;
     }
   }
 }

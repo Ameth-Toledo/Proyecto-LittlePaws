@@ -1,25 +1,63 @@
-<app-header-entidad></app-header-entidad>
+<app-header-entidad nameEntidad="Huellitas" class="header-entidad"></app-header-entidad>
 
-<h1 class="title-entidad">Bienvenido: {{ nameVeterinaria }}</h1>
+<div class="layout">
+  <button class="hamburger-menu" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
 
-<div class="carrousel-entidad">
+  <div class="side-bar" [ngClass]="{ 'open': isSidebarOpen }">
+    <button class="close-button" (click)="toggleSidebar()">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul class="side-bar-content">
+      <li class="side-bar-item" (click)="openModal('Bandeja')">
+        <i class="fas fa-inbox"></i> Bandeja
+      </li>
+      <li class="side-bar-item" (click)="enviarDenuncias($event)">
+        <i class="fas fa-exclamation-circle"></i> Denuncias
+      </li>
+      <li class="side-bar-item"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
+      <li class="side-bar-item"><i class="fas fa-eye"></i> Ver Mascotas</li>
+      <li class="side-bar-item"><i class="fas fa-edit"></i> Editar Mascotas</li>
+      <li class="side-bar-item"><i class="fas fa-trash-alt"></i> Eliminar Mascotas</li>
+    </ul>
+  </div>
 
+  <div class="modal-content">
+    <div class="bandeja-entidad-modal" *ngIf="isModalOpen && activeModal === 'Bandeja'">
+        <h1 class="tittle-entidad-section">LittlePaws - Mensajería</h1>
+        
+        <!-- Lista de mensajes previos -->
+        <div class="message-list">
+          <div class="message-preview" *ngFor="let message of messages" (click)="openMessage(message)">
+            <img [src]="message.userImage" alt="User Image" class="user-image">
+            <div class="message-info">
+              <h3 class="sender-name">{{ message.senderName }}</h3>
+              <p class="message-snippet">{{ message.snippet }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedMessage" class="message-detail">
+            <h2 class="sender-name">{{ selectedMessage.senderName }}</h2>
+            <p class="message-content">{{ selectedMessage.content }}</p>
+        
+            <div class="message-reply">
+                <textarea [(ngModel)]="replyMessage" placeholder="Escribe tu respuesta..."></textarea>
+                <button class="btn-send" (click)="sendMessage()">Enviar</button>
+              </div>
+            </div>
+          </div>
+          
+    <div class="denuncias-modal-entidad" *ngIf="isModalOpen && activeModal === 'Denuncias'">
+    </div>
+
+    <div class="agregar-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Agregar'">
+    </div>
+    
+    <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
+    </div>
+  </div>
 </div>
 
-<!--
-<div class="main-content">
-    <button class="hamburger-menu" (click)="toggleSidebar()"><i class="fas fa-bars"></i></button>
-    <div class="side-bar" [ngClass]="{ 'open': isSidebarOpen }">
-        <button class="close-button" (click)="toggleSidebar()"><i class="fas fa-times"></i></button>
-        <ul class="side-bar-content">
-            <li class="side-bar-item" (click)="openModal('Bandeja')"><i class="fas fa-inbox"></i> Bandeja</li>
-            <li class="side-bar-item" (click)="enviarDenuncias($event)"><i class="fas fa-exclamation-circle"></i> Denuncias</li>
-            <li class="side-bar-item"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
-            <li class="side-bar-item"><i class="fas fa-eye"></i> Ver Mascotas</li>
-            <li class="side-bar-item"><i class="fas fa-edit"></i> Editar Mascotas</li>
-            <li class="side-bar-item"><i class="fas fa-trash-alt"></i> Eliminar Mascotas</li>
-        </ul>
-    </div>
--->
-    
-<app-footer></app-footer>
+<app-footer class="footer-entidad"></app-footer>

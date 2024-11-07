@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-entidad',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header-entidad.component.scss'
 })
 export class HeaderEntidadComponent {
+  @Input() nameEntidad : string = '';
   isOpen: boolean = false;
   isUserLoggedIn : boolean = false;
 
