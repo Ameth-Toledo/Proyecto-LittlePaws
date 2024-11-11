@@ -10,8 +10,8 @@ interface Message {
   userImage: string;
   snippet: string;
   content: string;
+  responderName? : string
 }
-
 
 @Component({
   selector: 'app-entidad',
@@ -28,34 +28,36 @@ export class EntidadComponent {
   messages: Message[] = [
     {
       senderName: 'Juan Perez',
-      userImage: 'path/to/user-image1.jpg',
+      userImage: 'usuario.png',
       snippet: 'Hola, tengo una duda sobre...',
       content: 'Hola, tengo una duda sobre el servicio de adopción...'
     },
     {
       senderName: 'Maria Gomez',
-      userImage: 'path/to/user-image2.jpg',
+      userImage: 'usuario.png',
       snippet: '¿Cómo puedo donar?',
       content: 'Hola, quisiera saber cómo puedo realizar una donación...'
     }
   ];
 
+  constructor(private router: Router) {}
+
   selectedMessage: Message | null = null;
   replyMessage = '';
 
-  openMessage(message: any) {
+  openMessage(message: Message) {
     this.selectedMessage = message;
   }
-  
+
   sendMessage() {
     if (this.replyMessage.trim()) {
-      // Lógica para enviar mensaje
+      const currentUser = 'Administrador';
+      this.selectedMessage!.responderName = currentUser;
+
       console.log('Mensaje enviado:', this.replyMessage);
-      this.replyMessage = ''; // Resetear el campo de texto
+      this.replyMessage = '';
     }
   }
-
-  constructor(private router: Router) {}
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -77,4 +79,3 @@ export class EntidadComponent {
     this.isSidebarOpen = false;
   }
 }
-

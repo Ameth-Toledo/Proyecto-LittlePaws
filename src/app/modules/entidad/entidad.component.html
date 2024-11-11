@@ -27,7 +27,6 @@
     <div class="bandeja-entidad-modal" *ngIf="isModalOpen && activeModal === 'Bandeja'">
         <h1 class="tittle-entidad-section">LittlePaws - Mensajería</h1>
         
-        <!-- Lista de mensajes previos -->
         <div class="message-list">
           <div class="message-preview" *ngFor="let message of messages" (click)="openMessage(message)">
             <img [src]="message.userImage" alt="User Image" class="user-image">
@@ -39,16 +38,20 @@
         </div>
 
         <div *ngIf="selectedMessage" class="message-detail">
-            <h2 class="sender-name">{{ selectedMessage.senderName }}</h2>
-            <p class="message-content">{{ selectedMessage.content }}</p>
-        
-            <div class="message-reply">
-                <textarea [(ngModel)]="replyMessage" placeholder="Escribe tu respuesta..."></textarea>
-                <button class="btn-send" (click)="sendMessage()">Enviar</button>
-              </div>
-            </div>
+          <h2 class="sender-name">{{ selectedMessage.senderName }}</h2>
+          <p class="message-content">{{ selectedMessage.content }}</p>
+          <div *ngIf="replyMessage">
+              <h3 class="response-header">Tu Respuesta:</h3>
+              <p class="message-response">{{ replyMessage }}</p>
           </div>
-          
+      
+          <div class="message-reply">
+              <textarea [(ngModel)]="replyMessage" placeholder="Escribe tu respuesta..."></textarea>
+              <button class="btn-send" (click)="sendMessage()">Enviar</button>
+          </div>
+      </div>
+    </div>
+
     <div class="denuncias-modal-entidad" *ngIf="isModalOpen && activeModal === 'Denuncias'">
     </div>
 
