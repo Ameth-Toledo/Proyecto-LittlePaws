@@ -18,4 +18,9 @@ export class VeterinariasComponent {
     event.preventDefault();
     this.router.navigate(['/perfil-veterinaria-zoo']);
   }
+
+  enviarRegistrar(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/registrar-veterinaria']);
+  }
 }

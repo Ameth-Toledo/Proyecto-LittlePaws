@@ -1,0 +1,125 @@
+.banner-container {
+    position: relative; 
+}
+
+.app-header-class {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.app-banner-class {
+    margin-top: 100px; 
+}
+
+.adoption-form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #1F252E;
+    border-radius: 16px; 
+}
+
+.form-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #00E8F8;
+}
+
+.adoption-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group-adoption {
+    flex: 1 1 calc(50% - 10px);
+}
+
+.form-label-adoption {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #00E8F8;
+}
+
+.form-input-adoption, 
+.form-textarea-adoption {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #00E8F8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #1F252E;
+    color: #FFF;
+    transition: border-color 0.3s ease;
+}
+
+.form-group-adoption-full {
+    flex: 1 1 100%;
+}
+
+.form-checkbox-adoption {
+    width: auto;
+    margin-right: 10px;
+}
+
+.form-label-agreement {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #00E8F8;
+    font-size: 16px;
+    flex: 1 1 100%;
+}
+
+.submit-btn-adoption {
+    padding: 15px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #00E8F8;
+    color: #1F252E;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    flex: 1 1 100%;
+}
+
+.terms-label {
+    color: #00E8F8;
+    text-decoration: underline;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .adoption-form-container {
+        width: 90%; 
+        padding: 15px;
+        margin: 20px auto; 
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .adoption-form {
+        flex-direction: column;
+    }
+
+    .form-group-adoption {
+        flex: 1 1 100%;
+    }
+
+    .submit-btn-adoption {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
