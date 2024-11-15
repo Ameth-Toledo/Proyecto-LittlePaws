@@ -84,6 +84,7 @@
 .bann-imagen-dog {
     width: 100%;
     height: auto;
+    filter: drop-shadow(2px 2px 20px cyan);
 }
 
 .barra-bann {
@@ -320,6 +321,7 @@
   
   .info-tittle {
     font-family: 'Poppins', sans-serif;
+    color: #f0a500;
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
@@ -338,7 +340,7 @@
     width: 300px;
     height: 50px;
     color: black;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     border-radius: 10px;
     font-size: 20px;
@@ -346,7 +348,7 @@
   }
   
   .cta-button:hover {
-    background-color: #a0a00a;
+    background-color: #00E8F8;
   }
   
 
