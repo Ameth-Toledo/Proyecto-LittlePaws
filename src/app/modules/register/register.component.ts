@@ -9,7 +9,7 @@ import { RegisterService } from '../../services/register/register.service';
   standalone: true,
   imports: [FooterComponent, HeaderComponent],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   constructor(private router: Router, private registerService: RegisterService) {}
@@ -27,20 +27,20 @@ export class RegisterComponent {
   validarFormulario(event: Event) {
     event.preventDefault();
 
-    const username = (document.getElementById('user') as HTMLInputElement).value;
-    const lastname = (document.getElementById('lastname') as HTMLInputElement).value;
+    const name = (document.getElementById('user') as HTMLInputElement).value;
+    const lastName = (document.getElementById('lastname') as HTMLInputElement).value;
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
 
-    if (!username || !lastname || !email || !password || !passwordConfirm) {
+    if (!name || !lastName || !email || !password || !passwordConfirm) {
       this.mostrarModal();
     } else if (!email.includes('@')) {
       this.mostrarEmailErrorModal();
     } else if (password !== passwordConfirm) {
       this.mostrarPasswordMismatchModal();
     } else {
-      this.registerService.addUser({ username,lastname, email, password }).subscribe(
+      this.registerService.addUser({ nombre_completo: { name, last_name: lastName }, email, password, rol: 'usuario' }).subscribe(
         () => {
           console.log('Usuario registrado en la base de datos');
           this.mostrarSuccessModal();
