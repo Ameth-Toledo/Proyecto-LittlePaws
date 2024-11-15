@@ -7,17 +7,17 @@ import { Router } from '@angular/router';
 import { AdopcionService } from '../../services/adopcion/adopcion.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
 
 @Component({
   selector: 'app-adopcion-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BannerComponent, FooterComponent, HeaderComponent, CardDenunciasComponent],
+  imports: [CommonModule, ReactiveFormsModule, BannerComponent, FooterComponent, HeaderComponent],
   templateUrl: './adopcion-form.component.html',
   styleUrl: './adopcion-form.component.scss'
 })
 export class AdopcionFormComponent {
   adopcionForm: FormGroup;
+  fileName : string = '';
 
   constructor(
     private router: Router,
@@ -87,4 +87,17 @@ export class AdopcionFormComponent {
       agreement: false
     });
   }  
+
+  triggerFileInput(): void {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (file) {
+        this.fileName = file.name;
+      }
+    };
+    fileInput.click();
+  }
 }
