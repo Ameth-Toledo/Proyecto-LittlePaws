@@ -99,6 +99,29 @@
     cursor: pointer;
 }
 
+.upload-image {
+    background-color: #00E8F8;
+    border: none;
+    font-size: 18px;
+    font-family: 'Poppins';
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-image:hover {
+    background-color: #07b4c0;
+}
+
+.file-name {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+}
+
 @media (max-width: 768px) {
     .adoption-form-container {
         width: 90%; 

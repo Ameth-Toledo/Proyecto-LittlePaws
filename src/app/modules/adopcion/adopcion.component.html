@@ -1,64 +1,75 @@
 <div class="banner-container">
-    <app-header class="app-header-class"></app-header>
-    <app-banner class="app-banner-class"></app-banner>
+  <app-header class="app-header-class"></app-header>
+  <app-banner class="app-banner-class"></app-banner>
 </div>
 
 <div class="adoption-form-container">
-    <h2 class="form-title">Formulario de Adopción</h2>
-    <form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()" class="adoption-form">
-        <div class="form-group-adoption">
-            <label for="name" class="form-label-adoption">Nombre completo:</label>
-            <input type="text" id="name" formControlName="name" class="form-input-adoption" placeholder="Tu nombre completo" required>
-        </div>
-        
-        <div class="form-group-adoption">
-            <label for="email" class="form-label-adoption">Correo electrónico:</label>
-            <input type="email" id="email" formControlName="email" class="form-input-adoption" placeholder="Tu correo electrónico" required>
-        </div>
+  <h2 class="form-title">Formulario de Adopción</h2>
+  <form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()" class="adoption-form">
+      <div class="form-group-adoption">
+          <label for="name" class="form-label-adoption">Nombre completo:</label>
+          <input type="text" id="name" formControlName="name" class="form-input-adoption" placeholder="Tu nombre completo" required>
+      </div>
+      
+      <div class="form-group-adoption">
+          <label for="email" class="form-label-adoption">Correo electrónico:</label>
+          <input type="email" id="email" formControlName="email" class="form-input-adoption" placeholder="Tu correo electrónico" required>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="cellphone" class="form-label-adoption">Teléfono:</label>
-            <input type="tel" id="cellphone" formControlName="cellphone" class="form-input-adoption" placeholder="Tu número de teléfono" required>
-        </div>
+      <div class="form-group-adoption">
+          <label for="cellphone" class="form-label-adoption">Teléfono:</label>
+          <input type="tel" id="cellphone" formControlName="cellphone" class="form-input-adoption" placeholder="Tu número de teléfono" required>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="direccion" class="form-label-adoption">Dirección:</label>
-            <input type="text" id="direccion" formControlName="direccion" class="form-input-adoption" placeholder="Tu dirección completa" required>
-        </div>
+      <div class="form-group-adoption">
+          <label for="direccion" class="form-label-adoption">Dirección:</label>
+          <input type="text" id="direccion" formControlName="direccion" class="form-input-adoption" placeholder="Tu dirección completa" required>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="id_mascota" class="form-label-adoption">ID de mascota:</label>
-            <input type="number" id="id_mascota" formControlName="id_mascota" class="form-input-adoption" placeholder="ID de la mascota" required>
-        </div>
+      <div class="form-group-adoption">
+          <label for="id_mascota" class="form-label-adoption">ID de mascota:</label>
+          <input type="number" id="id_mascota" formControlName="id_mascota" class="form-input-adoption" placeholder="ID Mascota" required>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="curp" class="form-label-adoption">Ingrese su CURP:</label>
-            <input type="text" id="curp" formControlName="curp" class="form-input-adoption" placeholder="Ingrese su CURP" required>
-        </div>
+      <div class="form-group-adoption">
+          <label for="curp" class="form-label-adoption">Ingrese su CURP:</label>
+          <input type="text" id="curp" formControlName="curp" class="form-input-adoption" placeholder="CURP" required>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="observaciones" class="form-label-adoption">Observaciones:</label>
-            <textarea id="observaciones" formControlName="observaciones" class="form-textarea-adoption" rows="4" placeholder="Escribe tus observaciones" required></textarea>
-        </div>
+      <div class="form-group-adoption">
+          <label for="seguimiento" class="form-label-adoption">Seguimiento:</label>
+          <input type="text" id="seguimiento" formControlName="seguimiento" class="form-input-adoption" placeholder="Seguimiento">
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="condiciones" class="form-label-adoption">Condiciones:</label>
-            <textarea id="condiciones" formControlName="condiciones" class="form-textarea-adoption" rows="4" placeholder="Escribe las condiciones" required></textarea>
-        </div>
+      <div class="form-group-adoption">
+          <label for="observaciones" class="form-label-adoption">Observaciones:</label>
+          <textarea id="observaciones" formControlName="observaciones" class="form-textarea-adoption" rows="4" placeholder="Escribe tus observaciones" required></textarea>
+      </div>
 
-        <div class="form-group-adoption">
-            <label for="agreement" class="form-label-agreement">
-                <input type="checkbox" id="agreement" formControlName="agreement" class="form-checkbox-adoption" required> 
-                Acepto los 
-                <a (click)="enviarTerminos($event)" class="terms-label">términos y condiciones</a> de la adopción.
-            </label>
-        </div>
+      <div class="form-group-adoption">
+          <label for="condiciones" class="form-label-adoption">Condiciones:</label>
+          <textarea id="condiciones" formControlName="condiciones" class="form-textarea-adoption" rows="4" placeholder="Escribe las condiciones" required></textarea>
+      </div>
 
-        <button type="submit" class="submit-btn-adoption" [disabled]="adopcionForm.invalid">Enviar solicitud</button>
-    </form>
+      <div class="form-group-adoption">
+          <label for="id_entidad" class="form-label-adoption">ID de Entidad:</label>
+          <input type="number" id="id_entidad" formControlName="id_entidad" class="form-input-adoption" placeholder="ID Entidad" required>
+      </div>
+
+      <button type="button" class="upload-image" (click)="triggerFileInput()">
+        <i class="fas fa-paperclip"></i> Subir Imagen
+      </button>
+      
+      <div class="form-group-adoption">
+          <label for="agreement" class="form-label-agreement">
+              <input type="checkbox" id="agreement" formControlName="agreement" class="form-checkbox-adoption" required> 
+              Acepto los 
+              <a (click)="enviarTerminos($event)" class="terms-label">términos y condiciones</a> de la adopción.
+          </label>
+      </div>
+
+      <button type="submit" class="submit-btn-adoption" [disabled]="adopcionForm.invalid">Enviar solicitud</button>
+  </form>
 </div>
 
 <app-footer class="app-footer-class"></app-footer>
-
-
-<!-- agregar modales de confirmacion -->
