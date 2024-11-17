@@ -1,14 +1,14 @@
 export interface Denuncias {
-  id_usuario: number;
   motivo: string;
+  id_usuario: number;
   id_institucion: number;
+  id_mascota: number;
   descripcion: string;
-  imagen: string;  
-  id_mascota: number;  
+  imagen: string;
 }
 
 export interface DenunciaResponse {
-  id: number;
+  id_denuncias: number;
   id_usuario: number;
   motivo: string;
   id_institucion: number;

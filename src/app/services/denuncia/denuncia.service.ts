@@ -8,7 +8,7 @@ import { DenunciaResponse, Denuncias } from '../../models/denuncias';
 })
 export class DenunciasService {
 
-  private url: string = 'http://127.0.0.1:8000';
+  private url: string = 'http://127.0.0.1:8000/denuncias';
 
   constructor(private http: HttpClient) {}
 
@@ -32,16 +32,8 @@ export class DenunciasService {
     return this.http.get<DenunciaResponse>(urlApi, { headers: this.getHeaders() });
   }
 
-  createDenuncia(denunciaRequest: Denuncias): Observable<DenunciaResponse> {
-    return this.http.post<DenunciaResponse>(`${this.url}/denuncias/`, denunciaRequest, { headers: this.getHeaders() }).pipe(
-      tap((response) => {
-        console.log('Nueva denuncia creada:', response);
-      }),
-      catchError((error) => {
-        console.error('Error al crear denuncia:', error);
-        throw error;
-      })
-    );
+  createDenuncia(formData: FormData): Observable<any> {
+    return this.http.post<any>(this.url, formData);
   }
 
   updateDenuncia(denuncia_id: number, denunciaRequest: Denuncias): Observable<DenunciaResponse> {

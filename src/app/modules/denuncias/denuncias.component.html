@@ -1,51 +1,40 @@
 <app-header></app-header>
 
 <div class="denuncia-container">
-  <h1 class="tittle-denuncias">¡Denuncia ya!</h1>
+  <h1 class="tittle-denuncias">Formulario de Denuncia</h1>
 
   <div class="denuncia-layout">
-    <form (ngSubmit)="submitDenuncia()" class="denuncia-form">
+    <form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()" class="denuncia-form">
+      
       <div class="input-group">
-        <input type="text" [(ngModel)]="denunciaRequest.motivo" name="motivo" class="input-group_input" required />
+        <input type="text" formControlName="motivo" class="input-group_input" required />
         <label for="motivo" class="input-group_label">Motivo</label>
       </div>
 
       <div class="input-group">
-        <input type="number" [(ngModel)]="denunciaRequest.id_usuario" name="id_usuario" class="input-group_input" required />
-        <label for="id_usuario" class="input-group_label">ID Usuario</label>
+        <input type="number" formControlName="id_institucion" class="input-group_input" required />
+        <label for="id_institucion" class="input-group_label">ID de Entidad</label>
       </div>
 
       <div class="input-group">
-        <input type="number" [(ngModel)]="denunciaRequest.id_institucion" name="id_institucion" class="input-group_input" required />
-        <label for="id_institucion" class="input-group_label">ID Institución</label>
+        <textarea formControlName="description" class="input-group_input" rows="4" required></textarea>
+        <label for="description" class="input-group_label">Descripción de la Denuncia</label>
       </div>
 
       <div class="input-group">
-        <input type="number" [(ngModel)]="denunciaRequest.id_mascota" name="id_mascota" class="input-group_input" required />
-        <label for="id_mascota" class="input-group_label">ID Mascota</label>
+        <input type="number" formControlName="id_mascota" class="input-group_input" required />
+        <label for="id_mascota" class="input-group_label">ID de Mascota</label>
       </div>
 
-      <div class="input-group">
-        <textarea [(ngModel)]="denunciaRequest.descripcion" name="descripcion" class="input-group_input" rows="4" required></textarea>
-        <label for="descripcion" class="input-group_label">Descripción del maltrato</label>
-      </div>
-
-      <input type="file" id="imagenes" (change)="onFilesSelected($event)" multiple accept="image/*" style="display: none;" />
       <div class="button-group">
-        <button type="button" class="agregar-denuncia-btn" (click)="uploadImage()">
+        <button type="button" class="agregar-denuncia-btn" (click)="triggerFileInput()">
           <i class="fas fa-plus"></i> Agregar Imágenes
         </button>
-        <button type="submit" class="agregar-denuncia-btn">
+        <button type="submit" class="agregar-denuncia-btn" [disabled]="adopcionForm.invalid">
           <i class="fas fa-paper-plane"></i> Enviar Denuncia
         </button>
       </div>
     </form>
-
-    <div class="image-preview">
-      <div *ngFor="let image of selectedImages">
-        <img [src]="image" class="image-thumbnail" />
-      </div>
-    </div>
   </div>
 </div>
 
