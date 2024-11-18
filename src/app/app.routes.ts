@@ -10,6 +10,7 @@ import { VeterinariasComponent } from './modules/veterinarias/veterinarias.compo
 import { RegistrarVeterinariaComponent } from './modules/registrar-veterinaria/registrar-veterinaria.component';
 import { DenunciasComponent } from './modules/denuncias/denuncias.component';
 import { EntidadComponent } from './modules/entidad/entidad.component';
+import { TemplateVeterinariaComponent } from './modules/template-veterinaria/template-veterinaria.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -24,6 +25,7 @@ export const routes: Routes = [
     //Administracion 
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent },
     { path: "denuncias", component: DenunciasComponent },
-    { path: "entidad-littlepaws", component: EntidadComponent }
+    { path: "entidad-littlepaws", component: EntidadComponent },
+    { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent }
 ];
 

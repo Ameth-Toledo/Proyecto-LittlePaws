@@ -1,24 +1,109 @@
-<app-header class="header-fixed"></app-header>
+<app-header></app-header>
+<h1 class="welcome-tittle">
+  Hola! Gracias por unirte a LittlePaws, nuestra prioridad es salvaguardar a las mascotas, agradecemos tu contribución a la aplicación.
+</h1>
+<div class="form-veterinaria-register">
+  <form (ngSubmit)="enviarRefugio()" #form="ngForm">
+    <div class="form-left">
+      <label for="refugio-name" class="label-form">Ingrese el nombre del refugio</label>
+      <input
+        type="text"
+        id="refugio-name"
+        [(ngModel)]="refugioData.name"
+        name="name"
+        required
+        class="input-field"
+      />
 
-<div class="menu-vertical">
-  <ul class="menu-vertical-ul">
-    <li class="menu-vertical-li" (click)="enviarHome($event)"><i class="fas fa-home menu-vertical-li-i"></i> Home</li>
-    <li class="menu-vertical-li"><i class="fas fa-user-plus menu-vertical-li-i"></i> Registrar</li>
-    <li class="menu-vertical-li"><i class="fas fa-donate menu-vertical-li-i"></i> Donaciones</li>
-    <li class="menu-vertical-li"><i class="fas fa-envelope menu-vertical-li-i"></i> Mensajes</li>
-    <li class="menu-vertical-li"><i class="fas fa-sign-out-alt menu-vertical-li-i"></i> Cerrar Sesión</li>
-  </ul>
+      <label for="refugio-phone" class="label-form">Ingrese el número de teléfono del refugio</label>
+      <input
+        type="text"
+        id="refugio-phone"
+        [(ngModel)]="refugioData.phone"
+        name="phone"
+        required
+        class="input-field"
+      />
+
+      <label for="refugio-email" class="label-form">Ingrese el email del refugio</label>
+      <input
+        type="email"
+        id="refugio-email"
+        [(ngModel)]="refugioData.email"
+        name="email"
+        required
+        class="input-field"
+      />
+
+      <label for="refugio-address" class="label-form">Ingrese la dirección del refugio</label>
+      <input
+        type="text"
+        id="refugio-address"
+        [(ngModel)]="refugioData.address"
+        name="address"
+        required
+        class="input-field"
+      />
+
+      <label for="refugio-hours" class="label-form">Ingrese el horario de atención del refugio</label>
+      <input
+        type="text"
+        id="refugio-hours"
+        [(ngModel)]="refugioData.hours"
+        name="hours"
+        required
+        class="input-field"
+      />
+    </div>
+
+    <div class="form-right">
+      <label for="refugio-location" class="label-form">Ingrese la ubicación del refugio</label>
+      <input
+        type="text"
+        id="refugio-location"
+        [(ngModel)]="refugioData.location"
+        name="location"
+        required
+        class="input-field"
+      />
+
+      <label for="refugio-facebook" class="label-form">Ingrese el Facebook del refugio</label>
+      <input
+        type="text"
+        id="refugio-facebook"
+        [(ngModel)]="refugioData.facebook"
+        name="facebook"
+        class="input-field"
+      />
+
+      <label for="refugio-instagram" class="label-form">Ingrese el Instagram del refugio</label>
+      <input
+        type="text"
+        id="refugio-instagram"
+        [(ngModel)]="refugioData.instagram"
+        name="instagram"
+        class="input-field"
+      />
+
+      <label for="refugio-twitter" class="label-form">Ingrese el Twitter del refugio</label>
+      <input
+        type="text"
+        id="refugio-twitter"
+        [(ngModel)]="refugioData.twitter"
+        name="twitter"
+        class="input-field"
+      />
+
+      <label for="refugio-photo" class="label-form">Ingrese la foto de perfil del refugio</label>
+      <input
+        type="file"
+        id="refugio-photo"
+        (change)="handleFileInput($event)"
+        class="input-field"
+      />
+    </div>
+
+    <button type="submit" class="btn-enviar-registro">Enviar datos</button>
+  </form>
 </div>
-
-<div class="modal-register">
-
-</div>
-
-<div class="modal-donaciones">
-
-</div>
-
-<div class="">
-
-</div>
-<app-footer class="footer-fixed"></app-footer>
+<app-footer></app-footer>

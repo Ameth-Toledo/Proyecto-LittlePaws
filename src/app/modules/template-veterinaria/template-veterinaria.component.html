@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<app-veterinaria-head
+  [nameVeterinaria]="refugioData.name"
+  [descripcionVeterinaria]="'Un refugio comprometido con el bienestar animal.'"
+  [imgSrc]="refugioData.fotoPerfil"
+  [telefonoVeterinaria]="refugioData.phone"
+  [emailVeterinaria]="refugioData.email"
+  [direccionVeterinaria]="refugioData.address"
+  [horarioVeterinaria]="refugioData.hours">
+</app-veterinaria-head>
+
+<h1 class="ubication-veterinaria-principal">
+  <i class="fas fa-dog"></i> {{ refugioData.name }}
+</h1>
+
+<div class="map-container">
+  <iframe
+    [src]="refugioData.location"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    class="map-veterinaria">
+  </iframe>
+</div>
+
+<div class="info-head">
+  <span
+    class="info-option"
+    [class.selected]="selectedOption === 'fotos'"
+    (click)="selectOption('fotos')">
+    Fotos
+  </span>
+  <span
+    class="info-option"
+    [class.selected]="selectedOption === 'publicaciones'"
+    (click)="selectOption('publicaciones')">
+    Publicaciones
+  </span>
+</div>
+
+<app-footer></app-footer>
