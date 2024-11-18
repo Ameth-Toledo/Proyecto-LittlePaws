@@ -52,19 +52,27 @@ export class LoginComponent {
       this.mostrarModal();
       return; 
     }
-
+  
     this.registerService.login({ email, password }).subscribe(
-      () => {
+      (response) => { // Cambiar aquí para usar correctamente el parámetro `response`
         console.log('Usuario registrado en la base de datos');
+        // Guardar datos de la respuesta en localStorage
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('user_id', String(response.id_user));
+        localStorage.setItem('username', response.name);
+        localStorage.setItem('lastname', response.lastName);
+        localStorage.setItem('email', response.email);
+  
         this.router.navigate(['/home']);
       },
       (error) => {
         console.error('Error en el registro:', error);
+        this.modalMessage = 'Credenciales inválidas. Por favor, intente de nuevo.';
         this.mostrarModal();
       }
     );
   }
-
+  
   mostrarModal() {
     const modal = document.getElementById('errorModal')!;
     modal.style.display = 'flex'; 

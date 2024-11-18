@@ -3,104 +3,44 @@
   Hola! Gracias por unirte a LittlePaws, nuestra prioridad es salvaguardar a las mascotas, agradecemos tu contribución a la aplicación.
 </h1>
 <div class="form-veterinaria-register">
-  <form (ngSubmit)="enviarRefugio()" #form="ngForm">
+  <form [formGroup]="entidadForm" (ngSubmit)="enviarRefugio()">
     <div class="form-left">
-      <label for="refugio-name" class="label-form">Ingrese el nombre del refugio</label>
-      <input
-        type="text"
-        id="refugio-name"
-        [(ngModel)]="refugioData.name"
-        name="name"
-        required
-        class="input-field"
-      />
+      <label class="label-form">Nombre</label>
+      <input formControlName="name" type="text" class="input-field" required />
 
-      <label for="refugio-phone" class="label-form">Ingrese el número de teléfono del refugio</label>
-      <input
-        type="text"
-        id="refugio-phone"
-        [(ngModel)]="refugioData.phone"
-        name="phone"
-        required
-        class="input-field"
-      />
+      <label class="label-form">Dirección</label>
+      <input formControlName="address" type="text" class="input-field" required />
 
-      <label for="refugio-email" class="label-form">Ingrese el email del refugio</label>
-      <input
-        type="email"
-        id="refugio-email"
-        [(ngModel)]="refugioData.email"
-        name="email"
-        required
-        class="input-field"
-      />
+      <label class="label-form">Descripción</label>
+      <textarea formControlName="description" class="input-field" required></textarea>
 
-      <label for="refugio-address" class="label-form">Ingrese la dirección del refugio</label>
-      <input
-        type="text"
-        id="refugio-address"
-        [(ngModel)]="refugioData.address"
-        name="address"
-        required
-        class="input-field"
-      />
-
-      <label for="refugio-hours" class="label-form">Ingrese el horario de atención del refugio</label>
-      <input
-        type="text"
-        id="refugio-hours"
-        [(ngModel)]="refugioData.hours"
-        name="hours"
-        required
-        class="input-field"
-      />
+      <label class="label-form">Tipo</label>
+      <select formControlName="type" class="input-field" required>
+        <option value="refugio">Refugio</option>
+        <option value="veterinaria">Veterinaria</option>
+        <option value="perrera">Perrera</option>
+        <option value="centros_de_adopcion">Centros de Adopción</option>
+      </select>
     </div>
 
     <div class="form-right">
-      <label for="refugio-location" class="label-form">Ingrese la ubicación del refugio</label>
-      <input
-        type="text"
-        id="refugio-location"
-        [(ngModel)]="refugioData.location"
-        name="location"
-        required
-        class="input-field"
-      />
+      <label class="label-form">Teléfono</label>
+      <input formControlName="cellphone" type="text" class="input-field" required />
 
-      <label for="refugio-facebook" class="label-form">Ingrese el Facebook del refugio</label>
-      <input
-        type="text"
-        id="refugio-facebook"
-        [(ngModel)]="refugioData.facebook"
-        name="facebook"
-        class="input-field"
-      />
+      <label class="label-form">Email</label>
+      <input formControlName="email" type="email" class="input-field" required />
 
-      <label for="refugio-instagram" class="label-form">Ingrese el Instagram del refugio</label>
-      <input
-        type="text"
-        id="refugio-instagram"
-        [(ngModel)]="refugioData.instagram"
-        name="instagram"
-        class="input-field"
-      />
+      <label class="label-form">Redes sociales (separadas por comas)</label>
+      <input formControlName="social_networks" type="text" class="input-field" required />
 
-      <label for="refugio-twitter" class="label-form">Ingrese el Twitter del refugio</label>
-      <input
-        type="text"
-        id="refugio-twitter"
-        [(ngModel)]="refugioData.twitter"
-        name="twitter"
-        class="input-field"
-      />
+      <label class="label-form">Horario de atención</label>
+      <input formControlName="hours_operation" type="text" class="input-field" required />
 
-      <label for="refugio-photo" class="label-form">Ingrese la foto de perfil del refugio</label>
-      <input
-        type="file"
-        id="refugio-photo"
-        (change)="handleFileInput($event)"
-        class="input-field"
-      />
+      <label class="label-form">Ubicación</label>
+      <input formControlName="location" type="text" class="input-field" />
+
+      <label class="label-form">Foto de perfil</label>
+      <input type="file" (change)="handleFileInput($event)" class="input-field" required />
     </div>
 
     <button type="submit" class="btn-enviar-registro">Enviar datos</button>

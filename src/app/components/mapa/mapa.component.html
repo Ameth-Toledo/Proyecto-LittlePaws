@@ -1,0 +1,18 @@
+<div>
+    <input
+      type="text"
+      placeholder="Buscar lugar"
+      [(ngModel)]="searchQuery"
+    />
+    <button (click)="searchPlace()">Buscar</button>
+  </div>
+  
+  <google-map
+    *ngIf="center"
+    [center]="center"
+    [zoom]="zoom"
+    style="display: block; height: 500px; width: 100%;"
+  >
+    <map-marker *ngIf="center" [position]="center"></map-marker>
+  </google-map>
+  
