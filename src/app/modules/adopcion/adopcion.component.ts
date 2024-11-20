@@ -16,11 +16,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./adopcion.component.scss']
 })
 export class AdopcionComponent {
-  fileName : string = '';
+  fileName: string = '';
   adopcionForm: FormGroup;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private adopcionService: AdopcionService,   private router: Router) {
+  constructor(private fb: FormBuilder, private adopcionService: AdopcionService, private router: Router) {
     this.adopcionForm = this.fb.group({
       id_mascota: [null, Validators.required],
       id_usuario: [localStorage.getItem('user_id'), Validators.required],
@@ -38,6 +38,7 @@ export class AdopcionComponent {
       agreement: [false, Validators.requiredTrue],
     });
   }
+
   ngOnInit(): void {}
 
   enviarTerminos(event: Event) {
@@ -52,11 +53,13 @@ export class AdopcionComponent {
     fileInput.onchange = (event: any) => {
       const file = event.target.files[0];
       if (file) {
-        this.fileName = file.name;
+        this.selectedFile = file;  // Save the selected file
+        this.fileName = file.name; // Set the file name for display
       }
     };
     fileInput.click();
   }
+
   resetForm() {
     this.adopcionForm.reset({
       id_mascota: null,
@@ -75,21 +78,22 @@ export class AdopcionComponent {
       agreement: false
     });
   }
+
   onSubmit(): void {
     if (this.adopcionForm.invalid) {
       console.error('Formulario inválido. Errores:', this.getFormValidationErrors());
       return;
     }
-  
+
     const formData = new FormData();
     Object.entries(this.adopcionForm.value).forEach(([key, value]) => {
       formData.append(key, value as string);
     });
-  
+
     if (this.selectedFile) {
-      formData.append('file', this.selectedFile, this.selectedFile.name);
+      formData.append('file', this.selectedFile, this.selectedFile.name); // Append the selected file
     }
-  
+
     this.adopcionService.createAdopcion(formData).subscribe(
       (response: AdopcionResponse) => {
         console.log('Adopción creada:', response);
@@ -99,7 +103,7 @@ export class AdopcionComponent {
       }
     );
   }
-  
+
   getFormValidationErrors(): any {
     const errors: any = {};
     Object.keys(this.adopcionForm.controls).forEach(key => {
@@ -110,5 +114,4 @@ export class AdopcionComponent {
     });
     return errors;
   }
-  
 }

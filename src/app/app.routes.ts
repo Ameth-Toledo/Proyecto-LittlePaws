@@ -15,16 +15,16 @@ import { TemplateVeterinariaComponent } from './modules/template-veterinaria/tem
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "home", component: HomeComponent },
-    { path: "donaciones", component: DonacionesComponent },
-    { path: "adopciones", component: AdopcionComponent },
+    { path: "donaciones", component: DonacionesComponent, },
+    { path: "adopciones", component: AdopcionComponent,},
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },
-    { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent },
-    { path: "veterinarias", component: VeterinariasComponent },
+    { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent, },
+    { path: "veterinarias", component: VeterinariasComponent,  },
     //Administracion 
-    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent },
-    { path: "denuncias", component: DenunciasComponent },
+    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent,},
+    { path: "denuncias", component: DenunciasComponent,  },
     { path: "entidad-littlepaws", component: EntidadComponent },
     { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent }
 ];

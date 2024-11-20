@@ -66,7 +66,6 @@ export class RegistrarVeterinariaComponent {
   }
 
   enviarRefugio(): void {
-    // Verifica el estado del formulario y del archivo
     console.log('Estado del formulario:', this.entidadForm.valid);
     Object.keys(this.entidadForm.controls).forEach((key) => {
       console.log(`${key}:`, this.entidadForm.controls[key].errors);

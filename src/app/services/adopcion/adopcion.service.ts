@@ -11,10 +11,10 @@ export class AdopcionService {
 
   constructor(private http: HttpClient) { }
 
-  
   createAdopcion(data: FormData): Observable<any> {
-    return this.http.post<any>(this. apiUrl , data);
+    return this.http.post<any>(this.apiUrl, data);
   }
+
   getAdopciones(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/all/`);
   }

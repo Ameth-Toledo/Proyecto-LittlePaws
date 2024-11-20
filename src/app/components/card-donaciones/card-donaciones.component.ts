@@ -61,6 +61,7 @@ export class CardDonacionesComponent {
       this.modalError = true;
     }
   }
+
   private renderizarBotonPaypal() {
     const paypalContainerId = 'paypal-button-container';
     let paypalContainer = document.getElementById(paypalContainerId);
@@ -72,7 +73,7 @@ export class CardDonacionesComponent {
       const modalContent = document.querySelector('.modal-content');
       
       if (modalContent) {
-        modalContent.classList.add('modal-content--expandido'); // Añadir clase para expandir
+        modalContent.classList.add('modal-content--expandido'); 
       }
       
       modalContent?.appendChild(newContainer);
@@ -91,7 +92,7 @@ export class CardDonacionesComponent {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                currency_code: 'MXN',  // Cambiar a 'MXN' para pesos mexicanos
+                currency_code: 'MXN', 
                 value: donationAmount
               }
             }]
