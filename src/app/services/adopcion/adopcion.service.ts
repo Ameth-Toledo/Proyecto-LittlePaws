@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,11 +9,19 @@ export class AdopcionService {
 
   private apiUrl = 'http://localhost:8000/adopciones'; 
 
+  private getHeaders(): HttpHeaders {
+    const token = sessionStorage.getItem('access_token') || localStorage.getItem('access_token') || '';
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+  }
+  
   constructor(private http: HttpClient) { }
 
   createAdopcion(data: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, data);
+    return this.http.post<any>(this.apiUrl, data, { headers: this.getHeaders() });
   }
+  
 
   getAdopciones(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/all/`);

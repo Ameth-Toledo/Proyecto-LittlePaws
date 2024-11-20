@@ -1,68 +1,75 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { DenunciaResponse, Denuncias } from '../../models/denuncias';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DenunciasService {
-
   private url: string = 'http://127.0.0.1:8000/denuncias';
 
   constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('access_token') || '';
+    const token = localStorage.getItem('access_token') || ''; 
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
     return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`,  // El tipo de contenido no es necesario con FormData
     });
   }
 
   getAllDenuncias(): Observable<DenunciaResponse[]> {
-    const urlApi = `${this.url}/denuncias_all/`;
-    console.log(urlApi);
-    return this.http.get<DenunciaResponse[]>(urlApi, { headers: this.getHeaders() });
+    return this.http.get<DenunciaResponse[]>(`${this.url}/denuncias_all/`, {
+      headers: this.getHeaders(),
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   getDenunciaById(denuncia_id: number): Observable<DenunciaResponse> {
-    const urlApi = `${this.url}/denuncias/${denuncia_id}/`;
-    console.log(urlApi);
-    return this.http.get<DenunciaResponse>(urlApi, { headers: this.getHeaders() });
+    return this.http.get<DenunciaResponse>(`${this.url}/denuncias/${denuncia_id}/`, {
+      headers: this.getHeaders(),
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   createDenuncia(formData: FormData): Observable<any> {
-    return this.http.post<any>(this.url, formData);
+    return this.http.post<any>(this.url, formData, {
+      headers: this.getHeaders() 
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
+  
 
   updateDenuncia(denuncia_id: number, denunciaRequest: Denuncias): Observable<DenunciaResponse> {
-    const urlApi = `${this.url}/denuncias/${denuncia_id}/`;
-    return this.http.put<DenunciaResponse>(urlApi, denunciaRequest, { headers: this.getHeaders() }).pipe(
-      tap((response) => {
-        console.log('Denuncia actualizada:', response);
-      }),
-      catchError((error) => {
-        console.error('Error al actualizar denuncia:', error);
-        throw error;
-      })
+    return this.http.put<DenunciaResponse>(`${this.url}/denuncias/${denuncia_id}/`, denunciaRequest, {
+      headers: this.getHeaders(),
+    }).pipe(
+      tap((response) => console.log('Denuncia actualizada:', response)),
+      catchError(this.handleError)
     );
   }
 
   deleteDenuncia(denuncia_id: number): Observable<any> {
-    const urlApi = `${this.url}/denuncias/${denuncia_id}/`;
-    return this.http.delete(urlApi, { headers: this.getHeaders() }).pipe(
-      tap(() => {
-        console.log('Denuncia eliminada:', denuncia_id);
-      }),
-      catchError((error) => {
-        console.error('Error al eliminar denuncia:', error);
-        throw error;
-      })
+    return this.http.delete(`${this.url}/denuncias/${denuncia_id}/`, {
+      headers: this.getHeaders(),
+    }).pipe(
+      tap(() => console.log('Denuncia eliminada:', denuncia_id)),
+      catchError(this.handleError)
     );
   }
 
-  getAuthToken() {
-    return localStorage.getItem('access_token') || '';
+  private handleError(error: any) {
+    let errorMessage = 'Ha ocurrido un error';
+    if (error.error && error.error.detail) {
+      errorMessage = error.error.detail; // Asumiendo que el backend envía un detalle del error
+    }
+    console.error('Error en la solicitud:', errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }

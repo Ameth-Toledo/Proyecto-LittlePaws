@@ -11,21 +11,22 @@ import { RegistrarVeterinariaComponent } from './modules/registrar-veterinaria/r
 import { DenunciasComponent } from './modules/denuncias/denuncias.component';
 import { EntidadComponent } from './modules/entidad/entidad.component';
 import { TemplateVeterinariaComponent } from './modules/template-veterinaria/template-veterinaria.component';
+import { authGuard } from './Guard/authGuard/auth.guard';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "home", component: HomeComponent },
-    { path: "donaciones", component: DonacionesComponent, },
-    { path: "adopciones", component: AdopcionComponent,},
+    { path: "donaciones", component: DonacionesComponent, canActivate : [authGuard] },
+    { path: "adopciones", component: AdopcionComponent, canActivate : [authGuard] },
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },
-    { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent, },
-    { path: "veterinarias", component: VeterinariasComponent,  },
+    { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent, canActivate : [authGuard] },
+    { path: "veterinarias", component: VeterinariasComponent, canActivate : [authGuard] },
     //Administracion 
-    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent,},
-    { path: "denuncias", component: DenunciasComponent,  },
-    { path: "entidad-littlepaws", component: EntidadComponent },
-    { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent }
+    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
+    { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard] },
+    { path: "entidad-littlepaws", component: EntidadComponent, canActivate : [authGuard] },
+    { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent, canActivate : [authGuard] }
 ];
 

@@ -32,11 +32,17 @@ export class RegisterService {
   login(loginRequest: { email: string; password: string }): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.url}login/`, loginRequest).pipe(
       tap((response) => {
+        const expirationTime = 5 * 60 * 1000;  
+        const now = new Date().getTime();
+
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('user_id', response.id_user.toString());
         localStorage.setItem('username', response.name);
         localStorage.setItem('lastname', response.lastName);
         localStorage.setItem('email', response.email);
+        localStorage.setItem('tokenExpiration', (now + expirationTime).toString()); 
+        
+        console.log('Token guardado:', response.access_token); 
       }),
       catchError((error) => {
         console.error('Error en login:', error);
@@ -44,6 +50,8 @@ export class RegisterService {
       })
     );
   }
+  
+  
 
   getAuthToken() {
     return localStorage.getItem('access_token') || ''; 
@@ -65,6 +73,15 @@ export class RegisterService {
       );
   }
 
+  isTokenExpired(): boolean {
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
+    if (tokenExpiration) {
+      const currentTime = new Date().getTime();
+      return currentTime > parseInt(tokenExpiration);
+    }
+    return true;
+  }
+  
   logout() {
     sessionStorage.clear();
     localStorage.clear();

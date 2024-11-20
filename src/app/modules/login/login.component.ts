@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services/register/register.service';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -13,19 +13,30 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   passwordVisible: boolean = false;
   modalMessage: string = '';
 
-  constructor(private router: Router, private registerService: RegisterService) {
-    const token = sessionStorage.getItem('access_token');
+  constructor(private router: Router, private registerService: RegisterService) {}
+
+  ngOnInit() {
+    localStorage.clear();
+    sessionStorage.clear();
+
+    const token = sessionStorage.getItem('access_token') || localStorage.getItem('access_token');
     if (token) {
-      this.registerService.validateToken().subscribe((isValid) => {
-        if (!isValid) {
-          this.registerService.logout();
-          this.router.navigate(['/home']);
-        }
-      });
+      this.checkTokenExpiration();
+    }
+  }
+
+  checkTokenExpiration() {
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
+    if (tokenExpiration) {
+      const currentTime = new Date().getTime();
+      if (currentTime > parseInt(tokenExpiration)) {
+        this.registerService.logout();
+        this.router.navigate(['/login']);
+      }
     }
   }
 
@@ -46,11 +57,15 @@ export class LoginComponent {
 
     this.registerService.login({ email, password }).subscribe(
       (response) => {
+        const expirationTime = 1 * 60 * 1000; 
+        const now = new Date().getTime();
+
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('user_id', String(response.id_user));
         localStorage.setItem('username', response.name);
         localStorage.setItem('lastname', response.lastName);
         localStorage.setItem('email', response.email);
+        localStorage.setItem('tokenExpiration', (now + expirationTime).toString()); 
 
         this.router.navigate(['/home']);
       },
