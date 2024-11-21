@@ -297,6 +297,17 @@
   background-color: #00c1d4;
 }
 
+.agregar-imagenes-btn {
+  background-color: #00c1d4;
+  border: none;
+  width: 100% ;
+  height: 50px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .hamburger-menu {
       display: block;

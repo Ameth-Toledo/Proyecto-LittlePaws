@@ -30,6 +30,7 @@ export class RegistrarVeterinariaComponent {
   };
   entidadForm: FormGroup;
   selectedFile: File | null = null;
+  fileName: any;
 
   constructor(
     private router: Router,
@@ -54,16 +55,20 @@ export class RegistrarVeterinariaComponent {
 
     console.log('ID de usuario cargado desde localStorage:', parsedUserId);
   }
-
-  handleFileInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input?.files?.[0]) {
-      this.selectedFile = input.files[0];
-      console.log('Archivo seleccionado:', this.selectedFile.name);
-    } else {
-      console.log('No se seleccionó ningún archivo.');
-    }
+  triggerFileInput(): void {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (file) {
+        this.fileName = file.name;
+        this.selectedFile = file;
+      }
+    };
+    fileInput.click();
   }
+
 
   enviarRefugio(): void {
     console.log('Estado del formulario:', this.entidadForm.valid);

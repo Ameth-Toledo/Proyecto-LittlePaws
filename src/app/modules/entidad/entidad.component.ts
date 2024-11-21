@@ -109,7 +109,7 @@ export class EntidadComponent {
     entity_id: null
   };
 
-  onSubmit() {
+  onSubmit(mascotaForm: any) {
     const formData = new FormData();
     formData.append('name', this.mascota.name);
     formData.append('race', this.mascota.race);

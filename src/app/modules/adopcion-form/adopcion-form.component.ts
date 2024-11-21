@@ -53,8 +53,8 @@ export class AdopcionFormComponent {
     fileInput.onchange = (event: any) => {
       const file = event.target.files[0];
       if (file) {
-        this.selectedFile = file;  // Save the selected file
-        this.fileName = file.name; // Set the file name for display
+        this.selectedFile = file;  
+        this.fileName = file.name;
       }
     };
     fileInput.click();

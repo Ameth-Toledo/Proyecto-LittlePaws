@@ -94,17 +94,17 @@
           <option value="mediano">mediano</option>
           <option value="grande">grande</option>
         </select>
-    
-        <div class="button-group">
-          <button type="button" class="agregar-denuncia-btn" (click)="triggerFileInput()">
-            <i class="fas fa-plus"></i> Agregar Imágenes
-          </button>
-          <!-- Este input será activado por el botón 'Agregar Imágenes' -->
-          <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
-        </div>
-    
+  
         <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
         <input type="number" id="entity_id" name="entity_id" [(ngModel)]="mascota.entity_id" required class="input-field" />
+
+        
+        <div class="button-group">
+        <button type="button" class="agregar-imagenes-btn" (click)="triggerFileInput()">
+          <i class="fas fa-plus"></i> Agregar Imágenes
+        </button>
+        <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
+      </div>
     
         <button type="submit" [disabled]="mascotaForm.invalid" class="btn-enviar-registro">Enviar datos</button>
       </div>

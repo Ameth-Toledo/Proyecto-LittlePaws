@@ -163,6 +163,21 @@
     color: #fff;
   }
   
+  .btn-cambiar-estado {
+    background-color: #00BFFF;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .btn-cambiar-estado:hover {
+    background-color: #037297;
+  }
+
   @media (max-width: 768px) {
     .card-denuncia {
       width: 90%;
