@@ -6,10 +6,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
 import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
-import { MascotasService } from '../../services/mascotas/mascotas.service'; // Make sure to import the service
+import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { PetsResponse } from '../../models/pets';
 
-// Modelo del mensaje
+
 interface Message {
   senderName: string;
   userImage: string;
@@ -109,7 +109,7 @@ export class EntidadComponent {
     entity_id: null
   };
 
-  onSubmit(mascotaForm: NgForm) {
+  onSubmit() {
     const formData = new FormData();
     formData.append('name', this.mascota.name);
     formData.append('race', this.mascota.race);
@@ -119,46 +119,41 @@ export class EntidadComponent {
     formData.append('weight', this.mascota.weight.toString());
     formData.append('size', this.mascota.size);
     formData.append('entity_id', this.mascota.entity_id.toString());
-  
-    // Agregar el archivo si se seleccionó
+
     if (this.mascota.file) {
       formData.append('file', this.mascota.file, this.mascota.file.name);
     }
-  
-    // Llamar al servicio para enviar la solicitud al backend
+
     this.mascotasService.createMascota(formData).subscribe(
       (response: PetsResponse) => {
         console.log('Mascota creada:', response);
-        this.imageUrl = response.image; // Mostrar la imagen subida
+        this.imageUrl = response.image; 
         alert('Mascota creada exitosamente!');
       },
       (error: any) => {
         console.error('Error al crear la mascota:', error);
         
-        // Verifica si el error tiene detalles específicos
         if (error.error && error.error.detail) {
-          console.log('Detalles del error:', error.error.detail); // Mostrar detalles
+          console.log('Detalles del error:', error.error.detail); 
           alert(`Error al crear la mascota: ${error.error.detail.join(', ')}`);
         } else if (error.status && error.status === 400) {
-          // En caso de error de validación o parámetros incorrectos
           alert('Datos inválidos, por favor revisa la información ingresada.');
         } else {
-          // Si no se obtiene un mensaje claro, muestra un mensaje genérico
           alert('Hubo un problema al crear la mascota. Intenta nuevamente más tarde.');
         }
       }
     );
   }
   
-  // Método para manejar el cambio de archivo
+  
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.mascota.file = file; // Usar 'mascota.file' aquí
+      this.mascota.file = file;
     }
   }
   triggerFileInput() {
-    document.getElementById('file')?.click();  // Abre el input de archivo
+    document.getElementById('file')?.click(); 
   }
 
   enviarDenuncias(event: Event) {
