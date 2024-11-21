@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import { IndicesAbandonoComponent } from "../../components/indices-abandono/indices-abandono.component";
 import { Router } from '@angular/router';
 import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 import { CommonModule } from '@angular/common';
@@ -10,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, IndicesAbandonoComponent, ChatbotComponent],
+  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, ChatbotComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

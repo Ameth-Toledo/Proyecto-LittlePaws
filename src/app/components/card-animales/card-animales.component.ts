@@ -22,6 +22,6 @@ export class CardAnimalesComponent {
 
   enviarAdopcio(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/adopciones']);
+    this.router.navigate(['/form-adoption']);
   }
 }

@@ -60,6 +60,6 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('session');
     this.isUserLoggedIn = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 }

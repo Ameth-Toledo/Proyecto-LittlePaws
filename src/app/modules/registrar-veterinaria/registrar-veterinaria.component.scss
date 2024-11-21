@@ -1,93 +1,93 @@
 .welcome-tittle {
-  font-family: 'Poppins', sans-serif;
-  color: #FFFFFF;
-  text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 .form-veterinaria-register {
-  width: 100%;
-  max-width: 1200px; 
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 8px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 8px;
 }
 
 .label-form {
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 12px; 
-  display: block;
-  color: #00E8F8;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 12px; 
+    display: block;
+    color: #00E8F8;
 }
 
 .input-field {
-  width: 100%;
-  padding: 14px; 
-  margin-bottom: 25px; 
-  background-color: #3A4754;
-  border: 1px solid #00E8F8;
-  border-radius: 5px;
-  color: white;
-  font-size: 14px;
+    width: 100%;
+    padding: 14px; 
+    margin-bottom: 25px; 
+    background-color: #3A4754;
+    border: 1px solid #00E8F8;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
 }
 
 .input-field:focus {
-  border-color: #00E8F8;
-  outline: none;
+    border-color: #00E8F8;
+    outline: none;
 }
 
 .btn-enviar-registro {
-  background-color: #00E8F8;
-  color: #1F252E;
-  border: none;
-  padding: 18px; 
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  width: 212%;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    background-color: #00E8F8;
+    color: #1F252E;
+    border: none;
+    padding: 18px; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    width: 212%;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-enviar-registro:hover {
-  background-color: #009DAF;
+    background-color: #009DAF;
 }
 
 .form-veterinaria-register form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
 }
 
 .form-left, .form-right {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 768px) {
-  .form-veterinaria-register form {
-      grid-template-columns: 1fr; 
-      gap: 20px; 
-  }
+    .form-veterinaria-register form {
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+    }
 
-  .form-left, .form-right {
-      width: 100%;
-  }
+    .form-left, .form-right {
+        width: 100%;
+    }
 
-  .welcome-tittle {
-      font-size: 14px;
-  }
+    .welcome-tittle {
+        font-size: 14px;
+    }
 
-  .input-field {
-      width: 95%;
-  }
+    .input-field {
+        width: 95%;
+    }
 
-  .btn-enviar-registro {
-      width: 100%;
-  }
+    .btn-enviar-registro {
+        width: 100%;
+    }
 
-  .form-veterinaria-register {
-      max-width: 430px;
-  }
+    .form-veterinaria-register {
+        max-width: 430px;
+    }
 }

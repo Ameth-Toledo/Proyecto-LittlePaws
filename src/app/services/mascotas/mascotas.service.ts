@@ -38,13 +38,10 @@ export class MascotasService {
     );
   }
 
-  createMascota(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.url}/`, formData, {
-      headers: this.getHeaders() 
-    }).pipe(
-      catchError(this.handleError)
-    );
+  createMascota(formData: FormData): Observable<PetsResponse> {
+    return this.http.post<PetsResponse>(this.url, formData);
   }
+
 
   updateMascota(id: number, formData: FormData): Observable<any> {
     return this.http.put<any>(`${this.url}/${id}/`, formData, {

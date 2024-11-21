@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
     this.registerService.login({ email, password }).subscribe(
       (response) => {
-        const expirationTime = 3 * 60 * 1000; 
+        const expirationTime = 30 * 60 * 1000; 
         const now = new Date().getTime();
 
         localStorage.setItem('access_token', response.access_token);

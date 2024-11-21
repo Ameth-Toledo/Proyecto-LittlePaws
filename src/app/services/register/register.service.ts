@@ -32,7 +32,7 @@ export class RegisterService {
   login(loginRequest: { email: string; password: string }): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.url}login/`, loginRequest).pipe(
       tap((response) => {
-        const expirationTime = 3 * 60 * 1000;  
+        const expirationTime = 30 * 60 * 1000;  
         const now = new Date().getTime();
 
         localStorage.setItem('access_token', response.access_token);
@@ -49,9 +49,10 @@ export class RegisterService {
         throw error;
       })
     );
-  }
   
-  
+}
+
+
 
   getAuthToken() {
     return localStorage.getItem('access_token') || ''; 
