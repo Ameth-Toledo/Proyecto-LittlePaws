@@ -8,7 +8,6 @@ export interface Users {
 }
 
 export interface LoginResponse {
- 
     id : number;
     username : string;
     lastname:string;

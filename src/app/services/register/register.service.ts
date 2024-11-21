@@ -16,12 +16,12 @@ export class RegisterService {
     const token = localStorage.getItem('access_token') || '';
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`  // Corregido: Usa backticks ` para plantilla de cadena
+      'Authorization': `Bearer ${token}`  
     });
   }
 
   getUser(): Observable<Users[]> {
-    const urlApi = `${this.url}/listUsers/`;  // Corregido: Usa backticks ` para plantilla de cadena
+    const urlApi = `${this.url}/listUsers/`;  
     console.log(urlApi);
     return this.http.get<Users[]>(urlApi, { headers: this.getHeaders() });
   }
@@ -47,10 +47,7 @@ export class RegisterService {
         throw error; 
       })
     );
-  
-}
-
-
+  }
 
   getAuthToken() {
     return localStorage.getItem('access_token') || ''; 

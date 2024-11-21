@@ -75,7 +75,6 @@ export class LoginComponent {
     modal.style.display = 'none'; 
   }
 
-  //metodo nuevo pa limpiar el local
   logout() {
     localStorage.removeItem('session');
     this.router.navigate(['/login'])

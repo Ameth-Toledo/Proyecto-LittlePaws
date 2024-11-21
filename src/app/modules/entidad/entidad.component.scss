@@ -39,8 +39,7 @@
 .denuncias-modal-entidad,
 .agregar-mascotas-modal,
 .ver-mascotas-modal {
-  background-color: #FFFFFF;
-  width: 85%;
+  width: 100%;
   margin: 10px 0;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -186,6 +185,8 @@
 .message-content {
   margin-bottom: 10px;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
 }
 
 .message-reply {
@@ -204,12 +205,24 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.message-response {
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+}
+
+.response-header {
+  font-family: 'Poppins', sans-serif;
+  color: #00C4D8;
+}
+
 .btn-send {
   align-self: flex-end;
   background-color: #00E8F8;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   border: none;
   padding: 10px 20px;
-  color: #fff;
+  color: #000000;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -218,8 +231,71 @@
 
 .btn-send:hover {
   background-color: #034c52;
+  color: #FFFFFF;
+}
+/**/
+.form-veterinaria-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
 }
 
+.form-veterinaria-register form {
+  width: 100%;
+}
+
+.form-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-form {
+  color: #00E8F8;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-field {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #00E8F8;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #00E8F8;
+  background-color: #e0f7fa;
+  color: #000000;
+}
+
+.btn-enviar-registro {
+  padding: 10px 20px;
+  background-color: #00E8F8;
+  color: #000000;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-enviar-registro:hover {
+  background-color: #00c1d4;
+}
 
 @media (max-width: 768px) {
   .hamburger-menu {
