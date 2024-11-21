@@ -1,0 +1,103 @@
+<div class="card-animales">
+    <img [src]="imgSrc" alt="img-animales" class="image-animales" />
+    <div class="info-animales">
+      <div class="header-animales">
+        <h1 class="name-animales">{{ name }}</h1>
+        <div class="icons-actions">
+          <!-- Al hacer clic, se abre la modal -->
+          <i class="fas fa-edit edit-icon" (click)="toggleModal()"></i>
+          <i class="fas fa-trash-alt delete-icon"></i>
+        </div>
+      </div>
+      <h2 class="raza">
+        <i class="fas fa-dog"></i> Nombre: {{ namaPet }}
+      </h2>
+      <h2 class="refugio">
+        <i class="fas fa-plus-circle"></i> Refugio: {{ refugio }}
+      </h2>
+      <h2 class="edad">
+        <i class="fas fa-paw"></i> Edad: {{ edad }}
+      </h2>
+      <h2 class="raza">
+        <i class="fas fa-certificate"></i> Raza: {{ raza }}
+      </h2>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="agregar-mascotas-modal" *ngIf="showModal">
+    <div class="form-veterinaria-register">
+      <form (ngSubmit) = "onSubmit()">
+        <div class="form-left">
+          <label for="name" class="label-form">Ingrese el nombre de la mascota</label>
+          <input type="text" id="name" name="name" required class="input-field" />
+  
+          <label for="race" class="label-form">Ingrese la raza de la mascota</label>
+          <input type="text" id="race" name="race" required class="input-field" />
+  
+          <label for="age" class="label-form">Ingrese la edad de la mascota</label>
+          <input type="number" id="age" name="age" required class="input-field" />
+  
+          <label for="gender" class="label-form">Seleccione el género de la mascota</label>
+          <select id="gender" name="gender" required class="input-field-select">
+            <option value="macho">macho</option>
+            <option value="hembra">hembra</option>
+          </select>
+  
+          <label for="species" class="label-form">Seleccione la especie de la mascota</label>
+          <select id="species" name="species" required class="input-field-select">
+            <option value="perro">perro</option>
+            <option value="gato">gato</option>
+            <option value="otro">otro</option>
+          </select>
+  
+          <label for="weight" class="label-form">Ingrese el peso de la mascota (en kg)</label>
+          <input type="number" id="weight" name="weight" required class="input-field" />
+  
+          <label for="size" class="label-form">Seleccione el tamaño de la mascota</label>
+          <select id="size" name="size" required class="input-field-select">
+            <option value="pequeño">pequeño</option>
+            <option value="mediano">mediano</option>
+            <option value="grande">grande</option>
+          </select>
+  
+          <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
+          <input type="number" id="entity_id" name="entity_id" required class="input-field" />
+  
+          <div class="button-group">
+            <button type="button" class="agregar-imagenes-btn">
+              <i class="fas fa-plus"></i> Agregar Imágenes
+            </button>
+            <input type="file" id="file" hidden />
+          </div>
+  
+          <button type="submit" class="btn-enviar-registro">Enviar datos</button>
+          <button type="button" class="btn-cerrar-modal" (click)="toggleModal()">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="modal-advertencias" *ngIf="showWarningModal">
+    <div class="warning-content">
+      <i class="fas fa-exclamation-triangle warning-icon"></i>
+      <h1 class="tittle-modal-advertencia">LittlePaws</h1>
+      <h2 class="messaje-modal-advertencia">
+        Si sales sin confirmar los datos no se guardarán correctamente.
+      </h2>
+      <div class="warning-buttons">
+        <button (click)="closeWarningModal(true)" class="btn-confirm">Cerrar de todos modos</button>
+        <button (click)="closeWarningModal(false)" class="btn-cancel">Volver</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de éxito -->
+<div class="modal-exito" *ngIf="showSuccessModal">
+    <div class="success-content">
+      <i class="fas fa-check-circle success-icon"></i>
+      <h2 class="success-message">¡Datos enviados correctamente!</h2>
+      <button class="btn-close-modal" (click)="closeSuccessModal()">Cerrar</button>
+    </div>
+  </div>
+  

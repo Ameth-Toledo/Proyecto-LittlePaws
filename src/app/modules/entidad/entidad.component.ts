@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
-import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { PetsResponse } from '../../models/pets';
+import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
 
 
 interface Message {
@@ -21,7 +21,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })

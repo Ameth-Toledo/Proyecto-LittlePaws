@@ -30,6 +30,6 @@ export const routes: Routes = [
     { path: "form-adoption", component: AdopcionFormComponent, canActivate : [authGuard] },
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
     { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard] },
-    { path: "entidad-littlepaws", component: EntidadComponent, canActivate : [authGuard] },
+    { path: "entidad-littlepaws", component: EntidadComponent },
     { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent, canActivate : [authGuard] }
 ];
