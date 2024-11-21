@@ -5,3 +5,46 @@
     gap: 0px; 
     padding: 20px;
 }
+
+.registrar-vet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-title {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.btn-register {
+    width: 300px;
+    height: 50px;
+    background-color: #00BFFF;
+    border: none;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    border-radius: 10px;
+    margin-top: 10px; 
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    background-color: #0389b6;
+}
+
+@media (max-width : 768px) {
+    .register-title {
+        font-size: 20px;
+    }
+
+    .btn-register {
+        width: 200px;
+        height: 40px;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}

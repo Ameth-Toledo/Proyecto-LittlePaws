@@ -14,6 +14,8 @@ export class CardDenunciasComponent {
   @Input() descripcion!: string;
   @Input() imagenes!: string[]; 
 
+  estado : string  = 'Pendiente';
+
   modalVisible = false;  
   imagenCompletaVisible = false;
   imagenSeleccionada : string | null = null;
@@ -30,5 +32,9 @@ export class CardDenunciasComponent {
   cerrarImagenCompleta() {
     this.imagenCompletaVisible = false;
     this.imagenSeleccionada = null;
+  }
+
+  cambiarEstado() {
+    this.estado = this.estado === 'Pendiente' ? 'Revisado' : 'Pendiente';
   }
 }

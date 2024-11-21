@@ -144,6 +144,24 @@
     border-radius: 8px;
     border: 2px solid #ddd;
   }
+
+  /* Estilo para la clase de estado */
+  .estado {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .estado.Pendiente {
+    background-color: #ffcc00;  /* Amarillo */
+    color: #333;
+  }
+
+  .estado.Revisado {
+    background-color: #28a745;  /* Verde */
+    color: #fff;
+  }
   
   @media (max-width: 768px) {
     .card-denuncia {

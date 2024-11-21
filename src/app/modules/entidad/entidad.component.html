@@ -13,17 +13,20 @@
       <li class="side-bar-item" (click)="openModal('Bandeja')">
         <i class="fas fa-inbox"></i> Bandeja
       </li>
-      <li class="side-bar-item" (click)="enviarDenuncias($event)">
+      <li class="side-bar-item" (click)="openModalDenuncias('Denuncias')">
         <i class="fas fa-exclamation-circle"></i> Denuncias
       </li>
-      <li class="side-bar-item"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
-      <li class="side-bar-item"><i class="fas fa-eye"></i> Ver Mascotas</li>
+      <li class="side-bar-item" (click)="openModalAdd('Agregar')"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
+      <li class="side-bar-item" (click)="openModalView('Ver')"><i class="fas fa-eye"></i> Ver Mascotas</li>
       <li class="side-bar-item"><i class="fas fa-edit"></i> Editar Mascotas</li>
       <li class="side-bar-item"><i class="fas fa-trash-alt"></i> Eliminar Mascotas</li>
     </ul>
   </div>
 
+
   <div class="modal-content">
+
+    <!--modal mensajess-->
     <div class="bandeja-entidad-modal" *ngIf="isModalOpen && activeModal === 'Bandeja'">
         <h1 class="tittle-entidad-section">LittlePaws - Mensajería</h1>
         
@@ -53,12 +56,70 @@
     </div>
 
     <div class="denuncias-modal-entidad" *ngIf="isModalOpen && activeModal === 'Denuncias'">
+      <app-card-denuncias/>
     </div>
 
+    <!--modal add mascotassss-->
     <div class="agregar-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Agregar'">
+      <div class="form-veterinaria-register">
+        <form action="">
+          <div class="form-left">
+            <label for="refugio-name" class="label-form">Ingrese el nombre del refugio</label>
+            <input type="text" id="refugio-name" name="name" required class="input-field" />
+      
+            <label for="refugio-phone" class="label-form">Ingrese el número de teléfono del refugio</label>
+            <input type="text" id="refugio-phone" name="phone" required class="input-field" />
+      
+            <label for="refugio-email" class="label-form">Ingrese el email del refugio</label>
+            <input type="email" id="refugio-email" name="email" required class="input-field"/>
+      
+            <label for="refugio-address" class="label-form">Ingrese la dirección del refugio</label>
+            <input type="text" id="refugio-address" name="address" required class="input-field"/>
+      
+            <label for="refugio-hours" class="label-form">Ingrese el horario de atención del refugio</label>
+            <input type="text" id="refugio-hours" name="hours" required class="input-field"/>
+            
+            <label for="refugio-location" class="label-form">Ingrese la ubicación del refugio</label>
+            <input type="text" id="refugio-location" name="location" required class="input-field"/>
+
+            <button type="submit" class="btn-enviar-registro">Enviar datos</button>
+          </div>
+        </form>
+      </div>
     </div>
     
     <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
+      <app-card-animales
+        imgSrc="perros/perro02.jpg"
+        title="Pepito"
+        namaPet="Pepito"
+        refugio="Albania"
+        edad="2 años"
+        raza="desconocido"/>
+
+        <app-card-animales
+        imgSrc="perros/perro02.jpg"
+        title="Pepito"
+        namaPet="Pepito"
+        refugio="Albania"
+        edad="2 años"
+        raza="desconocido"/>
+
+        <app-card-animales
+        imgSrc="perros/perro02.jpg"
+        title="Pepito"
+        namaPet="Pepito"
+        refugio="Albania"
+        edad="2 años"
+        raza="desconocido"/>
+
+        <app-card-animales
+        imgSrc="perros/perro02.jpg"
+        title="Pepito"
+        namaPet="Pepito"
+        refugio="Albania"
+        edad="2 años"
+        raza="desconocido"/>
     </div>
   </div>
 </div>

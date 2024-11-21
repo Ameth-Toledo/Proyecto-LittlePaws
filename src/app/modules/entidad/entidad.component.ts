@@ -4,7 +4,10 @@ import { HeaderEntidadComponent } from "../../components/header-entidad/header-e
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
+import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 
+//modelo del mensaje
 interface Message {
   senderName: string;
   userImage: string;
@@ -16,7 +19,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesComponent],
   templateUrl: './entidad.component.html',
   styleUrl: './entidad.component.scss'
 })
@@ -64,6 +67,21 @@ export class EntidadComponent {
   }
 
   openModal(section: string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
+  }
+
+  openModalDenuncias(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true
+  }
+
+  openModalAdd(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
+  }
+
+  openModalView(section : string) {
     this.activeModal = section;
     this.isModalOpen = true;
   }

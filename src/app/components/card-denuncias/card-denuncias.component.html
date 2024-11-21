@@ -1,6 +1,8 @@
 <div class="card-denuncia">
   <div class="card-header">
     <h3 class="card-title">Denuncia de {{ nombre }}</h3>
+    <!-- Mostrar el estado actual -->
+    <span class="estado" [ngClass]="estado">{{ estado }}</span>
   </div>
 
   <div class="card-body">
@@ -26,6 +28,11 @@
         <span>+{{ imagenes.length - 3 }}</span>
       </div>
     </div>
+  </div>
+
+  <!-- Botón para cambiar el estado -->
+  <div class="card-footer">
+    <button (click)="cambiarEstado()">Cambiar Estado</button>
   </div>
 
   <!-- Modal para mostrar las imágenes adicionales -->
