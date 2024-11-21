@@ -17,7 +17,7 @@ export class DenunciasService {
       throw new Error('Token no encontrado');
     }
     return new HttpHeaders({
-      Authorization: `Bearer ${token}`,  // El tipo de contenido no es necesario con FormData
+      Authorization: `Bearer ${token}`, 
     });
   }
 
@@ -67,7 +67,7 @@ export class DenunciasService {
   private handleError(error: any) {
     let errorMessage = 'Ha ocurrido un error';
     if (error.error && error.error.detail) {
-      errorMessage = error.error.detail; // Asumiendo que el backend envía un detalle del error
+      errorMessage = error.error.detail; 
     }
     console.error('Error en la solicitud:', errorMessage);
     return throwError(() => new Error(errorMessage));

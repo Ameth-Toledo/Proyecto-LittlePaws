@@ -4,29 +4,29 @@ import { RegisterService } from '../../services/register/register.service';
 import { inject } from '@angular/core';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(RegisterService); // Inyecta el servicio de autenticación
-  const router = inject(Router); // Inyecta el servicio de router
+  const authService = inject(RegisterService); 
+  const router = inject(Router); 
 
-  const token = authService.getAuthToken(); // Obtiene el token
+  const token = authService.getAuthToken(); 
 
-  console.log('Token recibido en guard:', token);  // Muestra el token recibido
+  console.log('Token recibido en guard:', token); 
 
   if (token) {
-    const tokenExpirado = authService.isTokenExpired(); // Verifica si el token ha expirado
+    const tokenExpirado = authService.isTokenExpired(); 
     
     if (tokenExpirado) {
       console.log('El token ha expirado.');
-      authService.logout(); // Si el token ha expirado, hace logout
-      router.navigate(['/login']); // Redirige al login
-      return false; // Evita el acceso a la ruta protegida
+      authService.logout();
+      router.navigate(['/login'], { replaceUrl: true });
+      return false; 
     }
 
     console.log('Token válido, acceso permitido.');
-    return true; // Si el token es válido y no ha expirado, permite el acceso
+    return true; 
   } else {
     console.log('No se encontró token, redirigiendo al login.');
-    router.navigate(['/login']); // Si no hay token, redirige al login
-    return false; // Evita el acceso a la ruta protegida
+    router.navigate(['/login'], { replaceUrl: true });
+    return false; 
   }
 };
 
