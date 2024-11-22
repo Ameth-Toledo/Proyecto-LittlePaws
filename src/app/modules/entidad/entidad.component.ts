@@ -8,6 +8,7 @@ import { CardDenunciasComponent } from "../../components/card-denuncias/card-den
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { PetsResponse } from '../../models/pets';
 import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
+import { CardMascotasExtraviadosComponent } from "../../components/card-mascotas-extraviados/card-mascotas-extraviados.component";
 
 
 interface Message {
@@ -21,7 +22,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })
@@ -88,6 +89,11 @@ export class EntidadComponent {
   }
 
   openModalView(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
+  }
+
+  openModalExtraviadas(section : string) {
     this.activeModal = section;
     this.isModalOpen = true;
   }
@@ -162,4 +168,7 @@ export class EntidadComponent {
     this.isSidebarOpen = false;
   }
 
+  enviar() {
+
+  }
 }

@@ -48,6 +48,11 @@ export class HeaderComponent {
     this.router.navigate(['/denuncias']);
   }
 
+  enviarExtraviadas(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/mascotas-extraviadas']);
+  }
+
   isRouteActive(route : string): boolean {
     return this.router.url === route;
   }

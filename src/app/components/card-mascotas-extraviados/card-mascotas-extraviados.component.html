@@ -1,0 +1,42 @@
+<div class="card-animales">
+    <img [src]="imgSrc" alt="img-animales" class="image-animales" />
+    <div class="info-animales">
+      <div class="header-info">
+        <h1 class="name-animales">{{ name }}</h1>
+        <span class="estado" [ngClass]="estado">{{ estado }}</span>
+      </div>
+      <h2 class="raza">
+        <i class="fas fa-dog"></i> <div class="color">Nombre: </div> {{ namePet }}
+      </h2>
+      <h2 class="edad">
+        <i class="fas fa-paw"></i> Edad: {{ edad }}
+      </h2>
+      <h2 class="raza">
+        <i class="fas fa-certificate"></i> Raza: {{ raza }}
+      </h2>
+      <h2 class="sexo">
+        <i class="fas fa-venus-mars"></i> Sexo: {{ sexo }}
+      </h2>
+      <h2 class="especie">
+        <i class="fas fa-paw"></i> Especie: {{ especie }}
+      </h2>
+      <h2 class="telefono">
+        <i class="fas fa-phone-alt"></i> Teléfono: {{ telefono }}
+      </h2>
+      <h2 class="direccion">
+        <i class="fas fa-map-marker-alt"></i> Dirección: {{ direccion }}
+      </h2>
+      <h2 class="fecha-extravio">
+        <i class="fas fa-calendar-day"></i> Fecha de extravío: {{ fecha_extravio }}
+      </h2>
+      <h2 class="fecha-publicacion">
+        <i class="fas fa-calendar"></i> Publicación: {{ fecha_publicacion }}
+      </h2>
+      <p class="descripcion">{{ descripciom }}</p>
+  
+      <!-- Card Footer -->
+      <div class="card-footer">
+        <button (click)="cambiarEstado()" class="btn-cambiar-estado">Cambiar Estado</button>
+      </div>
+    </div>
+</div>

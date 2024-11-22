@@ -14,6 +14,7 @@ import { AdopcionFormComponent } from './modules/adopcion-form/adopcion-form.com
 import { TemplateVeterinariaComponent } from './modules/template-veterinaria/template-veterinaria.component';
 import { authGuard } from './Guard/authGuard/auth.guard';
 import { DenunciasFormComponent} from './modules/denuncias-form/denuncias-form.component';
+import { MascotasExtraviadasComponent } from './modules/mascotas-extraviadas/mascotas-extraviadas.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -31,5 +32,6 @@ export const routes: Routes = [
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
     { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard] },
     { path: "entidad-littlepaws", component: EntidadComponent },
-    { path: "perfil-refugio/:name", component:TemplateVeterinariaComponent, canActivate : [authGuard] }
+    { path: "perfil-refugio/:name", component: TemplateVeterinariaComponent, canActivate : [authGuard] },
+    { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, /*canActivate : [authGuard]*/ }
 ];

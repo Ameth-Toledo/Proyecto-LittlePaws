@@ -18,6 +18,7 @@
       </li>
       <li class="side-bar-item" (click)="openModalAdd('Agregar')"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
       <li class="side-bar-item" (click)="openModalView('Ver')"><i class="fas fa-eye"></i> Ver Mascotas</li>
+      <li class="side-bar-item" (click)="openModalExtraviadas('Extraviadas')"><i class="fas fa-paw"></i>Mascotas Extraviadas</li>
     </ul>
   </div>
 
@@ -109,16 +110,31 @@
     </form>
   </div>
 </div>
-
-    
     <!-- Ver Mascotas Modal -->
     <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
       <app-card-animales-entidad
+      name="Pepito"
       imgSrc="perros/perro02.jpg"
       namaPet="Pepito"
       refugio="Albania"
       edad="2 años"
       raza="desconocido" />
+    </div>
+
+    <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
+      <app-card-mascotas-extraviados
+        name="Gonsa"
+        namePet="Gonsa"
+        imgSrc="perros/perro07.jpeg"
+        edad="2 años"
+        raza="desconocido"
+        sexo="Macho"
+        especie="desconocido"
+        telefono="961-000-0000"
+        direccion="Pacu-Suchiapa"
+        fecha_extravio="22 Julio 2024"
+        fecha_publicacion="21 Noviembre 2024"
+        />
     </div>
   </div>
 </div>
