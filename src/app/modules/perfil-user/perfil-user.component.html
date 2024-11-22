@@ -1,0 +1,25 @@
+<app-header class="app-header"></app-header>
+
+<section class="user-profile">
+  <header class="profile-header">
+    <h1 class="profile-name">Hola, {{ nameUser }}!</h1>
+    <p class="profile-email">Email: {{ emailUser }}</p>
+  </header>
+
+  <nav class="profile-actions">
+    <button class="action-button add-complaint" aria-label="Agregar denuncia">
+      <i class="fas fa-plus"></i>
+      <span>Agregar Denuncia</span>
+    </button>
+    <button class="action-button edit-profile" aria-label="Editar perfil">
+      <i class="fas fa-cog"></i>
+      <span>Editar Perfil</span>
+    </button>
+    <button class="action-button messages" aria-label="Mensajes">
+      <i class="fas fa-envelope"></i>
+      <span>Mensajes</span>
+    </button>
+  </nav>
+</section>
+
+<app-footer class="app-footer"></app-footer>

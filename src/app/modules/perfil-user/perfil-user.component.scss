@@ -1,0 +1,61 @@
+.user-profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #2c3e50;
+  border-radius: 12px;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile-name {
+  font-family: 'Poppins', sans-serif;
+  color: #f1c40f;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-email {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #f1c40f;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-button i {
+  font-size: 1.2rem;
+}
+
+.action-button:hover {
+  background-color: #ffffff;
+  color: #2c3e50;
+  border-color: #ffffff;
+}
