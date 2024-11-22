@@ -115,8 +115,7 @@ export class AdopcionFormComponent implements OnInit {
   
     const formData = new FormData();
     Object.entries(this.adopcionForm.value).forEach(([key, value]) => {
-      // Asegúrate de agregar los campos de id_mascota y id_entidad aunque no estén en el HTML
-      if (key === 'id_mascota' || key === 'id_entidad') {
+        if (key === 'id_mascota' || key === 'id_entidad') {
         formData.append(key, value as string);
       } else {
         formData.append(key, value as string);
@@ -124,7 +123,7 @@ export class AdopcionFormComponent implements OnInit {
     });
   
     if (this.selectedFile) {
-      formData.append('file', this.selectedFile, this.selectedFile.name); // Añadir el archivo seleccionado
+      formData.append('file', this.selectedFile, this.selectedFile.name); 
     }
   
     this.adopcionService.createAdopcion(formData).subscribe(
