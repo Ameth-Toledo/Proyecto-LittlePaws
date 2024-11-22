@@ -8,7 +8,8 @@ export interface PetsResponse {
     species: string;
     size: string;
     image: string;
-    entity_id: number;
+    entity_name: string
+    entity_id:number
     accepted: boolean;
 }
 export interface PetsRequest {

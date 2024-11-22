@@ -30,9 +30,8 @@ export class DenunciasFormComponent {
     this.adopcionForm = this.fb.group({
       id_usuario: [parsedUserId, Validators.required],
       motivo: ['', Validators.required],
-      id_institucion: [null, Validators.required],
       description: ['', Validators.required],
-      id_mascota: [null, Validators.required]
+
     });
   }
 

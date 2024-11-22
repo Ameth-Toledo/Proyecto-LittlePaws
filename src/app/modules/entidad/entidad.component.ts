@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { HeaderEntidadComponent } from "../../components/header-entidad/header-entidad.component";
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
 import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { MascotasService } from '../../services/mascotas/mascotas.service';
-import { PetsResponse } from '../../models/pets';
+import { PetsRequest, PetsResponse } from '../../models/pets';
 
 
 interface Message {
@@ -27,6 +27,7 @@ interface Message {
 })
 
 export class EntidadComponent {
+  @Input() mascotas!: PetsResponse[]; 
 
   isSidebarOpen = false;
   isModalOpen = false;
@@ -90,6 +91,7 @@ export class EntidadComponent {
   openModalView(section : string) {
     this.activeModal = section;
     this.isModalOpen = true;
+    this.view_mascotas() 
   }
 
   closeModal() {
@@ -125,7 +127,7 @@ export class EntidadComponent {
     }
 
     this.mascotasService.createMascota(formData).subscribe(
-      (response: PetsResponse) => {
+      (response: PetsRequest) => {
         console.log('Mascota creada:', response);
         this.imageUrl = response.image; 
         alert('Mascota creada exitosamente!');
@@ -143,6 +145,14 @@ export class EntidadComponent {
         }
       }
     );
+  }
+  
+
+  view_mascotas() {
+    this.mascotasService.getAllMascotas().subscribe((response: PetsResponse[]) => {
+      console.log(response);
+      this.mascotas = response; 
+    });
   }
   
   

@@ -48,26 +48,33 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     const email = (document.getElementById('email') as HTMLInputElement).value.trim();
     const password = (document.getElementById('password') as HTMLInputElement).value.trim();
-
+  
     if (!email || !password) {
       this.modalMessage = 'Debe llenar todos los campos.';
       this.mostrarModal();
       return;
     }
-
+  
     this.registerService.login({ email, password }).subscribe(
       (response) => {
         const expirationTime = 30 * 60 * 1000; 
         const now = new Date().getTime();
-
+        
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('user_id', String(response.id_user));
         localStorage.setItem('username', response.name);
         localStorage.setItem('lastname', response.lastName);
         localStorage.setItem('email', response.email);
-        localStorage.setItem('tokenExpiration', (now + expirationTime).toString()); 
-
-        this.router.navigate(['/home']);
+        localStorage.setItem('tokenExpiration', (now + expirationTime).toString());
+        localStorage.setItem('id_entidad', String(response.id_entidad))
+        
+        if (response.id_entidad) {
+          console.log('Redirecting to entidad-littlepaws');
+          this.router.navigate(['/entidad-littlepaws']);
+        } else {
+          console.log('Redirecting to home');
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         this.modalMessage = 'Credenciales inválidas. Por favor, intente de nuevo.';
@@ -75,7 +82,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
+  
   mostrarModal() {
     const modal = document.getElementById('errorModal');
     if (modal) modal.style.display = 'flex';

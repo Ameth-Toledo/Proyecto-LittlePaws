@@ -1,19 +1,31 @@
 <div class="card-animales">
     <img [src]="imgSrc" alt="img-animales" class="image-animales" />
     <div class="info-animales">
-        <h1 class="name-animales">{{ name }}</h1>
-        <h2 class="raza">
-            <i class="fas fa-dog"></i> Nombre: {{namaPet}}
-        </h2>
-        <h2 class="refugio">
-            <i class="fas fa-plus-circle"></i> Refugio: {{refugio}}
-        </h2>
-        <h2 class="edad">
-            <i class="fas fa-paw"></i> Edad:{{edad}}
-        </h2>
-        <h2 class="raza">
-            <i class="fas fa-certificate"></i> Raza: {{raza}}
-        </h2>
-        <button class="adop-btn" (click)="enviarAdopcio($event)">¡Adoptar!</button>
+      <h1 class="name-animales">{{ name }}</h1>
+      <h2 class="raza">
+        <i class="fas fa-dog"></i> Nombre: {{ namaPet }}
+      </h2>
+      <h2 class="refugio">
+        <i class="fas fa-plus-circle"></i> Refugio: {{ refugio }}
+      </h2>
+      <h2 class="edad">
+        <i class="fas fa-paw"></i> Edad: {{ edad }}
+      </h2>
+      <h2 class="raza">
+        <i class="fas fa-certificate"></i> Raza: {{ raza }}
+      </h2>
+  
+      <!-- Condicional para mostrar u ocultar los ID -->
+      <ng-container *ngIf="showIds">
+        <h3 class="id-mascota">
+          <i class="fas fa-id-badge"></i> ID Mascota: {{ idMascota }}
+        </h3>
+        <h3 class="entity-id">
+          <i class="fas fa-building"></i> ID Entidad: {{ entityId }}
+        </h3>
+      </ng-container>
+  
+      <button class="adop-btn" (click)="navigateToForm(idMascota, entityId)">¡Adoptar!</button>
     </div>
-</div>
+  </div>
+  
