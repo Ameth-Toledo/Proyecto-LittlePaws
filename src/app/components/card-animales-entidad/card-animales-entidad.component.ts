@@ -121,7 +121,6 @@ export class CardAnimalesEntidadComponent implements OnChanges {
       next: (response) => {
         console.log('Mascota actualizada correctamente:', response);
   
-        // Agrega un parámetro único a la URL de la imagen
         const updatedImageSrc = `${response.imgSrc}?t=${new Date().getTime()}`;
   
         const updatedPet = {
@@ -131,7 +130,7 @@ export class CardAnimalesEntidadComponent implements OnChanges {
           age: this.petData.age,
           size: this.petData.size,
           gender: this.petData.gender,
-          imgSrc: updatedImageSrc, // Usa la URL actualizada
+          imgSrc: updatedImageSrc, 
         };
   
         this.petUpdated.emit(updatedPet);
