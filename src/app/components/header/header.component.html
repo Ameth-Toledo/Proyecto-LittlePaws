@@ -19,6 +19,9 @@
       <li class="little-menu-li">
         <a [ngClass]="{ 'active': isRouteActive('/denuncias') }" class="little-menu-li-a" (click)="enviarDenuncias($event)">Denuncias</a>
       </li>
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active' : isRouteActive('/mascotas-extraviadas') }" class="little-menu-li-a" (click)="enviarExtraviadas($event)">Extraviadas</a>
+      </li>
     </ul>
   </nav>
 

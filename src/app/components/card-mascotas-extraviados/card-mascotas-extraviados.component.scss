@@ -1,0 +1,147 @@
+.card-animales {
+    display: flex;
+    align-items: center;
+    background-color: #2C3742;
+    border-radius: 15px;
+    padding: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    transition: transform 0.3s;
+    max-width: 600px; 
+    margin: 0.05rem auto; 
+}
+
+.image-animales {
+    border-radius: 15px;
+    width: 250px;
+    height: 300px; 
+    object-fit: cover; 
+    margin-right: 10px; 
+    margin-bottom: 10px;
+}
+
+.info-animales {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-animales {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin: 2px 0; 
+}
+
+.estado {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.raza, .edad, .sexo, .especie, .telefono, .direccion, .fecha-extravio, .fecha-publicacion {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+}
+
+.raza i, .edad i, .sexo i, .especie i, .telefono i, .direccion i, .fecha-extravio i, .fecha-publicacion i {
+    margin-right: 5px;
+    color: #00BFFF;
+}
+
+.descripcion {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: 10px 0;
+    color: #B0B0B0;
+}
+
+.adop-btn {
+    background-color: #00BFFF;
+    border: none;
+    width: 100%; 
+    height: 40px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.adop-btn:hover {
+    background-color: #008ac6;
+}
+
+.card-footer {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.btn-cambiar-estado {
+    background-color: #00BFFF;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-cambiar-estado:hover {
+    background-color: #008ac6;
+}
+
+.estado.Extraviado {
+    color: #FF6347;
+}
+
+.estado.Encontrado {
+    color: #32CD32; 
+}
+
+@media (max-width: 768px) {
+    .card-animales {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        max-width: 80%;
+        margin: 0.3rem auto;
+        padding: 15px;
+        transform: scale(0.95);
+        box-sizing: border-box; 
+    }
+
+    .image-animales {
+        width: 100%; 
+        max-width: 400px; 
+        height: auto; 
+        margin: 0 auto;
+        margin-bottom: 10px;
+        object-fit: cover;
+    }
+
+    .name-animales {
+        font-size: 24px;
+    }
+
+    .raza, .edad, .sexo, .especie, .telefono, .direccion, .fecha-extravio, .fecha-publicacion {
+        font-size: 18px;
+    }
+
+    .adop-btn {
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+}

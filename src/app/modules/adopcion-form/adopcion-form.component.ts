@@ -28,7 +28,7 @@ export class AdopcionFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.adopcionForm = this.fb.group({
-      id_mascota: [''], // Se llenará con id_mascota
+      id_mascota: [''], 
       id_usuario: [localStorage.getItem('user_id'), Validators.required],
       fecha_adopcion: [new Date().toISOString().split('T')[0], Validators.required],
       curp: ['', [Validators.required]],

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CardAnimalesComponent {
   @Input() name: string = '';
   @Input() imgSrc: string = '';
-  @Input() namaPet: string = '';
+  @Input() namePet: string = '';
   @Input() refugio: string = '';
   @Input() edad: string = '';
   @Input() raza: string = '';

@@ -5,9 +5,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
-import { CardAnimalesComponent } from "../../components/card-animales/card-animales.component";
 import { MascotasService } from '../../services/mascotas/mascotas.service';
+import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
+import { CardMascotasExtraviadosComponent } from "../../components/card-mascotas-extraviados/card-mascotas-extraviados.component";
 import { PetsRequest, PetsResponse } from '../../models/pets';
+import { CardAnimalesComponent } from '../../components/card-animales/card-animales.component';
 
 
 interface Message {
@@ -21,17 +23,20 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardAnimalesComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })
 
 export class EntidadComponent {
   @Input() mascotas!: PetsResponse[]; 
+  @Input() namaPet!: string; 
 
   isSidebarOpen = false;
   isModalOpen = false;
   activeModal: string | null = null;
+
+
   messages: Message[] = [
     {
       senderName: 'Juan Perez',
@@ -51,6 +56,20 @@ export class EntidadComponent {
   imageUrl: string | undefined;
 
   constructor(private router: Router, private mascotasService: MascotasService) {}
+
+  ngOnInit(): void {
+    this.setEntityId();  // Establecer el ID de la entidad al cargar el componente
+  }
+
+  // Método para obtener el id_entidad desde localStorage
+  setEntityId() {
+    const idEntidad = localStorage.getItem('id_entidad');
+    if (idEntidad) {
+      this.mascota.entity_id = idEntidad;  
+    }
+  }
+
+  showIds: boolean = false;
 
   selectedMessage: Message | null = null;
   replyMessage = '';
@@ -92,6 +111,11 @@ export class EntidadComponent {
     this.activeModal = section;
     this.isModalOpen = true;
     this.view_mascotas() 
+  }
+
+  openModalExtraviadas(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
   }
 
   closeModal() {
@@ -147,13 +171,20 @@ export class EntidadComponent {
     );
   }
   
+  
+
+  onPetDeleted(idMascota: number) {
+    this.mascotas = this.mascotas.filter(mascota => mascota.id_mascota !== idMascota);
+  }
+
 
   view_mascotas() {
     this.mascotasService.getAllMascotas().subscribe((response: PetsResponse[]) => {
       console.log(response);
-      this.mascotas = response; 
+      this.mascotas = response;
     });
   }
+
   
   
   onFileChange(event: any) {
@@ -172,4 +203,7 @@ export class EntidadComponent {
     this.isSidebarOpen = false;
   }
 
+  enviar() {
+
+  }
 }

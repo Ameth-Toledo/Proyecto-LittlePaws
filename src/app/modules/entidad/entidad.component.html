@@ -18,8 +18,7 @@
       </li>
       <li class="side-bar-item" (click)="openModalAdd('Agregar')"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
       <li class="side-bar-item" (click)="openModalView('Ver')"><i class="fas fa-eye"></i> Ver Mascotas</li>
-      <li class="side-bar-item"><i class="fas fa-edit"></i> Editar Mascotas</li>
-      <li class="side-bar-item"><i class="fas fa-trash-alt"></i> Eliminar Mascotas</li>
+      <li class="side-bar-item" (click)="openModalExtraviadas('Extraviadas')"><i class="fas fa-paw"></i>Mascotas Extraviadas</li>
     </ul>
   </div>
 
@@ -95,9 +94,8 @@
               <option value="grande">grande</option>
             </select>
       
-            <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
-            <input type="number" id="entity_id" name="entity_id" [(ngModel)]="mascota.entity_id" required class="input-field" />
-
+            <input type="text" class="form-control" id="entity_id" [(ngModel)]="mascota.entity_id" name="entity_id" [ngClass]="{'hidden': true}" />            
+            
             <div class="button-group">
             <button type="button" class="agregar-imagenes-btn" (click)="triggerFileInput()">
               <i class="fas fa-plus"></i> Agregar Imágenes
@@ -110,21 +108,40 @@
         </form>
       </div>
     </div>
-
+    
     <!-- Ver Mascotas Modal -->
     <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
       <div *ngFor="let mascota of mascotas">
-        <app-card-animales
+        <app-card-animales-entidad
           [imgSrc]="mascota.image"
           [name]="mascota.name"
-          [namaPet]="mascota.name"
+          [namePet]="mascota.name"
           [refugio]="mascota.entity_name"
           [edad]="mascota.age + ' años'"
           [raza]="mascota.race"
           [idMascota]="mascota.id_mascota"
-          [entityId]="mascota.entity_id">
-        </app-card-animales>
+          [entityId]="mascota.entity_id"
+          (petDeleted)="onPetDeleted($event)">
+        </app-card-animales-entidad>
       </div>
+    </div>
+
+    <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
+      <app-card-mascotas-extraviados
+        name="Gonsa"
+        namePet="Gonsa"
+        imgSrc="perros/perro07.jpeg"
+        edad="2 años"
+        raza="desconocido"
+        sexo="Macho"
+        especie="desconocido"
+        telefono="961-000-0000"
+        direccion="Pacu-Suchiapa"
+        fecha_extravio="22 Julio 2024"
+        fecha_publicacion="21 Noviembre 2024"
+        />
     </div>
   </div>
 </div>
+
+<app-footer class="footer-entidad"></app-footer>
