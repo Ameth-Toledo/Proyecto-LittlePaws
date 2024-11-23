@@ -8,9 +8,13 @@ import { CardDenunciasComponent } from "../../components/card-denuncias/card-den
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
 import { CardMascotasExtraviadosComponent } from "../../components/card-mascotas-extraviados/card-mascotas-extraviados.component";
+import { CardComentariosComponent } from "../../components/card-comentarios/card-comentarios.component";
+import { ComentarioService } from '../../services/comentarios/comentario.service';
+import { CardAdopcionesComponent } from "../../components/card-adopciones/card-adopciones.component";
+import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 import { PetsRequest, PetsResponse } from '../../models/pets';
-import { CardAnimalesComponent } from '../../components/card-animales/card-animales.component';
-
+import { AdopcionService } from '../../services/adopcion/adopcion.service';
+import { AdopcionResponse } from '../../models/adopcion';
 
 interface Message {
   senderName: string;
@@ -23,7 +27,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardAnimalesComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, CardAdopcionesComponent, ChatbotComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })
@@ -36,6 +40,7 @@ export class EntidadComponent {
   isModalOpen = false;
   activeModal: string | null = null;
 
+  comentarios: any[] = [];
 
   messages: Message[] = [
     {
@@ -55,9 +60,13 @@ export class EntidadComponent {
   selectedFile: any;
   imageUrl: string | undefined;
   pets: any[] = [];
+  adopciones: AdopcionResponse[] = []; 
 
-  constructor(private router: Router, private mascotasService: MascotasService) {}
+  constructor(private router: Router, private mascotasService: MascotasService, private comentarioService : ComentarioService, private adopcionesService : AdopcionService) {}
 
+  selectedMessage: Message | null = null;
+  replyMessage = '';
+  
   ngOnInit(): void {
     this.setEntityId(); 
   }
@@ -68,10 +77,6 @@ export class EntidadComponent {
     }
   }
 
-  showIds: boolean = false;
-
-  selectedMessage: Message | null = null;
-  replyMessage = '';
 
   openMessage(message: Message) {
     this.selectedMessage = message;
@@ -115,6 +120,21 @@ export class EntidadComponent {
   openModalExtraviadas(section : string) {
     this.activeModal = section;
     this.isModalOpen = true;
+  }
+
+  openModalComentarios(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
+
+    if (section === 'Comentarios') {
+      this.loadComentarios();
+    }
+  }
+
+  openModalAdopciones(section : string) {
+    this.activeModal = section;
+    this.isModalOpen = true;
+    this.view_adopciones()
   }
 
   closeModal() {
@@ -193,6 +213,20 @@ export class EntidadComponent {
     });
   }
 
+  view_adopciones() {
+    this.adopcionesService.getAdopciones().subscribe(
+      (response: AdopcionResponse[]) => {
+        console.log(response);  
+        this.adopciones = response;  
+      },
+      (error: any) => {
+        console.error('Error al obtener adopciones:', error);
+        alert('Hubo un error al obtener las adopciones.');
+      }
+    );
+  }
+  
+
   
   
   onFileChange(event: any) {
@@ -214,4 +248,16 @@ export class EntidadComponent {
   enviar() {
 
   }
+
+  loadComentarios() {
+    this.comentarioService.getComentarios().subscribe(
+      (data: any[]) => { 
+        console.log('Comentario', data)
+        this.comentarios = data;
+      },
+      (error: any) => { 
+        console.error('Error al obtener comentarios:', error);
+      }
+    );
+  }  
 }

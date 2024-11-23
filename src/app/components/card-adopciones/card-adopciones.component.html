@@ -1,0 +1,28 @@
+<div class="card-adopciones">
+    <div class="card-header">
+        <i class="fas fa-paw icon"></i>
+        <h1 class="name-pet">{{ namePet }}</h1>
+    </div>
+    <div class="card-body">
+        <h2 class="name-refugio"><i class="fas fa-home icon"></i> {{ nameRefugio }}</h2>
+        <h2 class="user-adopcion"><i class="fas fa-user icon"></i> {{ userAdopcion }}</h2>
+    </div>
+    <div class="estado-container">
+        <!-- Cambiar el ngClass según el estado real -->
+        <p class="estado" [ngClass]="{
+          'estado-revisado': estado === 'Revisado',
+          'estado-pendiente': estado === 'Pendiente',
+          'estado-proceso': estado === 'proceso',
+          'estado-aceptado': estado === 'aceptado',
+          'estado-rechazado': estado === 'rechazado'
+        }">
+            Estado: {{ estado }}
+        </p>
+        <button class="btn-estado" (click)="cambiarEstado()">Cambiar estado</button>
+    </div>
+    <ng-container *ngIf="showIds">
+        <h3 class="id-mascota">
+          <i class="fas fa-id-badge"></i> ID Mascota: {{ idAdopcion }}
+        </h3>
+    </ng-container>
+</div>

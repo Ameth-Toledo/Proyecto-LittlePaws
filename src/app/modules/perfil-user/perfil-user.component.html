@@ -2,24 +2,96 @@
 
 <section class="user-profile">
   <header class="profile-header">
-    <h1 class="profile-name">Hola, {{ nameUser }}!</h1>
-    <p class="profile-email">Email: {{ emailUser }}</p>
+    <div class="avatar">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="user-info">
+      <h1 class="profile-name">Hola, {{ nameUser }}!</h1>
+      <p class="profile-email">Email: {{ emailUser }}</p>
+    </div>
   </header>
 
   <nav class="profile-actions">
-    <button class="action-button add-complaint" aria-label="Agregar denuncia">
+    <div class="action-card add-complaint" aria-label="Agregar denuncia">
       <i class="fas fa-plus"></i>
-      <span>Agregar Denuncia</span>
-    </button>
-    <button class="action-button edit-profile" aria-label="Editar perfil">
+      <div class="action-title">Agregar Denuncia</div>
+      <div class="action-description">Reporta un incidente o situación.</div>
+    </div>
+
+    <div class="action-card add-lost-pet" aria-label="Agregar mascotas extraviadas">
+      <i class="fas fa-paw"></i>
+      <div class="action-title">Agregar Mascotas Extraviadas</div>
+      <div class="action-description">Ayuda a encontrar mascotas perdidas.</div>
+    </div>
+
+    <div class="action-card view-adoptions" aria-label="Ver adopciones">
+      <i class="fas fa-heart"></i>
+      <div class="action-title">Ver Adopciones</div>
+      <div class="action-description">Descubre mascotas en busca de un hogar.</div>
+    </div>
+
+    <div class="action-card edit-profile" aria-label="Editar perfil">
       <i class="fas fa-cog"></i>
-      <span>Editar Perfil</span>
-    </button>
-    <button class="action-button messages" aria-label="Mensajes">
+      <div class="action-title">Editar Perfil</div>
+      <div class="action-description">Actualiza tus datos de usuario.</div>
+    </div>
+
+    <div class="action-card messages" aria-label="Mensajes">
       <i class="fas fa-envelope"></i>
-      <span>Mensajes</span>
-    </button>
+      <div class="action-title">Mensajes</div>
+      <div class="action-description">Revisa tus mensajes recientes.</div>
+    </div>
   </nav>
 </section>
+
+<div class="modal-add-denuncias">
+  <!--<form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()" class="denuncia-form">
+      
+    <div class="input-group">
+      <input type="text" formControlName="motivo" class="input-group_input" required />
+      <label for="motivo" class="input-group_label">Motivo</label>
+    </div>
+
+    <div class="input-group">
+      <input type="number" formControlName="id_institucion" class="input-group_input" required />
+      <label for="id_institucion" class="input-group_label">ID de Entidad</label>
+    </div>
+
+    <div class="input-group">
+      <textarea formControlName="description" class="input-group_input" rows="4" required></textarea>
+      <label for="description" class="input-group_label">Descripción de la Denuncia</label>
+    </div>
+
+    <div class="input-group">
+      <input type="number" formControlName="id_mascota" class="input-group_input" required />
+      <label for="id_mascota" class="input-group_label">ID de Mascota</label>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="agregar-denuncia-btn" (click)="triggerFileInput()">
+        <i class="fas fa-plus"></i> Agregar Imágenes
+      </button>
+      <button type="submit" class="agregar-denuncia-btn" [disabled]="adopcionForm.invalid">
+        <i class="fas fa-paper-plane"></i> Enviar Denuncia
+      </button>
+    </div>
+  </form>-->
+</div>
+
+<div class="modal-add-mascotas-extraviadas">
+  
+</div>
+
+<div class="modal-ver-adopciones">
+  
+</div>
+
+<div class="modal-aditar-profile">
+  
+</div>
+
+<div class="modal-add-messages">
+  
+</div>
 
 <app-footer class="app-footer"></app-footer>

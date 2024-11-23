@@ -27,11 +27,11 @@ export const routes: Routes = [
     { path: "terms-and-conditions", component: TermsComponent },
     { path: "perfil-veterinaria-zoo", component: PerfilVeterinariaComponent },
     { path: "veterinarias", component: VeterinariasComponent },
-    { path: "denuncias-form", component: DenunciasFormComponent, canActivate : [authGuard] },
+    { path: "denuncias-form", component: DenunciasFormComponent, /*canActivate : [authGuard]*/ },
     //Administracion 
     { path: "form-adoption", component: AdopcionFormComponent, canActivate : [authGuard] },
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
-    { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard] },
+    { path: "denuncias", component: DenunciasComponent, /*canActivate : [authGuard] */},
     { path: "entidad-littlepaws", component: EntidadComponent },
     { path: "perfil-refugio/:name", component: TemplateVeterinariaComponent, canActivate : [authGuard] },
     { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, canActivate : [authGuard] },
