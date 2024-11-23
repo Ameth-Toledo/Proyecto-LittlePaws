@@ -45,4 +45,9 @@ export class ComentarioService {
   getAuthToken() {
     return localStorage.getItem('access_token') || '';
   }
+
+  getComentarios(): Observable<any[]> {
+    return this.http.get<any[]>(this.url);
+  }  
+  
 }

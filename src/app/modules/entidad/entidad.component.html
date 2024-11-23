@@ -16,9 +16,21 @@
       <li class="side-bar-item" (click)="openModalDenuncias('Denuncias')">
         <i class="fas fa-exclamation-circle"></i> Denuncias
       </li>
-      <li class="side-bar-item" (click)="openModalAdd('Agregar')"><i class="fas fa-plus-circle"></i> Agregar Mascotas</li>
-      <li class="side-bar-item" (click)="openModalView('Ver')"><i class="fas fa-eye"></i> Ver Mascotas</li>
-      <li class="side-bar-item" (click)="openModalExtraviadas('Extraviadas')"><i class="fas fa-paw"></i>Mascotas Extraviadas</li>
+      <li class="side-bar-item" (click)="openModalAdd('Agregar')">
+        <i class="fas fa-plus-circle"></i> Agregar Mascotas
+      </li>
+      <li class="side-bar-item" (click)="openModalView('Ver')">
+        <i class="fas fa-eye"></i> Ver Mascotas
+      </li>
+      <li class="side-bar-item" (click)="openModalExtraviadas('Extraviadas')">
+        <i class="fas fa-paw"></i>Mascotas Extraviadas
+      </li>
+      <li class="side-bar-item" (click)="openModalComentarios('Comentarios')">
+        <i class="fas fa-comment"></i>Comentarios
+      </li>
+      <li class="side-bar-item" (click)="openModalAdopciones('Adopciones')">
+        <i class="fas fa-hands-helping"></i>Ver Adopciones
+      </li>
     </ul>
   </div>
 
@@ -54,64 +66,71 @@
 
     <!-- Denuncias Modal -->
     <div class="denuncias-modal-entidad" *ngIf="isModalOpen && activeModal === 'Denuncias'">
+      <h2 class="denuncias-tittle-modal">Denuncias</h2>
       <app-card-denuncias/>
     </div>
 
     <!-- Agregar Mascotas Modal -->
-<div class="agregar-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Agregar'">
-  <div class="form-veterinaria-register">
-    <form #mascotaForm="ngForm" (ngSubmit)="onSubmit(mascotaForm)">
-      <div class="form-left">
-        <label for="name" class="label-form">Ingrese el nombre de la mascota</label>
-        <input type="text" id="name" name="name" [(ngModel)]="mascota.name" required class="input-field" #name="ngModel" />
-    
-        <label for="race" class="label-form">Ingrese la raza de la mascota</label>
-        <input type="text" id="race" name="race" [(ngModel)]="mascota.race" required class="input-field" #race="ngModel" />
-    
-        <label for="age" class="label-form">Ingrese la edad de la mascota</label>
-        <input type="number" id="age" name="age" [(ngModel)]="mascota.age" required class="input-field" #age="ngModel" />
-    
-        <label for="gender" class="label-form">Seleccione el género de la mascota</label>
-        <select id="gender" name="gender" [(ngModel)]="mascota.gender" required class="input-field" #gender="ngModel">
-          <option value="macho">macho</option>
-          <option value="hembra">hembra</option>
-        </select>
-    
-        <label for="species" class="label-form">Seleccione la especie de la mascota</label>
-        <select id="species" name="species" [(ngModel)]="mascota.species" required class="input-field" #species="ngModel">
-          <option value="perro">perro</option>
-          <option value="gato">gato</option>
-          <option value="otro">otro</option>
-        </select>
-    
-        <label for="weight" class="label-form">Ingrese el peso de la mascota (en kg)</label>
-        <input type="number" id="weight" name="weight" [(ngModel)]="mascota.weight" step="0.1" required class="input-field" #weight="ngModel" />
-    
-        <label for="size" class="label-form">Seleccione el tamaño de la mascota</label>
-        <select id="size" name="size" [(ngModel)]="mascota.size" required class="input-field" #size="ngModel">
-          <option value="pequeño">pequeño</option>
-          <option value="mediano">mediano</option>
-          <option value="grande">grande</option>
-        </select>
-  
-        <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
-        <input type="number" id="entity_id" name="entity_id" [(ngModel)]="mascota.entity_id" required class="input-field" />
-
+    <div class="agregar-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Agregar'">
+      <h2 class="agregar-mascotas-title">Agregar Mascotas</h2>
+      <div class="form-veterinaria-register">
+        <form #mascotaForm="ngForm" (ngSubmit)="onSubmit(mascotaForm)">
+          <div class="form-container">
+            <div class="form-left">
+              <label for="name" class="label-form">Ingrese el nombre de la mascota</label>
+              <input type="text" id="name" name="name" [(ngModel)]="mascota.name" required class="input-field" #name="ngModel" />
+            
+              <label for="race" class="label-form">Ingrese la raza de la mascota</label>
+              <input type="text" id="race" name="race" [(ngModel)]="mascota.race" required class="input-field" #race="ngModel" />
+            
+              <label for="age" class="label-form">Ingrese la edad de la mascota</label>
+              <input type="number" id="age" name="age" [(ngModel)]="mascota.age" required class="input-field" #age="ngModel" />
+            
+              <label for="gender" class="label-form">Seleccione el género de la mascota</label>
+              <select id="gender" name="gender" [(ngModel)]="mascota.gender" required class="input-field" #gender="ngModel">
+                <option value="macho">macho</option>
+                <option value="hembra">hembra</option>
+              </select>
+            
+              <label for="species" class="label-form">Seleccione la especie de la mascota</label>
+              <select id="species" name="species" [(ngModel)]="mascota.species" required class="input-field" #species="ngModel">
+                <option value="perro">perro</option>
+                <option value="gato">gato</option>
+                <option value="otro">otro</option>
+              </select>
+            </div>
+            
+            <div class="form-right">
+              <label for="weight" class="label-form">Ingrese el peso de la mascota (en kg)</label>
+              <input type="number" id="weight" name="weight" [(ngModel)]="mascota.weight" step="0.1" required class="input-field" #weight="ngModel" />
+            
+              <label for="size" class="label-form">Seleccione el tamaño de la mascota</label>
+              <select id="size" name="size" [(ngModel)]="mascota.size" required class="input-field" #size="ngModel">
+                <option value="pequeño">pequeño</option>
+                <option value="mediano">mediano</option>
+                <option value="grande">grande</option>
+              </select>
         
-        <div class="button-group">
-        <button type="button" class="agregar-imagenes-btn" (click)="triggerFileInput()">
-          <i class="fas fa-plus"></i> Agregar Imágenes
-        </button>
-        <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
+              <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
+              <input type="number" id="entity_id" name="entity_id" [(ngModel)]="mascota.entity_id" required class="input-field" />
+              
+              <div class="button-group">
+                <button type="button" class="agregar-imagenes-btn" (click)="triggerFileInput()">
+                  <i class="fas fa-plus"></i> Agregar Imágenes
+                </button>
+                <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
+              </div>
+            
+              <button type="submit" [disabled]="mascotaForm.invalid" class="btn-enviar-registro">Enviar datos</button>
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
     
-        <button type="submit" [disabled]="mascotaForm.invalid" class="btn-enviar-registro">Enviar datos</button>
-      </div>
-    </form>
-  </div>
-</div>
     <!-- Ver Mascotas Modal -->
     <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
+      <h1 class="ver-mascotas-title">Ver Mascotas</h1>
       <app-card-animales-entidad
       name="Pepito"
       imgSrc="perros/perro02.jpg"
@@ -122,6 +141,7 @@
     </div>
 
     <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
+      <h1 class="mascotas-extraviadas-tittle">Mascotas Extraviadas</h1>
       <app-card-mascotas-extraviados
         name="Gonsa"
         namePet="Gonsa"
@@ -136,7 +156,22 @@
         fecha_publicacion="21 Noviembre 2024"
         />
     </div>
+
+    <div class="modal-comentarios" *ngIf="isModalOpen && activeModal === 'Comentarios'">
+      <h2 class="comentarios-tittle-modal">Comentarios</h2>
+      <div *ngFor="let comentario of comentarios" class="comentario-card">
+        <app-card-comentarios [comentario]="comentario.comentario"></app-card-comentarios>
+      </div>
+    </div>   
+    
+    <div class="modal-adopciones" *ngIf="isModalOpen && activeModal === 'Adopciones'">
+        <app-card-adopciones
+          namePet="Cachiflin"
+          nameRefugio="Santa Clara"
+          userAdopcion="Fabricio"/>
+    </div>
   </div>
 </div>
 
+<app-chatbot class="chat-bot"/>
 <app-footer class="footer-entidad"></app-footer>

@@ -26,7 +26,7 @@
 }
 
 .modal-content {
-  margin-left: 250px; 
+  margin-right: 820px; 
   padding: 20px;
   flex: 1;
   display: flex;
@@ -38,11 +38,12 @@
 .bandeja-entidad-modal,
 .denuncias-modal-entidad,
 .agregar-mascotas-modal,
-.ver-mascotas-modal {
+.ver-mascotas-modal
+.mascotas-extraviadas-modal
+.modal-comentarios {
   width: 100%;
   margin: 10px 0;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .bandeja-entidad-modal {
@@ -234,21 +235,35 @@
   color: #FFFFFF;
 }
 /**/
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px; 
+}
+
+.form-left,
+.form-right {
+  flex: 1; 
+}
+
 .form-veterinaria-register {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   border-radius: 8px;
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
+  width: 100%;
 }
 
 .form-veterinaria-register form {
   width: 100%;
 }
 
-.form-left {
+.form-left,
+.form-right {
   display: flex;
   flex-direction: column;
 }
@@ -256,12 +271,12 @@
 .label-form {
   color: #00E8F8;
   font-size: 1.1em;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
 }
 
 .input-field {
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
   border: 2px solid #00E8F8;
   background-color: transparent;
@@ -269,6 +284,7 @@
   font-size: 1em;
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 .input-field:focus {
@@ -279,16 +295,16 @@
 }
 
 .btn-enviar-registro {
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #00E8F8;
   color: #000000;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
+  margin-top: 15px;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
 }
@@ -306,6 +322,46 @@
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   cursor: pointer;
+}
+
+.form-container {
+  gap: 30px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.comentarios-tittle-modal {
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px;
+  color: #FFFFFF;
+}
+
+.denuncias-tittle-modal {
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px;
+  color: #FFFFFF;
+  margin-left: 65px;
+}
+
+.agregar-mascotas-title, 
+.ver-mascotas-title,
+.mascotas-extraviadas-tittle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px;
+  color: #FFFFFF;
+  margin-left: 65px;
+}
+
+.chat-bot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
 }
 
 @media (max-width: 768px) {
