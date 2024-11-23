@@ -23,13 +23,14 @@ export class MascotasService {
   }
 
   getAllMascotas(): Observable<PetsResponse[]> {
-    return this.http.get<PetsResponse[]>(`${this.url}/`, {
+    return this.http.get<PetsResponse[]>(`${this.url}/mascotas_all/`, {
       headers: this.getHeaders(),
     }).pipe(
       catchError(this.handleError)
     );
   }
 
+  
   getMascotaById(id: number): Observable<PetsResponse> {
     return this.http.get<PetsResponse>(`${this.url}/${id}/`, {
       headers: this.getHeaders(),
@@ -38,8 +39,9 @@ export class MascotasService {
     );
   }
 
-  createMascota(formData: FormData): Observable<PetsResponse> {
-    return this.http.post<PetsResponse>(this.url, formData);
+  createMascota(formData: FormData): Observable<PetsRequest> {
+    console.log('Enviando solicitud de adopción con los siguientes datos:', formData);
+    return this.http.post<PetsRequest>(this.url, formData);
   }
 
 
@@ -52,7 +54,7 @@ export class MascotasService {
   }
 
   deleteMascota(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/${id}/`, {
+    return this.http.delete(`${this.url}/mascotas/${id}/`, {
       headers: this.getHeaders(),
     }).pipe(
       catchError(this.handleError)

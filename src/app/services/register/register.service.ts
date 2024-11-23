@@ -40,6 +40,7 @@ export class RegisterService {
         localStorage.setItem('username', response.name);
         localStorage.setItem('lastname', response.lastName);
         localStorage.setItem('email', response.email);
+        localStorage.setItem('id_entidad', response.id_entidad?.toString() || 'null');
         localStorage.setItem('tokenExpiration', (now + expirationTime).toString()); 
         
         console.log('Token guardado:', response.access_token); 

@@ -29,4 +29,5 @@ export interface LoginResponse {
   email: string;
   rol: 'usuario' | 'entidad';
   access_token: string;
+  id_entidad?: number;  
 }

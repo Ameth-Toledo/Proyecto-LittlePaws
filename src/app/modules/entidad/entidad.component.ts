@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { HeaderEntidadComponent } from "../../components/header-entidad/header-entidad.component";
 import { Router } from '@angular/router';
@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
 import { MascotasService } from '../../services/mascotas/mascotas.service';
-import { PetsResponse } from '../../models/pets';
 import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
 import { CardMascotasExtraviadosComponent } from "../../components/card-mascotas-extraviados/card-mascotas-extraviados.component";
 import { CardComentariosComponent } from "../../components/card-comentarios/card-comentarios.component";
 import { ComentarioService } from '../../services/comentarios/comentario.service';
 import { CardAdopcionesComponent } from "../../components/card-adopciones/card-adopciones.component";
 import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
+import { PetsRequest, PetsResponse } from '../../models/pets';
 
 interface Message {
   senderName: string;
@@ -31,6 +31,8 @@ interface Message {
 })
 
 export class EntidadComponent {
+  @Input() mascotas!: PetsResponse[]; 
+  @Input() namaPet!: string; 
 
   isSidebarOpen = false;
   isModalOpen = false;
@@ -97,6 +99,7 @@ export class EntidadComponent {
   openModalView(section : string) {
     this.activeModal = section;
     this.isModalOpen = true;
+    this.view_mascotas() 
   }
 
   openModalExtraviadas(section : string) {
@@ -151,7 +154,7 @@ export class EntidadComponent {
     }
 
     this.mascotasService.createMascota(formData).subscribe(
-      (response: PetsResponse) => {
+      (response: PetsRequest) => {
         console.log('Mascota creada:', response);
         this.imageUrl = response.image; 
         alert('Mascota creada exitosamente!');
@@ -170,6 +173,21 @@ export class EntidadComponent {
       }
     );
   }
+  
+  
+
+  onPetDeleted(idMascota: number) {
+    this.mascotas = this.mascotas.filter(mascota => mascota.id_mascota !== idMascota);
+  }
+
+
+  view_mascotas() {
+    this.mascotasService.getAllMascotas().subscribe((response: PetsResponse[]) => {
+      console.log(response);
+      this.mascotas = response;
+    });
+  }
+
   
   
   onFileChange(event: any) {

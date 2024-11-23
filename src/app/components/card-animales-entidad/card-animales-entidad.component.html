@@ -6,11 +6,11 @@
         <div class="icons-actions">
           <!-- Al hacer clic, se abre la modal -->
           <i class="fas fa-edit edit-icon" (click)="toggleModal()"></i>
-          <i class="fas fa-trash-alt delete-icon"></i>
+          <i class="fas fa-trash-alt delete-icon" (click)="showWarningModal = true"></i>
         </div>
       </div>
       <h2 class="raza">
-        <i class="fas fa-dog"></i> Nombre: {{ namaPet }}
+        <i class="fas fa-dog"></i> Nombre: {{ namePet }}
       </h2>
       <h2 class="refugio">
         <i class="fas fa-plus-circle"></i> Refugio: {{ refugio }}
@@ -21,6 +21,14 @@
       <h2 class="raza">
         <i class="fas fa-certificate"></i> Raza: {{ raza }}
       </h2>
+      <ng-container *ngIf="showIds">
+        <h3 class="id-mascota">
+          <i class="fas fa-id-badge"></i> ID Mascota: {{ idMascota }}
+        </h3>
+        <h3 class="entity-id">
+          <i class="fas fa-building"></i> ID Entidad: {{ entityId }}
+        </h3>
+      </ng-container>
     </div>
   </div>
   
@@ -92,6 +100,21 @@
     </div>
   </div>
 
+
+  <div class="modal-advertencias" *ngIf="showWarningModal">
+    <div class="warning-content">
+      <i class="fas fa-exclamation-triangle warning-icon"></i>
+      <h1 class="tittle-modal-advertencia">LittlePaws</h1>
+      <h2 class="messaje-modal-advertencia">
+        ¿Estás seguro de eliminar esta mascota?
+      </h2>
+      <div class="warning-buttons">
+        <button (click)="closeWarningModalDelete(true)" class="btn-confirm">Eliminar</button>
+        <button (click)="closeWarningModalDelete(false)" class="btn-cancel">Volver</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal de éxito -->
 <div class="modal-exito" *ngIf="showSuccessModal">
     <div class="success-content">
@@ -100,4 +123,6 @@
       <button class="btn-close-modal" (click)="closeSuccessModal()">Cerrar</button>
     </div>
   </div>
+
+  
   
