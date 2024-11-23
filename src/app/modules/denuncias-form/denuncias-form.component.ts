@@ -5,12 +5,11 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CommonModule } from '@angular/common';
-import { BannerComponent } from '../../components/banner/banner.component';
 
 @Component({
   selector: 'app-denuncias-form',
   standalone: true,
-  imports: [CommonModule, BannerComponent, FooterComponent, HeaderComponent, ReactiveFormsModule],
+  imports: [CommonModule, FooterComponent, HeaderComponent, ReactiveFormsModule],
   templateUrl: './denuncias-form.component.html',
   styleUrl: './denuncias-form.component.scss'
 })
