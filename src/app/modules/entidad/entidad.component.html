@@ -101,7 +101,7 @@
               <i class="fas fa-plus"></i> Agregar Imágenes
             </button>
             <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
-          </div>
+           </div>
         
             <button type="submit" [disabled]="mascotaForm.invalid" class="btn-enviar-registro">Enviar datos</button>
           </div>
@@ -117,11 +117,13 @@
           [name]="mascota.name"
           [namePet]="mascota.name"
           [refugio]="mascota.entity_name"
-          [edad]="mascota.age + ' años'"
+          [edad]="mascota.age "
           [raza]="mascota.race"
           [idMascota]="mascota.id_mascota"
           [entityId]="mascota.entity_id"
-          (petDeleted)="onPetDeleted($event)">
+          [weight]="mascota.weight"
+          (petDeleted)="onPetDeleted($event)"
+          (petUpdated)="onPetUpdated($event)">
         </app-card-animales-entidad>
       </div>
     </div>

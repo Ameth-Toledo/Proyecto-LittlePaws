@@ -46,7 +46,7 @@ export class MascotasService {
 
 
   updateMascota(id: number, formData: FormData): Observable<any> {
-    return this.http.put<any>(`${this.url}/${id}/`, formData, {
+    return this.http.put<any>(`${this.url}/mascotas/${id}/`, formData, {
       headers: this.getHeaders(),
     }).pipe(
       catchError(this.handleError)

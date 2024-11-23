@@ -54,14 +54,13 @@ export class EntidadComponent {
   fileName: any;
   selectedFile: any;
   imageUrl: string | undefined;
+  pets: any[] = [];
 
   constructor(private router: Router, private mascotasService: MascotasService) {}
 
   ngOnInit(): void {
-    this.setEntityId();  // Establecer el ID de la entidad al cargar el componente
+    this.setEntityId(); 
   }
-
-  // Método para obtener el id_entidad desde localStorage
   setEntityId() {
     const idEntidad = localStorage.getItem('id_entidad');
     if (idEntidad) {
@@ -177,6 +176,15 @@ export class EntidadComponent {
     this.mascotas = this.mascotas.filter(mascota => mascota.id_mascota !== idMascota);
   }
 
+  onPetUpdated(updatedPet: any) {
+    this.view_mascotas()
+    const index = this.mascotas.findIndex(mascota => mascota.id_mascota === updatedPet.idMascota);
+    if (index !== -1) {
+      this.mascotas[index] = updatedPet; 
+      this.mascotas[index].image = updatedPet.imgSrc;
+    }
+  }
+  
 
   view_mascotas() {
     this.mascotasService.getAllMascotas().subscribe((response: PetsResponse[]) => {
