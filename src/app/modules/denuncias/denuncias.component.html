@@ -5,18 +5,16 @@
   <button class="btn-denuncia" (click)="enviarDenunciarForm($event)">Denuncia!</button>
 </div>
 
-<app-card-denuncias
-  nombre="Sayuri"
-  descripcion="los maltratan a los chuchos, pobrecitos pue chito"/> <!--tambien hay un arreglo de imagenes como  propt-->
-<app-card-denuncias
-  nombre="Fabricio"
-  descripcion="los perritos son maltratados haya donde vivo yo, :(("/>
-<app-card-denuncias
-  nombre="Milton"
-  descripcion="los perritos son maltratados y me da coraje por que son seres humanos"/>
-<app-card-denuncias
-  nombre="Gael"
-  descripcion=""/>
+
+
+
+<div *ngFor="let denuncia of denuncias" class="animales-container">
+  <app-card-denuncias
+    [nombre]="denuncia.motivo"
+    [descripcion]="denuncia.descripcion"
+    [imagenes]="[denuncia.imagen]"
+  ></app-card-denuncias>
+</div>
 
 <app-footer></app-footer>
 

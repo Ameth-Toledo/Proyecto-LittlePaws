@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdopcionResponse } from '../../models/adopcion';
 import { AdopcionService } from '../../services/adopcion/adopcion.service';
@@ -10,86 +10,71 @@ import { AdopcionService } from '../../services/adopcion/adopcion.service';
   templateUrl: './card-adopciones.component.html',
   styleUrls: ['./card-adopciones.component.scss']
 })
-
-export class CardAdopcionesComponent {
+export class CardAdopcionesComponent implements OnInit {
   @Input() namePet: string = '';
   @Input() nameRefugio: string = '';
   @Input() userAdopcion: string = '';
   @Input() status: string = '';
-  @Input() idAdopcion: number | undefined;
+  @Input() idAdopcion?: number;
+
   showIds: boolean = false;
   estado: string = '';
-
   adopciones: AdopcionResponse[] = [];
-  adopcionSeleccionada: AdopcionResponse | undefined;
+  adopcionSeleccionada?: AdopcionResponse;
 
   constructor(private adopcionesService: AdopcionService) {}
 
-  ngOnInit() {
-    this.view_adopciones();
+  ngOnInit(): void {
+    this.viewAdopciones();
   }
 
-  cambiarEstado() {
-    if (this.adopcionSeleccionada) {
-      switch (this.estado) {
-        case 'rechazado':
-          this.estado = 'proceso';
-          break;
-        case 'proceso':
-          this.estado = 'aceptado';
-          break;
-        case 'aceptado':
-          this.estado = 'rechazado';
-          break;
-      }
-      console.log('Nuevo estado:', this.estado);
-      this.actualizarEstadoAdopcion(this.adopcionSeleccionada.id_adopcion, this.estado);
-    } else {
-      console.error('No se pudo obtener la adopción seleccionada.');
-    }
-  }
-
-  actualizarEstadoAdopcion(idAdopcion: number, nuevoEstado: string) {
-    const idAdopcionNum = Number(idAdopcion);
-    if (isNaN(idAdopcionNum)) {
-      console.error('El ID de adopción es inválido:', idAdopcion);
+  cambiarEstado(): void {
+    if (!this.adopcionSeleccionada) {
+      console.error('No hay adopción seleccionada para cambiar el estado.');
       return;
     }
 
-    this.adopcionesService.updateAdopcion(idAdopcionNum, nuevoEstado).subscribe(
-      (response) => {
-        console.log('Adopción actualizada:', response);
-        this.view_adopciones();
-      },
-      (error) => {
-        console.error('Error al actualizar adopción:', error);
-        alert('Hubo un error al actualizar el estado de la adopción.');
-      }
-    );
+    const estados = ['rechazado', 'proceso', 'aceptado'];
+    const currentIndex = estados.indexOf(this.estado);
+    this.estado = estados[(currentIndex + 1) % estados.length];
+
+    console.log('Nuevo estado:', this.estado);
+
+    this.actualizarEstadoAdopcion(this.adopcionSeleccionada.id_adopcion, this.estado);
   }
 
-  view_adopciones() {
-    this.adopcionesService.getAdopciones().subscribe(
-      (response: AdopcionResponse[]) => {
+  actualizarEstadoAdopcion(idAdopcion: number, nuevoEstado: string): void {
+    this.adopcionesService.updateAdopcion(idAdopcion, nuevoEstado).subscribe({
+      next: (response) => {
+        console.log('Estado actualizado exitosamente:', response);
+        this.viewAdopciones();
+      },
+      error: (error) => {
+        console.error('Error al actualizar el estado:', error);
+        alert('No se pudo actualizar el estado de la adopción.');
+      }
+    });
+  }
+
+  viewAdopciones(): void {
+    const entityId = 0; // Ajusta según sea necesario
+    this.adopcionesService.getAllAdopciones(entityId).subscribe({
+      next: (response: AdopcionResponse[]) => {
         console.log('Adopciones obtenidas:', response);
         this.adopciones = response;
-        
-        if (this.adopciones.length > 0) {
-          if (this.idAdopcion) {
-            this.adopcionSeleccionada = this.adopciones.find(adopcion => adopcion.id_adopcion === this.idAdopcion);
-          } else {
-            this.adopcionSeleccionada = this.adopciones[0];
-          }
 
-          if (this.adopcionSeleccionada) {
-            this.estado = this.adopcionSeleccionada.id_status;
-          }
+        if (this.adopciones.length > 0) {
+          this.adopcionSeleccionada = this.idAdopcion
+            ? this.adopciones.find(adopcion => adopcion.id_adopcion === this.idAdopcion)
+            : this.adopciones[0];
+
+          this.estado = this.adopcionSeleccionada?.id_status || '';
         }
       },
-      (error: any) => {
-        console.error('Error al obtener adopciones:', error);
-        alert('Hubo un error al obtener las adopciones.');
+      error: (error) => {
+        console.error('Error al obtener las adopciones:', error);
+        alert('Hubo un error al cargar las adopciones.');
       }
-    );
+    });
   }
 }

@@ -1,20 +1,20 @@
 <app-header></app-header>
 
 <app-veterinaria-head
-  [nameVeterinaria]="refugioData.name"
-  [descripcionVeterinaria]="'Un refugio comprometido con el bienestar animal.'"
-  [imgSrc]="refugioData.fotoPerfil"
-  [telefonoVeterinaria]="refugioData.phone"
-  [emailVeterinaria]="refugioData.email"
-  [direccionVeterinaria]="refugioData.address"
-  [horarioVeterinaria]="refugioData.hours">
+  [nameVeterinaria]="refugioData?.name"
+  [descripcionVeterinaria]="refugioData?.description"
+  [imgSrc]="refugioData?.image"
+  [telefonoVeterinaria]="refugioData?.cellphone"
+  [emailVeterinaria]="refugioData?.email"
+  [direccionVeterinaria]="refugioData?.address"
+  [horarioVeterinaria]="refugioData?.hours_operation">
 </app-veterinaria-head>
 
 <h1 class="ubication-veterinaria-principal">
-  <i class="fas fa-dog"></i> {{ refugioData.name }}
+  <i class="fas fa-dog"></i> {{ refugioData?.name }}
 </h1>
 
-<div class="map-container">
+<div class="map-container" *ngIf="refugioData?.location">
   <iframe
     [src]="refugioData.location"
     width="600"
@@ -32,14 +32,30 @@
     class="info-option"
     [class.selected]="selectedOption === 'fotos'"
     (click)="selectOption('fotos')">
-    Fotos
+    Mascotas 
+    
   </span>
+  
   <span
     class="info-option"
     [class.selected]="selectedOption === 'publicaciones'"
     (click)="selectOption('publicaciones')">
     Publicaciones
   </span>
+</div>
+<div class="pets-gallery" *ngIf="selectedOption === 'fotos'">
+  <div *ngFor="let mascota of mascotas">
+    <app-card-animales
+      [imgSrc]="mascota.image"
+      [name]="mascota.name"
+      [namePet]="mascota.name"
+      [refugio]="mascota.entity_name"
+      [edad]="mascota.age "
+      [raza]="mascota.race"
+      [idMascota]="mascota.id_mascota"
+      [entityId]="mascota.entity_id">
+    </app-card-animales>
+  </div>
 </div>
 
 <app-footer></app-footer>

@@ -82,7 +82,7 @@ export class DenunciasFormComponent {
     formData.append('id_usuario', this.adopcionForm.value.id_usuario?.toString() || '');
     formData.append('motivo', this.adopcionForm.value.motivo);
     formData.append('id_institucion', this.adopcionForm.value.id_institucion?.toString() || ''); 
-    formData.append('description', this.adopcionForm.value.descripcion);
+    formData.append('description', this.adopcionForm.value.description);
     formData.append('id_mascota', this.adopcionForm.value.id_mascota?.toString() || '');
   
 

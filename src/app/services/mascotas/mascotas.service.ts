@@ -22,13 +22,14 @@ export class MascotasService {
     });
   }
 
-  getAllMascotas(): Observable<PetsResponse[]> {
+  getAllMascotas(entityId: number): Observable<PetsResponse[]> {
     return this.http.get<PetsResponse[]>(`${this.url}/mascotas_all/`, {
-      headers: this.getHeaders(),
+      params: { entity_id: entityId.toString() }, // Pass the entity_id as a query parameter
     }).pipe(
       catchError(this.handleError)
     );
   }
+  
 
   
   getMascotaById(id: number): Observable<PetsResponse> {

@@ -14,6 +14,7 @@ export interface Adopcion {
     cellphone:string
 }
 export interface AdopcionResponse {
+    estado: string
     id_adopcion: number;
     id_mascota: number;
     id_usuario: number;

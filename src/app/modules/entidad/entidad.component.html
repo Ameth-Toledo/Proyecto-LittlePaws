@@ -166,7 +166,7 @@
     <div class="modal-comentarios" *ngIf="isModalOpen && activeModal === 'Comentarios'">
       <h2 class="comentarios-tittle-modal">Comentarios</h2>
       <div *ngFor="let comentario of comentarios" class="comentario-card">
-        <app-card-comentarios [comentario]="comentario.comentario"></app-card-comentarios>
+        <app-card-comentarios [comentario]="comentario.content"></app-card-comentarios>
       </div>
     </div>   
     
@@ -177,7 +177,8 @@
           [nameRefugio]="adopcion.nombre_entidad"
           [userAdopcion]="adopcion.nombre_usuario"
           [status]="adopcion.id_status"
-          [idAdopcion]="adopcion.id_adopcion">
+          [idAdopcion]="adopcion.id_adopcion"
+          (estadoCambiado)="actualizarListaAdopciones($event)">
         </app-card-adopciones>
       </div>
     </div>    
