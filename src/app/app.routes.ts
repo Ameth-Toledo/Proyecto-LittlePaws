@@ -20,8 +20,8 @@ import { PerfilUserComponent } from './modules/perfil-user/perfil-user.component
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "home", component: HomeComponent },
-    { path: "donaciones", component: DonacionesComponent, canActivate : [authGuard] },
-    { path: "adopciones", component: AdopcionComponent, canActivate : [authGuard] },
+    { path: "donaciones", component: DonacionesComponent, /*canActivate : [authGuard]*/ },
+    { path: "adopciones", component: AdopcionComponent, /*canActivate : [authGuard]*/ },
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },
@@ -29,11 +29,11 @@ export const routes: Routes = [
     { path: "veterinarias", component: VeterinariasComponent },
     { path: "denuncias-form", component: DenunciasFormComponent, /*canActivate : [authGuard]*/ },
     //Administracion 
-    { path: "form-adoption", component: AdopcionFormComponent, canActivate : [authGuard] },
-    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
+    { path: "form-adoption", component: AdopcionFormComponent, /*canActivate : [authGuard]*/ },
+    { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, /*canActivate : [authGuard]*/ },
     { path: "denuncias", component: DenunciasComponent, /*canActivate : [authGuard] */},
     { path: "entidad-littlepaws", component: EntidadComponent },
-    { path: "perfil-refugio/:name", component: TemplateVeterinariaComponent, canActivate : [authGuard] },
-    { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, canActivate : [authGuard] },
+    { path: "perfil-refugio/:name", component: TemplateVeterinariaComponent, /*canActivate : [authGuard]*/ },
+    { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, /*canActivate : [authGuard]*/ },
     { path: "perfil-user", component: PerfilUserComponent }
 ];

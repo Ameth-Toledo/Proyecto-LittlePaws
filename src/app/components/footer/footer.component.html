@@ -8,7 +8,7 @@
         <div class="footer-section-footer subscribe-footer">
             <h2 class="footer-heading-footer">Ayudanos a mejorar</h2>
             <form (ngSubmit)="enviarComentario()" class="subscribe-form-footer">
-                <textarea [(ngModel)]="comentarioRequest.comentario" name="comentario" id="" class="subscribe-input-footer" placeholder="Ingrese su comentario"></textarea>
+                <textarea [(ngModel)]="comentarioRequest.comentario" name="comentario" class="subscribe-input-footer" placeholder="Ingrese su comentario"></textarea>
                 <button type="submit" class="subscribe-button-footer" (click)="openThanksModal()">Enviar</button>
             </form>
         </div>

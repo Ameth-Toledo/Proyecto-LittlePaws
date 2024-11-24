@@ -8,46 +8,44 @@
   <form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()" class="adoption-form">
     <div class="form-group-adoption">
       <label for="name" class="form-label-adoption">Nombre completo:</label>
-      <input type="text" id="name" formControlName="name" class="form-input-adoption" placeholder="Tu nombre completo" required>
+      <input type="text" id="name" formControlName="name" class="form-input-adoption" required>
     </div>
 
     <div class="form-group-adoption">
       <label for="email" class="form-label-adoption">Correo electrónico:</label>
-      <input type="email" id="email" formControlName="email" class="form-input-adoption" placeholder="Tu correo electrónico" required>
+      <input type="email" id="email" formControlName="email" class="form-input-adoption" required>
     </div>
 
     <div class="form-group-adoption">
       <label for="cellphone" class="form-label-adoption">Teléfono:</label>
-      <input type="tel" id="cellphone" formControlName="cellphone" class="form-input-adoption" placeholder="Tu número de teléfono" required>
+      <input type="tel" id="cellphone" formControlName="cellphone" class="form-input-adoption" required>
     </div>
 
     <div class="form-group-adoption">
       <label for="direccion" class="form-label-adoption">Dirección:</label>
-      <input type="text" id="direccion" formControlName="direccion" class="form-input-adoption" placeholder="Tu dirección completa" required>
+      <input type="text" id="direccion" formControlName="direccion" class="form-input-adoption" required>
     </div>
 
    
 
     <div class="form-group-adoption">
       <label for="curp" class="form-label-adoption">Ingrese su CURP:</label>
-      <input type="text" id="curp" formControlName="curp" class="form-input-adoption" placeholder="CURP" required>
+      <input type="text" id="curp" formControlName="curp" class="form-input-adoption" required>
     </div>
 
     <div class="form-group-adoption">
       <label for="seguimiento" class="form-label-adoption">Seguimiento:</label>
-      <input type="text" id="seguimiento" formControlName="seguimiento" class="form-input-adoption" placeholder="Seguimiento">
+      <input type="text" id="seguimiento" formControlName="seguimiento" class="form-input-adoption">
     </div>
-
-   
 
     <div class="form-group-adoption">
       <label for="observaciones" class="form-label-adoption">Observaciones:</label>
-      <textarea id="observaciones" formControlName="observaciones" class="form-textarea-adoption" rows="4" placeholder="Escribe tus observaciones" required></textarea>
+      <textarea id="observaciones" formControlName="observaciones" class="form-textarea-adoption" rows="4" required></textarea>
     </div>
 
     <div class="form-group-adoption">
       <label for="condiciones" class="form-label-adoption">Condiciones:</label>
-      <textarea id="condiciones" formControlName="condiciones" class="form-textarea-adoption" rows="4" placeholder="Escribe las condiciones" required></textarea>
+      <textarea id="condiciones" formControlName="condiciones" class="form-textarea-adoption" rows="4" required></textarea>
     </div>
 
     <button type="button" class="upload-image" (click)="triggerFileInput()">

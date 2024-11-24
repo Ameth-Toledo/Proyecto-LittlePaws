@@ -16,7 +16,6 @@ export class FooterComponent {
   isAlertVisible = false;
   isThanksModalOpen = false;
 
-  //nuevo
   comentarioRequest : Comentarios = {
     comentario : ''
   }
@@ -30,7 +29,6 @@ export class FooterComponent {
   closeThanksModal() {
     this.isThanksModalOpen = false;
   }
-  //nuevo
 
   openModal(){
     this.isModalOpen = true;
@@ -59,7 +57,7 @@ export class FooterComponent {
       this.comentariosService.createComentario(this.comentarioRequest).subscribe(
         (response) => {
           console.log('Comentario enviado con exito:', response);
-          this.comentarioRequest.comentario = '';
+          this.limpiarComentario();
           this.openThanksModal();
         },
         (error) => {
@@ -69,5 +67,9 @@ export class FooterComponent {
     } else {
       console.warn('El comentario no puede estar vacio:');
     }
+  }
+
+  limpiarComentario() {
+    this.comentarioRequest.comentario = '';
   }
 }
