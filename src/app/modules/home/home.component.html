@@ -52,30 +52,18 @@
 </div>
 
 <div class="animales-container">
-    <app-card-animales imgSrc="perros/perro01.webp" 
-    name="Rocko" 
-    namaPet="Rocko"
-    refugio="Santa Cruz"
-    edad="1 año"
-    raza="rottweiler"/>
-    <app-card-animales imgSrc="perros/perro02.jpg" 
-    name="Pepito" 
-    namaPet="Pepito"
-    refugio="Santa Teresa"
-    edad="10 años"
-    raza="desconocido"/>   
-    <app-card-animales imgSrc="perros/perro04.jpeg" 
-    name="Apolo" 
-    namaPet="Apolo"
-    refugio="Santa Cruz"
-    edad="13"
-    raza="Pitbull"/>
-    <app-card-animales imgSrc="perros/perro06.jpeg" 
-    name="Ramona" 
-    namaPet="Ramona"
-    refugio="Santa Cruz"
-    edad="13"
-    raza="galgo"/>
+    <div *ngFor="let mascota of mascotas">
+        <app-card-animales
+          [imgSrc]="mascota.image"
+          [name]="mascota.name"
+          [namePet]="mascota.name"
+          [refugio]="mascota.entity_name"
+          [edad]="mascota.age "
+          [raza]="mascota.race"
+          [idMascota]="mascota.id_mascota"
+          [entityId]="mascota.entity_id">
+        </app-card-animales>
+      </div>
 </div>
 
 <div class="recomendacion-adopcion">
@@ -138,30 +126,18 @@
 
 
 <div class="animales-container">
-    <app-card-animales imgSrc="gatos/gato2.jpg" 
-    name="Napoleon" 
-    namaPet="Napoleon"
-    refugio="Santa Cruz"
-    edad="4 años"
-    raza="mestizo"/>
-    <app-card-animales imgSrc="gatos/gato3.jpg" 
-    name="Bonni y Black" 
-    namaPet="Bonni y Black"
-    refugio="Santa Teresa"
-    edad="6 meses"
-    raza="mestizo"/>   
-    <app-card-animales imgSrc="gatos/gato4.jpeg" 
-    name="Jerry" 
-    namaPet="Jerry"
-    refugio="Santa Cruz"
-    edad="4 años"
-    raza="mestizo"/>
-    <app-card-animales imgSrc="gatos/gato5.jpg" 
-    name="Pelusa" 
-    namaPet="Pelusa"
-    refugio="Santa Cruz"
-    edad="1 año"
-    raza="mestizo"/>
+    <div *ngFor="let mascota of mascotas">
+        <app-card-animales
+          [imgSrc]="mascota.image"
+          [name]="mascota.name"
+          [namePet]="mascota.name"
+          [refugio]="mascota.entity_name"
+          [edad]="mascota.age "
+          [raza]="mascota.race"
+          [idMascota]="mascota.id_mascota"
+          [entityId]="mascota.entity_id">
+        </app-card-animales>
+      </div>
 </div>
 
 <app-chatbot></app-chatbot>

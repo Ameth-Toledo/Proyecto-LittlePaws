@@ -5,30 +5,18 @@
 </div>
 
 <div class="animales-container">
-    <app-card-animales imgSrc="perros/perro01.webp" 
-    name="Lilo" 
-    namaPet="Lilo"
-    refugio="Santa Cruz"
-    edad="1 año"
-    raza="desconicido"/>
-    <app-card-animales imgSrc="perros/perro02.jpg" 
-    name="Pepito" 
-    namaPet="Pepito"
-    refugio="Santa Teresa"
-    edad="10 años"
-    raza="desconicido"/>   
-    <app-card-animales imgSrc="perros/perro04.jpeg" 
-    name="Coqui" 
-    namaPet="Coqui"
-    refugio="Santa Cruz"
-    edad="13"
-    raza="desconicido"/>
-    <app-card-animales imgSrc="perros/perro06.jpeg" 
-    name="Rigo" 
-    namaPet="Rigo"
-    refugio="Santa Cruz"
-    edad="13"
-    raza="desconicido"/>
+    <div *ngFor="let mascota of mascotas">
+        <app-card-animales
+          [imgSrc]="mascota.image"
+          [name]="mascota.name"
+          [namePet]="mascota.name"
+          [refugio]="mascota.entity_name"
+          [edad]="mascota.age"
+          [raza]="mascota.race"
+          [idMascota]="mascota.id_mascota"
+          [entityId]="mascota.entity_id">
+        </app-card-animales>
+    </div>
 </div>
 
 <div class="footer-style">

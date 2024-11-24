@@ -8,9 +8,9 @@ import { Comentarios, ComentarioResponse } from '../../models/comentarios';
 })
 export class ComentarioService {
 
-  private url : string = 'http://localhost:3002/comentarios'
+  private url: string = 'http://127.0.0.1:8000/comments';  
 
-  constructor(private http : HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('access_token') || '';
@@ -21,13 +21,16 @@ export class ComentarioService {
   }
 
   getAllComentarios(): Observable<ComentarioResponse[]> {
-    return this.http.get<ComentarioResponse[]>(this.url, { headers: this.getHeaders() });
+    return this.http.get<ComentarioResponse[]>(`${this.url}/all`, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getComentariosById(denuncia_id: number): Observable<ComentarioResponse> {
-    const urlApi = `${this.url}/denuncias/${denuncia_id}/`;
-    console.log(urlApi);
-    return this.http.get<ComentarioResponse>(urlApi, { headers: this.getHeaders() });
+  getComentariosById(comment_id: string): Observable<ComentarioResponse> {
+    const urlApi = `${this.url}/${comment_id}`;
+    return this.http.get<ComentarioResponse>(urlApi, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   createComentario(comentarioRequest: Comentarios): Observable<ComentarioResponse> {
@@ -35,19 +38,16 @@ export class ComentarioService {
       tap((response) => {
         console.log('Comentario creado:', response);
       }),
-      catchError((error) => {
-        console.error('Error al crear comentario:', error);
-        throw error;
-      })
+      catchError(this.handleError)
     );
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    throw error;  
   }
 
   getAuthToken() {
     return localStorage.getItem('access_token') || '';
   }
-
-  getComentarios(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
-  }  
-  
 }

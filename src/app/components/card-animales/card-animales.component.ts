@@ -15,10 +15,11 @@ export class CardAnimalesComponent {
   @Input() imgSrc: string = '';
   @Input() namePet: string = '';
   @Input() refugio: string = '';
-  @Input() edad: string = '';
-  @Input() raza: string = '';
+  @Input() edad!: number ;
+  @Input() raza: string = ''; 
   @Input() idMascota!: number;
   @Input() entityId!: number;
+
 
   showIds: boolean = false;
 

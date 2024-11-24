@@ -81,11 +81,23 @@
 }
 
 .estado-revisado {
-    color: #28a745; 
-}
-
-.estado-pendiente {
-    color: #ffc107; 
-}
-
+    color: green;
+  }
+  
+  .estado-pendiente {
+    color: orange;
+  }
+  
+  .estado-proceso {
+    color: blue;
+  }
+  
+  .estado-aceptado {
+    color: green;
+  }
+  
+  .estado-rechazado {
+    color: red;
+  }
+  
 

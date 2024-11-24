@@ -11,6 +11,27 @@ export interface Entidad {
     facebook?: string;
     instagram?: string;
     twitter?: string;
+    social_networks: string[];
     fotoPerfil?: File | string;
-    id_user: number
-}
+    id_user: number;
+  }
+  
+  export interface EntidadResponse {
+    id: number;
+    name: string;
+    telefono: string;
+    email: string;
+    type: string;
+    description: string;
+    direccion: string;
+    hours_operation: string;
+    id_entity: number;
+    ubicacion: string;
+    facebook?: string;
+    instagram?: string;
+    twitter?: string;
+    social_networks: string[];
+    image: string;
+    id_user: number;
+  }
+  

@@ -14,6 +14,7 @@ export interface Adopcion {
     cellphone:string
 }
 export interface AdopcionResponse {
+    estado: string
     id_adopcion: number;
     id_mascota: number;
     id_usuario: number;
@@ -30,5 +31,8 @@ export interface AdopcionResponse {
     direccion: string;
     cellphone: string;
     agreement: boolean;
+    nombre_entidad: string;  
+    nombre_mascota: string; 
+    nombre_usuario: string;
   }
   

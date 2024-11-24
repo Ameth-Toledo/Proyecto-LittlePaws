@@ -11,6 +11,7 @@ export interface PetsResponse {
     entity_name: string
     entity_id:number
     accepted: boolean;
+
 }
 export interface PetsRequest {
     name: string;

@@ -18,7 +18,7 @@
       <div class="action-description">Reporta un incidente o situación.</div>
     </div>
 
-    <div class="action-card add-lost-pet" aria-label="Agregar mascotas extraviadas" (click)="abrirModal()">
+    <div class="action-card add-lost-pet" aria-label="Agregar mascotas extraviadas" (click)="abrirModal('mascotas')">
       <i class="fas fa-paw"></i>
       <div class="action-title">Agregar Mascotas Extraviadas</div>
       <div class="action-description">Ayuda a encontrar mascotas perdidas.</div>
@@ -84,7 +84,6 @@
       <img src="LittlePaws06.png" alt="logo" class="logo">
       <h1 class="title-modal">Little<span class="color">Paws</span></h1>  
     </div>
-    <span class="close-btn" id="close-modal" (click)="cerrarModal()">&times;</span>
     <label for="name" class="modal-label">Ingrese el nombre de la mascota</label>
     <input type="text" id="name" class="modal-input">
     

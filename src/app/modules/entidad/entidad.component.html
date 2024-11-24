@@ -111,8 +111,7 @@
                 <option value="grande">Grande</option>
               </select>
         
-              <label for="entity_id" class="label-form">Ingrese el ID del refugio</label>
-              <input type="number" id="entity_id" name="entity_id" [(ngModel)]="mascota.entity_id" required class="input-field" />
+              <input type="text" class="form-control" id="entity_id" [(ngModel)]="mascota.entity_id" name="entity_id" [ngClass]="{'hidden': true}" />   
               
               <div class="button-group">
                 <button type="button" class="agregar-imagenes-btn" (click)="triggerFileInput()">
@@ -130,14 +129,21 @@
     
     <!-- Ver Mascotas Modal -->
     <div class="ver-mascotas-modal" *ngIf="isModalOpen && activeModal === 'Ver'">
-      <h1 class="ver-mascotas-title">Ver Mascotas</h1>
-      <app-card-animales-entidad
-      name="Pepito"
-      imgSrc="perros/perro02.jpg"
-      namaPet="Pepito"
-      refugio="Albania"
-      edad="2 años"
-      raza="desconocido" />
+      <div *ngFor="let mascota of mascotas">
+        <app-card-animales-entidad
+          [imgSrc]="mascota.image"
+          [name]="mascota.name"
+          [namePet]="mascota.name"
+          [refugio]="mascota.entity_name"
+          [edad]="mascota.age "
+          [raza]="mascota.race"
+          [idMascota]="mascota.id_mascota"
+          [entityId]="mascota.entity_id"
+          [weight]="mascota.weight"
+          (petDeleted)="onPetDeleted($event)"
+          (petUpdated)="onPetUpdated($event)">
+        </app-card-animales-entidad>
+      </div>
     </div>
 
     <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
@@ -160,16 +166,22 @@
     <div class="modal-comentarios" *ngIf="isModalOpen && activeModal === 'Comentarios'">
       <h2 class="comentarios-tittle-modal">Comentarios</h2>
       <div *ngFor="let comentario of comentarios" class="comentario-card">
-        <app-card-comentarios [comentario]="comentario.comentario"></app-card-comentarios>
+        <app-card-comentarios [comentario]="comentario.content"></app-card-comentarios>
       </div>
     </div>   
     
     <div class="modal-adopciones" *ngIf="isModalOpen && activeModal === 'Adopciones'">
+      <div *ngFor="let adopcion of adopciones">
         <app-card-adopciones
-          namePet="Cachiflin"
-          nameRefugio="Santa Clara"
-          userAdopcion="Fabricio"/>
-    </div>
+          [namePet]="adopcion.nombre_mascota"
+          [nameRefugio]="adopcion.nombre_entidad"
+          [userAdopcion]="adopcion.nombre_usuario"
+          [status]="adopcion.id_status"
+          [idAdopcion]="adopcion.id_adopcion"
+          >
+        </app-card-adopciones>
+      </div>
+    </div>    
   </div>
 </div>
 

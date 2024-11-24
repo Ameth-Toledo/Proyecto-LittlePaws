@@ -8,9 +8,18 @@
         <h2 class="user-adopcion"><i class="fas fa-user icon"></i> {{ userAdopcion }}</h2>
     </div>
     <div class="estado-container">
-        <p class="estado" [ngClass]="{'estado-revisado': estado === 'Revisado', 'estado-pendiente': estado === 'Pendiente'}">
-            Estado: {{ estado }}
+        <p class="estado" [ngClass]="{
+          'estado-proceso': estado === 'proceso',
+          'estado-aceptado': estado === 'aceptado',
+          'estado-rechazado': estado === 'rechazado'
+        }">
+        Estado: <strong>{{ estado }}</strong>
         </p>
         <button class="btn-estado" (click)="cambiarEstado()">Cambiar estado</button>
-    </div>
+      </div>
+    <ng-container *ngIf="showIds">
+        <h3 class="id-mascota">
+          <i class="fas fa-id-badge"></i> ID Mascota: {{ idAdopcion }}
+        </h3>
+    </ng-container>
 </div>
