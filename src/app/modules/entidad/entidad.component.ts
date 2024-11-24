@@ -4,7 +4,6 @@ import { HeaderEntidadComponent } from "../../components/header-entidad/header-e
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CardDenunciasComponent } from "../../components/card-denuncias/card-denuncias.component";
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { CardAnimalesEntidadComponent } from "../../components/card-animales-entidad/card-animales-entidad.component";
 import { CardMascotasExtraviadosComponent } from "../../components/card-mascotas-extraviados/card-mascotas-extraviados.component";
@@ -13,6 +12,7 @@ import { ComentarioService } from '../../services/comentarios/comentario.service
 import { CardAdopcionesComponent } from "../../components/card-adopciones/card-adopciones.component";
 import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 import { PetsRequest, PetsResponse } from '../../models/pets';
+import { CardDenunciasEntidadComponent } from "../../components/card-denuncias-entidad/card-denuncias-entidad.component";
 
 interface Message {
   senderName: string;
@@ -25,7 +25,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardDenunciasComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, CardAdopcionesComponent, ChatbotComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, CardAdopcionesComponent, ChatbotComponent, CardDenunciasEntidadComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })
