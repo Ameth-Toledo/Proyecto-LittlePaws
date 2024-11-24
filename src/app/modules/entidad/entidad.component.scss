@@ -274,9 +274,9 @@
   margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
 }
-
-.input-field {
+.modal-input {
   padding: 12px;
+  width: 100%;
   margin-bottom: 15px;
   border: 2px solid #00E8F8;
   background-color: transparent;
@@ -287,12 +287,24 @@
   box-sizing: border-box;
 }
 
+.input-field {
+  padding: 10px;
+  width: 100%;
+  margin: 8px 0;
+  border: 2px solid #00E8F8;
+  background-color:#20272f ;
+  border-radius: 4px;
+  font-size: 16px;
+  color:#00E8F8;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
 .input-field:focus {
   outline: none;
   border-color: #00E8F8;
-  background-color: #e0f7fa;
-  background-color: #e0f7fa;
 }
+
 
 .btn-enviar-registro {
   padding: 12px 20px;

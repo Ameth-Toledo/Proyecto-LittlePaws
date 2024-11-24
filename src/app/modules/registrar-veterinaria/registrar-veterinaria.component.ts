@@ -5,13 +5,12 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { MapaComponent } from '../../components/mapa/mapa.component';
 import { EntidadService } from '../../services/entidad/entidad.service';
 
 @Component({
   selector: 'app-registrar-veterinaria',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, GoogleMapsModule, MapaComponent, ReactiveFormsModule],
+  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, GoogleMapsModule, ReactiveFormsModule],
   templateUrl: './registrar-veterinaria.component.html',
   styleUrls: ['./registrar-veterinaria.component.scss']
 })

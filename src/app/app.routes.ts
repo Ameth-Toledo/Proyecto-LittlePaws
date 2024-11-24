@@ -20,8 +20,8 @@ import { PerfilUserComponent } from './modules/perfil-user/perfil-user.component
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "home", component: HomeComponent },
-    { path: "donaciones", component: DonacionesComponent, canActivate : [authGuard] },
-    { path: "adopciones", component: AdopcionComponent, canActivate : [authGuard] },
+    { path: "donaciones", component: DonacionesComponent, /*canActivate : [authGuard]*/ },
+    { path: "adopciones", component: AdopcionComponent, /*canActivate : [authGuard]*/ },
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
     { path: "terms-and-conditions", component: TermsComponent },

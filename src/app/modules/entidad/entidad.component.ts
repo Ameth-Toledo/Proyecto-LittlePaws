@@ -15,6 +15,7 @@ import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 import { PetsRequest, PetsResponse } from '../../models/pets';
 import { AdopcionService } from '../../services/adopcion/adopcion.service';
 import { AdopcionResponse } from '../../models/adopcion';
+import { MascotasExtraviadasService } from '../../services/mascotas_e/mascotas-extraviadas.service';
 
 interface Message {
   senderName: string;
@@ -51,12 +52,14 @@ export class EntidadComponent {
   imageUrl: string | undefined;
   pets: any[] = [];
   adopciones: AdopcionResponse[] = []; 
+  mascotasExtraviadas: any[] = [];
 
   constructor(
     private router: Router,
     private mascotasService: MascotasService,
     private comentarioService: ComentarioService,
-    private adopcionesService: AdopcionService
+    private adopcionesService: AdopcionService,
+    private mascotasExtraviadasService: MascotasExtraviadasService
   ) {}
 
   selectedMessage: Message | null = null;
@@ -69,6 +72,7 @@ export class EntidadComponent {
     }
     this.view_adopciones(this.mascota.entity_id);
     this.loadComentarios();
+    this.cargarMascotas()
   }
 
   setEntityId() {
@@ -186,7 +190,7 @@ export class EntidadComponent {
   }
 
   onPetUpdated(updatedPet: any) {
-    this.view_mascotas(this.mascota.entity_id);  // Refresh pets list
+    this.view_mascotas(this.mascota.entity_id);  
     const index = this.mascotas.findIndex(mascota => mascota.id_mascota === updatedPet.idMascota);
     if (index !== -1) {
       this.mascotas[index] = updatedPet;
@@ -264,6 +268,17 @@ export class EntidadComponent {
       (error) => {
         console.error('Error al cargar los comentarios:', error);
         alert('Hubo un error al cargar los comentarios.');
+      }
+    );
+  }
+
+  cargarMascotas() {
+    this.mascotasExtraviadasService.getMascotasExtraviadas().subscribe(
+      (response) => {
+        this.mascotasExtraviadas = response; 
+      },
+      (error) => {
+        console.error('Error al cargar las mascotas:', error);
       }
     );
   }

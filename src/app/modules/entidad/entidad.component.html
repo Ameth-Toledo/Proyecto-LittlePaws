@@ -78,13 +78,13 @@
           <div class="form-container">
             <div class="form-left">
               <label for="name" class="label-form">Ingrese el nombre de la mascota</label>
-              <input type="text" id="name" name="name" [(ngModel)]="mascota.name" required class="input-field" #name="ngModel" />
+              <input type="text" id="name" name="name" [(ngModel)]="mascota.name" required class="modal-input" #name="ngModel" />
             
               <label for="race" class="label-form">Ingrese la raza de la mascota</label>
-              <input type="text" id="race" name="race" [(ngModel)]="mascota.race" required class="input-field" #race="ngModel" />
+              <input type="text" id="race" name="race" [(ngModel)]="mascota.race" required class="modal-input" #race="ngModel" />
             
               <label for="age" class="label-form">Ingrese la edad de la mascota</label>
-              <input type="number" id="age" name="age" [(ngModel)]="mascota.age" required class="input-field" #age="ngModel" />
+              <input type="number" id="age" name="age" [(ngModel)]="mascota.age" required class="modal-input" #age="ngModel" />
             
               <label for="gender" class="label-form">Seleccione el género de la mascota</label>
               <select id="gender" name="gender" [(ngModel)]="mascota.gender" required class="input-field" #gender="ngModel">
@@ -102,7 +102,7 @@
             
             <div class="form-right">
               <label for="weight" class="label-form">Ingrese el peso de la mascota (en kg)</label>
-              <input type="number" id="weight" name="weight" [(ngModel)]="mascota.weight" step="0.1" required class="input-field" #weight="ngModel" />
+              <input type="number" id="weight" name="weight" [(ngModel)]="mascota.weight" step="0.1" required class="modal-input" #weight="ngModel" />
             
               <label for="size" class="label-form">Seleccione el tamaño de la mascota</label>
               <select id="size" name="size" [(ngModel)]="mascota.size" required class="input-field" #size="ngModel">
@@ -149,18 +149,20 @@
     <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
       <h1 class="mascotas-extraviadas-tittle">Mascotas Extraviadas</h1>
       <app-card-mascotas-extraviados
-        name="Gonsa"
-        namePet="Gonsa"
-        imgSrc="perros/perro07.jpeg"
-        edad="2 años"
-        raza="desconocido"
-        sexo="Macho"
-        especie="desconocido"
-        telefono="961-000-0000"
-        direccion="Pacu-Suchiapa"
-        fecha_extravio="22 Julio 2024"
-        fecha_publicacion="21 Noviembre 2024"
-        />
+      *ngFor="let mascota of mascotasExtraviadas"
+      [name]="mascota.nombre"
+      [namePet]="mascota.nombre"
+      [imgSrc]="mascota.imagen"
+      [edad]="mascota.edad"
+      [raza]="mascota.raza"
+      [sexo]="mascota.sexo"
+      [especie]="mascota.especie"
+      [telefono]="mascota.telefono"
+      [direccion]="mascota.direccion"
+      [fecha_extravio]="mascota.fecha_extravio"
+      [fecha_publicacion]="mascota.fecha_publicacion"
+      [descripcion]="mascota.descripcion">
+    </app-card-mascotas-extraviados>
     </div>
 
     <div class="modal-comentarios" *ngIf="isModalOpen && activeModal === 'Comentarios'">
@@ -177,8 +179,7 @@
           [nameRefugio]="adopcion.nombre_entidad"
           [userAdopcion]="adopcion.nombre_usuario"
           [status]="adopcion.id_status"
-          [idAdopcion]="adopcion.id_adopcion"
-          (estadoCambiado)="actualizarListaAdopciones($event)">
+          [idAdopcion]="adopcion.id_adopcion">
         </app-card-adopciones>
       </div>
     </div>    

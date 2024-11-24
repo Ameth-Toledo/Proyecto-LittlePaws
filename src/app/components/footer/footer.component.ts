@@ -17,11 +17,9 @@ export class FooterComponent {
   isThanksModalOpen = false;
 
   comentarioRequest: Comentarios = {
-    content: '',                          // Ensure the field is 'content'
-    createdAt: new Date().toISOString().split('T')[0]  // Ensure the field is 'createdAt'
-  }
-  
-
+    content: '',
+    createdAt: new Date().toISOString().split('T')[0]
+  };
 
   constructor(private comentariosService: ComentarioService) {}
 
@@ -33,7 +31,6 @@ export class FooterComponent {
     this.isThanksModalOpen = false;
   }
 
-  // Modal control
   openModal() {
     this.isModalOpen = true;
   }
@@ -42,7 +39,6 @@ export class FooterComponent {
     this.isModalOpen = false;
   }
 
-  // Alert message for copying the link
   copyLink() {
     const link = 'https://ameth-toledo.github.io/prueba/';
     navigator.clipboard.writeText(link).then(() => {
@@ -54,17 +50,16 @@ export class FooterComponent {
     this.isAlertVisible = true;
     setTimeout(() => {
       this.isAlertVisible = false;
-    }, 3000);  // Hide alert after 3 seconds
+    }, 3000);
   }
 
-  // Sending comment functionality
   enviarComentario() {
-    if (this.comentarioRequest.content.trim()) {  // Ensure non-empty comment
+    if (this.comentarioRequest.content.trim()) {
       this.comentariosService.createComentario(this.comentarioRequest).subscribe(
         (response) => {
           console.log('Comentario enviado con éxito:', response);
-          this.comentarioRequest.content = '';  // Reset content field
-          this.openThanksModal();  // Open thanks modal
+          this.comentarioRequest.content = '';
+          this.openThanksModal();
         },
         (error) => {
           console.error('Error al enviar el comentario:', error);

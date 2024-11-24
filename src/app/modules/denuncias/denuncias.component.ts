@@ -20,10 +20,9 @@ export class DenunciasComponent implements OnInit {
   constructor(private router: Router, private denunciasService: DenunciasService) {}
 
   ngOnInit(): void {
-    this.getDenuncias();  // Fetch denuncias when the component initializes
+    this.getDenuncias(); 
   }
 
-  // Fetch denuncias data
   getDenuncias(): void {
     this.denunciasService.getAllDenuncias().subscribe(
       (response: DenunciaResponse[]) => {
@@ -35,7 +34,6 @@ export class DenunciasComponent implements OnInit {
     );
   }
 
-  // Navigate to the denuncias form page
   enviarDenunciarForm(event: Event): void {
     event.preventDefault();
     this.router.navigate(['/denuncias-form']);

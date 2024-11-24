@@ -9,11 +9,14 @@ import { AdopcionService } from '../../services/adopcion/adopcion.service';
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { PetsResponse } from '../../models/pets';
 import { AdopcionResponse } from '../../models/adopcion';
+import { MascotasExtraviadasService } from '../../services/mascotas_e/mascotas-extraviadas.service';
+import { CardMascotasExtraviadosComponent } from '../../components/card-mascotas-extraviados/card-mascotas-extraviados.component';
+import { MascotasExtraviadas } from '../../models/mascotas-extraviadas';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, ChatbotComponent],
+  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, ChatbotComponent, CardMascotasExtraviadosComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -25,9 +28,11 @@ export class HomeComponent implements OnInit {
   timer: any;
   @Input() mascotas!: PetsResponse[];
   adopciones: AdopcionResponse[] = []; 
+  mascotasExtraviadas: any[] = [];
 
   ngOnInit(): void {
     this.view_mascotas(); 
+    this.cargarMascotas();
   }
 
 
@@ -72,7 +77,7 @@ export class HomeComponent implements OnInit {
     }, intervalDuration); 
   }
 
-  constructor(private router: Router,  private adopcionesService : AdopcionService,private mascotasService: MascotasService) {}
+  constructor(private router: Router,  private mascotasExtraviadasService: MascotasExtraviadasService,private mascotasService: MascotasService) {}
 
   enviarVeterinarias(event: Event) {
     event.preventDefault();
@@ -97,14 +102,25 @@ export class HomeComponent implements OnInit {
     if (entityId) {
       this.mascotasService.getAllMascotas(entityId).subscribe((response: PetsResponse[]) => {
         console.log(response);
-        this.mascotas = response; // Solo las mascotas de la entidad seleccionada
+        this.mascotas = response; 
       });
     } else {
-      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => { // Puedes usar un valor como 0 si no se pasa un entityId
+      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => {
         console.log(response);
-        this.mascotas = response; // Esto carga todas las mascotas si no se pasa entidadId
+        this.mascotas = response; 
       });
     }
+  }
+
+  cargarMascotas() {
+    this.mascotasExtraviadasService.getMascotasExtraviadas().subscribe(
+      (response) => {
+        this.mascotasExtraviadas = response; 
+      },
+      (error) => {
+        console.error('Error al cargar las mascotas:', error);
+      }
+    );
   }
 
 }

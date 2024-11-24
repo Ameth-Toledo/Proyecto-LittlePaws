@@ -111,7 +111,6 @@
     cursor: pointer;
 }
 
-
 .upload-image:hover {
     background-color: #07b4c0;
 }
@@ -145,5 +144,15 @@
     .submit-btn-adoption {
         font-size: 16px;
         padding: 10px;
+    }
+
+    .form-input-adoption, 
+    .form-textarea-adoption {
+        width: 98%;
+        font-size: 18px;
+    }
+
+    .upload-image {
+        width: 98%;
     }
 }
