@@ -38,8 +38,8 @@
 .bandeja-entidad-modal,
 .denuncias-modal-entidad,
 .agregar-mascotas-modal,
-.ver-mascotas-modal
-.mascotas-extraviadas-modal
+.ver-mascotas-modal,
+.mascotas-extraviadas-modal,
 .modal-comentarios {
   width: 100%;
   margin: 10px 0;
@@ -107,11 +107,18 @@
 }
 
 .side-bar-item {
+  display: flex;
+  align-items: center;
   padding: 15px 20px;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.side-bar-item i {
+  margin-right: 5px;
+  align-items: center;
 }
 
 .side-bar-item:hover {

@@ -57,7 +57,6 @@ export class HeaderComponent {
     return this.router.url === route;
   }
 
-  //para ver el local
   ngOnInit() {
     this.isUserLoggedIn = !!localStorage.getItem('session');
   }
@@ -66,5 +65,10 @@ export class HeaderComponent {
     localStorage.removeItem('session');
     this.isUserLoggedIn = false;
     this.router.navigate(['/login']);
+  }
+
+  redirectToPerfilUser(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['perfil-user']);
   }
 }

@@ -35,7 +35,6 @@ export class MascotasExtraviadasService {
 
   getMascotasExtraviadas(): Observable<MascotasExtraviadas[]> {
     return this.http.get<MascotasExtraviadas[]>(this.apiUrl, {
-      headers: this.getHeaders()
     }).pipe(
       catchError(this.handleError)
     );

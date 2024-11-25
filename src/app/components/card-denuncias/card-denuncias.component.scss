@@ -15,6 +15,46 @@
     justify-content: space-between;
     align-items: center;
   }
+  .input-comentario {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input-comentario input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #1f2a33;
+    color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .input-comentario input::placeholder {
+    color: #aaa;
+  }
+  
+  .input-comentario input:focus {
+    outline: none;
+    border-color: #f0a500;
+  }
+  
+  .btn-enviar-comentario {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-enviar-comentario:hover {
+    background-color: #0056b3;
+  }
   
   .card-title {
     font-size: 1.5rem;

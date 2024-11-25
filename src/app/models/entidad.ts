@@ -33,5 +33,6 @@ export interface Entidad {
     social_networks: string[];
     image: string;
     id_user: number;
+    location: string
   }
   

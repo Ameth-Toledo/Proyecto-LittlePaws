@@ -14,18 +14,20 @@
   <i class="fas fa-dog"></i> {{ refugioData?.name }}
 </h1>
 
-<div class="map-container" *ngIf="refugioData?.location">
+<div class="map-container">
   <iframe
-    [src]="refugioData.location"
+    [src]="googleMapsUrl"
     width="600"
-    height="450"
+    height="500"
     style="border:0;"
     allowfullscreen=""
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
     class="map-veterinaria">
   </iframe>
+
 </div>
+
 
 <div class="info-head">
   <span
@@ -43,6 +45,7 @@
     Publicaciones
   </span>
 </div>
+
 <div class="pets-gallery" *ngIf="selectedOption === 'fotos'">
   <div *ngFor="let mascota of mascotas">
     <app-card-animales

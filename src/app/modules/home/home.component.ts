@@ -12,6 +12,8 @@ import { AdopcionResponse } from '../../models/adopcion';
 import { MascotasExtraviadasService } from '../../services/mascotas_e/mascotas-extraviadas.service';
 import { CardMascotasExtraviadosComponent } from '../../components/card-mascotas-extraviados/card-mascotas-extraviados.component';
 import { MascotasExtraviadas } from '../../models/mascotas-extraviadas';
+import { MapsService } from '../../services/ubicacion/maps.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +31,16 @@ export class HomeComponent implements OnInit {
   @Input() mascotas!: PetsResponse[];
   adopciones: AdopcionResponse[] = []; 
   mascotasExtraviadas: any[] = [];
+  latitude!: number;
+  longitude!: number;
+  entidadForm!: FormGroup;
+  
+  constructor(private router: Router,  private mascotasExtraviadasService: MascotasExtraviadasService,private mascotasService: MascotasService, private geolocationService: MapsService,   private fb: FormBuilder,) {
+    this.entidadForm = this.fb.group({
+      location: [''] 
+    });
+  }
+
 
   ngOnInit(): void {
     this.view_mascotas(); 
@@ -62,6 +74,35 @@ export class HomeComponent implements OnInit {
     this.imageViewed = true; 
   }
 
+  getUserLocation() {
+    this.geolocationService.getCurrentPosition()
+      .then(position => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+  
+        const locationString = `${this.latitude},${this.longitude}`;
+        this.entidadForm.get('location')?.setValue(locationString);
+
+        this.updateMapIframe(this.latitude, this.longitude);
+  
+        console.log(`Ubicación asignada al formulario: ${locationString}`);
+      })
+      .catch(error => {
+        console.error('Error al obtener la ubicación', error);
+        alert('No se pudo obtener la ubicación, por favor actívela y recargue la página.');
+      });
+  }
+  
+
+  updateMapIframe(lat: number, lng: number) {
+    const iframe = document.getElementById('googleMapIframe') as HTMLIFrameElement;
+    if (iframe) {
+      const googleMapsUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1`;
+      iframe.src = googleMapsUrl;
+    }
+  }
+  
+
   startProgressBar() {
     const totalDuration = 10; 
     const intervalDuration = 100; 
@@ -77,8 +118,7 @@ export class HomeComponent implements OnInit {
     }, intervalDuration); 
   }
 
-  constructor(private router: Router,  private mascotasExtraviadasService: MascotasExtraviadasService,private mascotasService: MascotasService) {}
-
+  
   enviarVeterinarias(event: Event) {
     event.preventDefault();
     this.router.navigate(['/veterinarias']);

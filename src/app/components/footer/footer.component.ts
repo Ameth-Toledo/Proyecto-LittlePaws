@@ -58,8 +58,8 @@ export class FooterComponent {
       this.comentariosService.createComentario(this.comentarioRequest).subscribe(
         (response) => {
           console.log('Comentario enviado con éxito:', response);
-          this.comentarioRequest.content = '';
-          this.openThanksModal();
+          this.comentarioRequest.content = '';  // Reset content field
+          this.openThanksModal();  // Open thanks modal
         },
         (error) => {
           console.error('Error al enviar el comentario:', error);
@@ -68,5 +68,9 @@ export class FooterComponent {
     } else {
       console.warn('El comentario no puede estar vacío');
     }
+  }
+
+  limpiarComentario() {
+    this.comentarioRequest.content = '';
   }
 }

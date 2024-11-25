@@ -6,10 +6,13 @@ export interface Denuncias {
 }
 
 export interface DenunciaResponse {
-  id_denuncias: number;
+  id_denuncia: number;  
   id_usuario: number;
   motivo: string;
   descripcion: string;
   imagen: string;
-
+  nombre_usuario: string;
+  seguimiento: boolean;  
+  estado: string; 
+  
 }

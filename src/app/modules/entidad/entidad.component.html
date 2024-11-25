@@ -37,37 +37,46 @@
   <div class="modal-content">
     <!-- Bandeja Modal -->
     <div class="bandeja-entidad-modal" *ngIf="isModalOpen && activeModal === 'Bandeja'">
-        <h1 class="tittle-entidad-section">LittlePaws - Mensajería</h1>
-        
-        <div class="message-list">
-          <div class="message-preview" *ngFor="let message of messages" (click)="openMessage(message)">
-            <img [src]="message.userImage" alt="User Image" class="user-image">
-            <div class="message-info">
-              <h3 class="sender-name">{{ message.senderName }}</h3>
-              <p class="message-snippet">{{ message.snippet }}</p>
-            </div>
+      <h1 class="tittle-entidad-section">LittlePaws - Mensajería</h1>
+      
+      <div class="message-list">
+        <div class="message-preview" *ngFor="let message of messages" (click)="openMessage(message)">
+          <img [src]="message.userImage" alt="User Image" class="user-image">
+          <div class="message-info">
+            <h3 class="sender-name">{{ message.senderName }}</h3>
+            <p class="message-snippet">{{ message.snippet }}</p>
           </div>
         </div>
-
-        <div *ngIf="selectedMessage" class="message-detail">
-          <h2 class="sender-name">{{ selectedMessage.senderName }}</h2>
-          <p class="message-content">{{ selectedMessage.content }}</p>
-          <div *ngIf="replyMessage">
-              <h3 class="response-header">Tu Respuesta:</h3>
-              <p class="message-response">{{ replyMessage }}</p>
-          </div>
-      
-          <div class="message-reply">
-              <textarea [(ngModel)]="replyMessage" placeholder="Escribe tu respuesta..."></textarea>
-              <button class="btn-send" (click)="sendMessage()">Enviar</button>
-          </div>
       </div>
-    </div>
 
+      <div *ngIf="selectedMessage" class="message-detail">
+        <h2 class="sender-name">{{ selectedMessage.senderName }}</h2>
+        <p class="message-content">{{ selectedMessage.content }}</p>
+        <div *ngIf="replyMessage">
+            <h3 class="response-header">Tu Respuesta:</h3>
+            <p class="message-response">{{ replyMessage }}</p>
+        </div>
+    
+        <div class="message-reply">
+            <textarea [(ngModel)]="replyMessage" placeholder="Escribe tu respuesta..."></textarea>
+            <button class="btn-send" (click)="sendMessage()">Enviar</button>
+        </div>
+    </div>
+  </div>
+  
+    
     <!-- Denuncias Modal -->
     <div class="denuncias-modal-entidad" *ngIf="isModalOpen && activeModal === 'Denuncias'">
       <h2 class="denuncias-tittle-modal">Denuncias</h2>
-      <app-card-denuncias/>
+      <div *ngFor="let denuncia of denuncias" class="animales-container">
+        <app-card-denuncias-entidad
+          [nombre]="denuncia.motivo"
+          [descripcion]="denuncia.descripcion"
+          [imagenes]="[denuncia.imagen]"
+          [name]="denuncia.nombre_usuario"
+          [id_denuncia]="denuncia.id_denuncia"
+        ></app-card-denuncias-entidad>
+      </div>
     </div>
 
     <!-- Agregar Mascotas Modal -->
@@ -88,15 +97,15 @@
             
               <label for="gender" class="label-form">Seleccione el género de la mascota</label>
               <select id="gender" name="gender" [(ngModel)]="mascota.gender" required class="input-field" #gender="ngModel">
-                <option value="macho">macho</option>
-                <option value="hembra">hembra</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
               </select>
             
               <label for="species" class="label-form">Seleccione la especie de la mascota</label>
               <select id="species" name="species" [(ngModel)]="mascota.species" required class="input-field" #species="ngModel">
-                <option value="perro">perro</option>
-                <option value="gato">gato</option>
-                <option value="otro">otro</option>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="otro">Otro</option>
               </select>
             </div>
             
@@ -106,9 +115,9 @@
             
               <label for="size" class="label-form">Seleccione el tamaño de la mascota</label>
               <select id="size" name="size" [(ngModel)]="mascota.size" required class="input-field" #size="ngModel">
-                <option value="pequeño">pequeño</option>
-                <option value="mediano">mediano</option>
-                <option value="grande">grande</option>
+                <option value="pequeño">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
               </select>
         
               <input type="text" class="form-control" id="entity_id" [(ngModel)]="mascota.entity_id" name="entity_id" [ngClass]="{'hidden': true}" />   

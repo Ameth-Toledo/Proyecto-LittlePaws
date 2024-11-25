@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header/>
 
 <div class="denuncias-content">
   <h1 class="title-denuncias">Si tu tambien conoces algun caso de maltrato animal, puedes denunciar presionando el boton de aqui abajo</h1>
@@ -13,6 +13,9 @@
     [nombre]="denuncia.motivo"
     [descripcion]="denuncia.descripcion"
     [imagenes]="[denuncia.imagen]"
+    [name]="denuncia.nombre_usuario"
+    [id_denuncia]="denuncia.id_denuncia"
+    [estado]="denuncia.estado"
   ></app-card-denuncias>
 </div>
 

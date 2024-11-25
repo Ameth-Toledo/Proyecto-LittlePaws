@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { GmailService } from '../../services/gmail/gmail.service';
 
 @Component({
   selector: 'app-denuncias-form',
@@ -21,7 +22,8 @@ export class DenunciasFormComponent {
   constructor(
     private fb: FormBuilder,
     private denunciaService: DenunciasService,
-    private router: Router
+    private router: Router,
+    private gmailService: GmailService
   ) {
     const userId = localStorage.getItem('user_id');
     const parsedUserId = userId ? Number(userId) : 0; 
@@ -50,6 +52,7 @@ export class DenunciasFormComponent {
     fileInput.click();
   }
 
+  
   resetForm(): void {
     const userId = localStorage.getItem('user_id');
     const parsedUserId = userId ? Number(userId) : 0;  
@@ -89,9 +92,10 @@ export class DenunciasFormComponent {
     formData.append('file', this.selectedFile, this.selectedFile.name);
 
     this.denunciaService.createDenuncia(formData).subscribe({
-      next: (response) => {
+      next: async (response) => {
         console.log('Denuncia enviada con éxito:', response);
         alert('Denuncia enviada con éxito');
+        await this.enviarCorreoConfirmacion(this.adopcionForm.value.id_usuario, this.adopcionForm.value.motivo);
         this.resetForm();  
       },
       error: (err) => {
@@ -111,6 +115,37 @@ export class DenunciasFormComponent {
       }
     });
   }
+
+  async enviarCorreoConfirmacion(id_usuario: number, motivo: string) {
+    const subject = 'Confirmación de denuncia recibida';
+    const body = `
+      <p>Hola,</p>
+      <p>Tu denuncia con el motivo: ${motivo} ha sido recibida correctamente.</p>
+      <p>Gracias por reportar el incidente. Nos pondremos en contacto contigo para continuar con el proceso.</p>
+      <p>Atentamente,</p>
+      <p>El equipo de soporte.</p>
+    `;
+
+    this.gmailService.gapiLoaded$.subscribe(async (isLoaded) => {
+      if (isLoaded) {
+        try {
+          const userEmail = localStorage.getItem('email'); // You can retrieve the email from localStorage
+          if (userEmail) {
+            await this.gmailService.sendEmail(userEmail, subject, body);
+            console.log('Correo de confirmación enviado');
+          } else {
+            console.error('No se pudo obtener el correo del usuario');
+          }
+        } catch (error) {
+          console.error('Error al enviar el correo de confirmación:', error);
+        }
+      } else {
+        console.error('gapi no está listo');
+      }
+    });
+  }
+
+  
   
   getFormValidationErrors(): any {
     const errors: any = {};
