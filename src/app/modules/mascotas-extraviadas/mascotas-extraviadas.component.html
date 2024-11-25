@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div class="cards-container">
+  <app-card-mascotas-extraviados
+    *ngFor="let mascota of mascotas"
+    [name]="mascota.nombre"
+    [namePet]="mascota.nombre"
+    [imgSrc]="mascota.imagen"
+    [edad]="mascota.edad"
+    [raza]="mascota.raza"
+    [sexo]="mascota.sexo"
+    [especie]="mascota.especie"
+    [telefono]="mascota.telefono"
+    [direccion]="mascota.direccion"
+    [fecha_extravio]="mascota.fecha_extravio"
+    [fecha_publicacion]="mascota.fecha_publicacion"
+    [descripcion]="mascota.descripcion">
+  </app-card-mascotas-extraviados>
+</div>
+
+<app-footer></app-footer>

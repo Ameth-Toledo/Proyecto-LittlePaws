@@ -85,10 +85,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; 
+    z-index: 9999;
     padding: 10px;
+    overflow-y: auto; /* Agrega desplazamiento en el fondo */
 }
-
 
 .modal-content {
     width: 500px;
@@ -96,8 +96,17 @@
     padding: 20px;
     border-radius: 15px;
     position: relative;
-    z-index: 10000; 
+    z-index: 10000;
     text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    max-height: 80vh; /* Limita la altura máxima */
+    overflow-y: auto; /* Agrega desplazamiento vertical */
+}
+
+.modal-content--expandido {
+    transform: scale(1);
+    width: 600px;
 }
 
 .modal-titulo {
@@ -184,6 +193,11 @@
     margin: 20px auto;
 }
 
+#paypal-button-container {
+    display: block !important;
+    visibility: visible !important;
+}
+
 @media (max-width: 768px) {
     .card-donaciones {
         max-width: 80%;
@@ -222,5 +236,9 @@
 
     .modal-btn {
         font-size: 18px;
+    }
+
+    .modal-content--expandido {
+        width: 90%;
     }
 }

@@ -1,0 +1,58 @@
+.info-head {
+    display: flex;
+    justify-content: flex-start; 
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%); 
+    padding: 10px; 
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0; 
+}
+
+.info-option {
+    margin: 0 15px; 
+    font-size: 1.2rem; 
+    color: #ffffff; 
+    cursor: pointer; 
+    padding: 5px 10px;
+}
+
+.info-option.selected {
+    font-weight: bold; 
+    border-bottom: 2px solid #ffffff; 
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #00E8F8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map-veterinaria {
+    border: none;
+    width: 100%;
+    height: 500px;
+}
+
+.ubication-veterinaria-principal {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.7) 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ubication-veterinaria-principal i {
+    margin-right: 10px;
+    color: white;
+    font-size: 1.5rem;
+}

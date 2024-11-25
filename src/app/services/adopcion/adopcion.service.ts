@@ -1,78 +1,58 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
-import { Adopcion, AdopcionResponse } from '../../models/adopcion';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdopcionService {
-
-  private url: string = 'http://127.0.0.1:8000';
-
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8000/adopciones'; // Base URL for your API
 
   private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('access_token') || '';
+    const token = sessionStorage.getItem('access_token') || localStorage.getItem('access_token') || '';
     return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`  
+      'Authorization': `Bearer ${token}`,
     });
   }
 
-  getAllAdopciones(): Observable<AdopcionResponse[]> {
-    const urlApi = `${this.url}/adopcion/all/`;
-    console.log(urlApi);
-    return this.http.get<AdopcionResponse[]>(urlApi, { headers: this.getHeaders() });
-  }
+  constructor(private http: HttpClient) { }
 
-  getAdopcionById(adopcion_id: number): Observable<AdopcionResponse> {
-    const urlApi = `${this.url}/adopcion/${adopcion_id}/`;
-    console.log(urlApi);
-    return this.http.get<AdopcionResponse>(urlApi, { headers: this.getHeaders() });
-  }
-
-  createAdopcion(adopcionRequest: Adopcion): Observable<AdopcionResponse> {
-    return this.http.post<AdopcionResponse>(`${this.url}/adopcion/`, adopcionRequest, { headers: this.getHeaders() }).pipe(
-      tap((response) => {
-        console.log('Nueva adopción creada:', response);
-      }),
-      catchError((error) => {
-        console.error('Error al crear adopción:', error);
-        throw error;
-      })
+  createAdopcion(data: FormData): Observable<any> {
+    return this.http.post<any>(this.apiUrl, data, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
     );
   }
 
-  updateAdopcion(adopcion_id: number, adopcionRequest: Adopcion): Observable<AdopcionResponse> {
-    const urlApi = `${this.url}/adopcion/${adopcion_id}/`;
-    return this.http.put<AdopcionResponse>(urlApi, adopcionRequest, { headers: this.getHeaders() }).pipe(
-      tap((response) => {
-        console.log('Adopción actualizada:', response);
-      }),
-      catchError((error) => {
-        console.error('Error al actualizar adopción:', error);
-        throw error;
-      })
+  getAllAdopciones(entityId: number): Observable<any> {
+    const params = new HttpParams().set('id_entidad', entityId.toString());
+    return this.http.get<any>(`${this.apiUrl}/all/`, { headers: this.getHeaders(), params: params }).pipe(
+      catchError(this.handleError)
     );
   }
 
-  deleteAdopcion(adopcion_id: number): Observable<any> {
-    const urlApi = `${this.url}/adopcion/${adopcion_id}/`;
-    return this.http.delete(urlApi, { headers: this.getHeaders() }).pipe(
-      tap(() => {
-        console.log('Adopción eliminada:', adopcion_id);
-      }),
-      catchError((error) => {
-        console.error('Error al eliminar adopción:', error);
-        throw error;
-      })
+  getAdopcionById(adopcionId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${adopcionId}/`, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
     );
   }
 
-  getAuthToken() {
-    return localStorage.getItem('access_token') || '';
+  updateAdopcion(adopcionId: number, idStatus: string): Observable<any> {
+    const formData = new FormData();
+    formData.append('id_status', idStatus);
+    return this.http.put<any>(`${this.apiUrl}/${adopcionId}/update_status/`, formData, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteAdopcion(adopcionId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${adopcionId}/`, { headers: this.getHeaders() }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: any): Observable<never> {
+    const errorMessage = error?.error?.detail || 'Ha ocurrido un error inesperado';
+    console.error('Error en el servicio:', errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }
-
-

@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ComentarioResponse, Comentarios } from '../../models/comentarios';
 import { ComentarioService } from '../../services/comentarios/comentario.service';
+import { Comentarios } from '../../models/comentarios';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
   isModalOpen = false;
   isAlertVisible = false;
   isThanksModalOpen = false;
 
-  //nuevo
-  comentarioRequest : Comentarios = {
-    comentario : ''
-  }
+  comentarioRequest: Comentarios = {
+    content: '',
+    createdAt: new Date().toISOString().split('T')[0]
+  };
 
   constructor(private comentariosService: ComentarioService) {}
 
@@ -30,9 +30,8 @@ export class FooterComponent {
   closeThanksModal() {
     this.isThanksModalOpen = false;
   }
-  //nuevo
 
-  openModal(){
+  openModal() {
     this.isModalOpen = true;
   }
 
@@ -55,19 +54,23 @@ export class FooterComponent {
   }
 
   enviarComentario() {
-    if (this.comentarioRequest.comentario.trim()) {
+    if (this.comentarioRequest.content.trim()) {
       this.comentariosService.createComentario(this.comentarioRequest).subscribe(
         (response) => {
-          console.log('Comentario enviado con exito:', response);
-          this.comentarioRequest.comentario = '';
-          this.openThanksModal();
+          console.log('Comentario enviado con éxito:', response);
+          this.comentarioRequest.content = '';  // Reset content field
+          this.openThanksModal();  // Open thanks modal
         },
         (error) => {
-          console.error('Error al enviar el comentario:', error)
+          console.error('Error al enviar el comentario:', error);
         }
       );
     } else {
-      console.warn('El comentario no puede estar vacio:');
+      console.warn('El comentario no puede estar vacío');
     }
+  }
+
+  limpiarComentario() {
+    this.comentarioRequest.content = '';
   }
 }

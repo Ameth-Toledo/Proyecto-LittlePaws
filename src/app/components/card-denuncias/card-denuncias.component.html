@@ -1,11 +1,24 @@
 <div class="card-denuncia">
   <div class="card-header">
+    
     <h3 class="card-title">Denuncia de {{ nombre }}</h3>
+    <span class="estado" [ngClass]="estado === 'Revisado' ? 'revisado' : 'pendiente'">
+      {{ estado === 'Revisado' ? 'Revisado' : 'Pendiente' }}
+    </span>
+      
+
   </div>
 
   <div class="card-body">
     <p class="card-descripcion"><strong>Descripción del maltrato:</strong></p>
     <p class="card-text">{{ descripcion }}</p>
+    <ng-container *ngIf="showIds">
+      <h3 class="id-mascota">
+        <i class="fas fa-id-badge"></i> ID Denuncia: {{ id_denuncia }}
+      </h3>    
+    </ng-container>
+    <p class="card-descripcion"><strong>Hecha por:</strong></p>
+    <p class="card-text">{{ name }}</p>
 
     <div *ngIf="imagenes && imagenes.length > 0" class="card-imagen-container">
       <div class="imagenes-grid">
@@ -53,4 +66,15 @@
       <img [src]="imagenSeleccionada" alt="Imagen completa" class="imagen-completa">
     </div>
   </div>
+
+  
+
+  <div class="input-comentario">
+    <input type="text" [(ngModel)]="comentario" placeholder="Escribe un comentario..." class="comentario-input" />
+    <button class="btn-enviar-comentario" (click)="enviarComentario()">Enviar</button>
+    <div class="comentarios">
+      <p *ngFor="let c of comentarios" class="comentario">{{ c }}</p>
+    </div>
+  </div>
+
 </div>

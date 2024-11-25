@@ -18,7 +18,7 @@
         <h2 class="modal-titulo">Donación para {{ tituloDonacion }}</h2>
         <label class="modal-label" for="cantidadDonacion">Cantidad a donar:</label>
         <input class="modal-input" type="number" id="cantidadDonacion" [(ngModel)]="cantidadDonacion" />
-        <button class="modal-btn" (click)="realizarDonacion()">Donar</button>
+        <div id="paypal-button-container"></div>
     </div>
 </div>
 

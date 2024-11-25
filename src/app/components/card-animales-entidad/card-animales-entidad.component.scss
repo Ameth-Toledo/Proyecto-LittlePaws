@@ -1,0 +1,336 @@
+.card-animales {
+  display: flex;
+  align-items: center;
+  background-color: #2C3742;
+  border-radius: 15px;
+  padding: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+  transition: transform 0.3s;
+  max-width: 600px; 
+  margin: 0.05rem auto; 
+}
+
+.image-animales {
+  border-radius: 15px;
+  width: 150px;
+  height: 150px; 
+  object-fit: cover; 
+  margin-right: 10px; 
+  margin-bottom: 10px;
+}
+
+.info-animales {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-animales {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-animales {
+  font-family: 'Poppins';
+  font-size: 24px;
+  margin: 2px 0; 
+}
+
+.icons-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon, .delete-icon {
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.raza, .refugio, .edad {
+  font-family: 'Poppins';
+  font-size: 18px;
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+}
+
+.raza i, .refugio i, .edad i {
+  margin-right: 5px;
+  color: #00BFFF;
+}
+
+.agregar-mascotas-modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 55, 66, 0.9); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.form-veterinaria-register {
+  background-color: #2C3742; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+  color: white; 
+}
+
+.label-form {
+  display: block;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #00E8F8;  
+}
+
+.input-field {
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #00E8F8;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #FFFFFF;  
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-field-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #00E8F8;
+  border-radius: 5px;
+  color: #00E8F8;  
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #00E8F8;
+  background-color: #e0f7fa;
+  background-color: #e0f7fa;
+  box-shadow: 0 0 5px #00BFFF;
+}
+
+.agregar-imagenes-btn,
+.btn-enviar-registro {
+  background-color: #00BFFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.agregar-imagenes-btn:hover,
+.btn-enviar-registro:hover {
+  background-color: #0095CC; 
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.btn-cerrar-modal {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.modal-advertencias {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 55, 66, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  color: white;
+
+  .warning-content {
+    background-color: #2C3742;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+
+    .warning-icon {
+      font-size: 50px;
+      color: #f0a500;
+      margin-bottom: 10px;
+    }
+
+    .tittle-modal-advertencia {
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
+      color: #00BFFF;
+    }
+
+    .messaje-modal-advertencia {
+      font-size: 18px;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .warning-buttons {
+      display: flex;
+      justify-content: space-around;
+
+      .btn-confirm,
+      .btn-cancel {
+        background-color: #00BFFF;
+        color: #000000;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #0095CC;
+        }
+      }
+
+      .btn-cancel {
+        background-color: #ff5555;
+
+        &:hover {
+          background-color: #cc4444;
+        }
+      }
+    }
+  }
+}
+
+.modal-exito {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 55, 66, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+.success-content {
+  background-color: #2C3742;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #00BFFF;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.btn-close-modal {
+  background-color: #00BFFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-close-modal:hover {
+  background-color: #0095CC;
+}
+
+@media (max-width: 768px) {
+  .card-animales {
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      max-width: 80%;
+      margin: 0.3rem auto;
+      padding: 15px;
+      transform: scale(0.95);
+      box-sizing: border-box; 
+  }
+
+  .image-animales {
+      width: 100%; 
+      max-width: 400px; 
+      height: auto; 
+      margin: 0 auto;
+      margin-bottom: 10px;
+      object-fit: cover;
+  }
+
+  .name-animales {
+      font-size: 24px;
+  }
+
+  .raza, .refugio, .edad {
+      font-size: 18px;
+  }
+
+  .agregar-mascotas-modal {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+  }
+}

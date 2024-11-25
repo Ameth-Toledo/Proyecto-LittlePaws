@@ -1,17 +1,33 @@
-export interface Users {
-    id? : number;
-    username : string;
-    lastname:string
-    email : string;
-    password : string;
-    access_token : string
+export interface NombreCompleto {
+  name: string;
+  last_name: string;
+}
+
+export interface UserCreate {
+  nombre_completo: NombreCompleto;  
+  email: string;
+  password: string;
+  rol: 'usuario' | 'entidad';
+}
+
+export interface UserOut {
+  id_user: number;
+  nombre_completo: string;  
+  email: string;
+  rol: 'usuario' | 'entidad';
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
 }
 
 export interface LoginResponse {
- 
-    id : number;
-    username : string;
-    lastname:string;
-    email : string;
-  token : string;
+  id_user: number;
+  name: string;
+  lastName: string;
+  email: string;
+  rol: 'usuario' | 'entidad';
+  access_token: string;
+  id_entidad?: number;  
 }

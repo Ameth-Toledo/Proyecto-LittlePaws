@@ -1,9 +1,9 @@
-import { User } from "./user"
+import { UserOut } from "./users";
 
 export interface SendMessage {
     message : {
         text : string;
-        author : User;
+        author : UserOut;
     };
 }
 1

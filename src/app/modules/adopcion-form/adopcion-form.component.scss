@@ -104,8 +104,8 @@
     border: none;
     font-size: 18px;
     font-family: 'Poppins';
-    height: 50px;
-    width: 200px;
+    height: 45px;
+    width: 390px;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
@@ -144,5 +144,15 @@
     .submit-btn-adoption {
         font-size: 16px;
         padding: 10px;
+    }
+
+    .form-input-adoption, 
+    .form-textarea-adoption {
+        width: 98%;
+        font-size: 18px;
+    }
+
+    .upload-image {
+        width: 98%;
     }
 }

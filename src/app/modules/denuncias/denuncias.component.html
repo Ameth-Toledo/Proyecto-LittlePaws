@@ -1,15 +1,27 @@
-<app-header></app-header>
+<app-header/>
 
 <div class="denuncias-content">
   <h1 class="title-denuncias">Si tu tambien conoces algun caso de maltrato animal, puedes denunciar presionando el boton de aqui abajo</h1>
   <button class="btn-denuncia" (click)="enviarDenunciarForm($event)">Denuncia!</button>
 </div>
 
-<app-card-denuncias
-  nombre=""
-  descripcion=""/> <!--tambien hay un arreglo de imagenes como  propt-->
-<app-card-denuncias/>
-<app-card-denuncias/>
-<app-card-denuncias/>
+
+
+
+<div *ngFor="let denuncia of denuncias" class="animales-container">
+  <app-card-denuncias
+    [nombre]="denuncia.motivo"
+    [descripcion]="denuncia.descripcion"
+    [imagenes]="[denuncia.imagen]"
+    [name]="denuncia.nombre_usuario"
+    [id_denuncia]="denuncia.id_denuncia"
+    [estado]="denuncia.estado"
+  ></app-card-denuncias>
+</div>
 
 <app-footer></app-footer>
+
+<!--
+  botones de agregar comentario   usuario y entidad
+  seguimiento, dar seguimiento o no boton 
+-->

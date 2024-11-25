@@ -119,6 +119,23 @@
     background-color: #0389b6;
 }
 
+.profile-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.profile-btn:hover {
+    color: #f0a500; 
+}
+
 @media (max-width: 1024px) {
     .little-menu {
         gap: 15px;

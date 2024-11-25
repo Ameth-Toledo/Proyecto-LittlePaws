@@ -1,7 +1,7 @@
 <header class="little-header">
   <div class="logo-container">
     <img src="LittlePaws06.svg" alt="logo" class="logo-little" (click)="enviarInicio($event)">
-    <h1 class="little-logo" (click)="enviarInicio($event)">Little Paws</h1>
+    <h1 class="little-logo" (click)="enviarInicio($event)">LittlePaws</h1>
   </div>
 
   <nav [ngClass]="{ 'open': isOpen }" class="little-nav">
@@ -19,12 +19,21 @@
       <li class="little-menu-li">
         <a [ngClass]="{ 'active': isRouteActive('/denuncias') }" class="little-menu-li-a" (click)="enviarDenuncias($event)">Denuncias</a>
       </li>
+      <li class="little-menu-li">
+        <a [ngClass]="{ 'active': isRouteActive('/mascotas-extraviadas') }" class="little-menu-li-a" (click)="enviarExtraviadas($event)">Extraviadas</a>
+      </li>
     </ul>
   </nav>
 
-  <button class="login-btn" (click)="enviarLogin($event)">
-    <i [class]="isUserLoggedIn ? 'fas fa-sign-out-alt' : 'fas fa-sign-in-alt'"></i>
-    {{ isUserLoggedIn ? 'Cerrar sesión' : 'Login' }}
-  </button>
+  <div class="user-actions">
+    <button class="profile-btn" *ngIf="isUserLoggedIn" (click)="redirectToPerfilUser($event)">
+      <i class="fas fa-user-circle"></i> Perfil
+    </button>
+  
+    <button class="login-btn" *ngIf="!isUserLoggedIn" (click)="enviarLogin($event)">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </button>
+ </div>
+
   <button class="little-hamburger" (click)="toggleMenu()">☰</button>
 </header>

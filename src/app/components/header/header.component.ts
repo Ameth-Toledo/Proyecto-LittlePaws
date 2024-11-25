@@ -48,11 +48,15 @@ export class HeaderComponent {
     this.router.navigate(['/denuncias']);
   }
 
+  enviarExtraviadas(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['/mascotas-extraviadas']);
+  }
+
   isRouteActive(route : string): boolean {
     return this.router.url === route;
   }
 
-  //para ver el local
   ngOnInit() {
     this.isUserLoggedIn = !!localStorage.getItem('session');
   }
@@ -60,6 +64,11 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('session');
     this.isUserLoggedIn = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
+  }
+
+  redirectToPerfilUser(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['perfil-user']);
   }
 }
