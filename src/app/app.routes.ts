@@ -17,6 +17,7 @@ import { DenunciasFormComponent} from './modules/denuncias-form/denuncias-form.c
 import { MascotasExtraviadasComponent } from './modules/mascotas-extraviadas/mascotas-extraviadas.component';
 import { PerfilUserComponent } from './modules/perfil-user/perfil-user.component';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
+import { VerAdopcionesUserComponent } from './modules/ver-adopciones-user/ver-adopciones-user.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -34,8 +35,9 @@ export const routes: Routes = [
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
     { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard]},
     { path: "entidad-littlepaws", component: EntidadComponent },
-    { path: "perfil-veterinaria/:id", component: TemplateVeterinariaComponent, /*canActivate : [authGuard] */},
+    { path: "perfil-veterinaria/:id", component: TemplateVeterinariaComponent, canActivate : [authGuard] },
     { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, canActivate : [authGuard] },
     { path: "perfil-user", component: PerfilUserComponent, canActivate : [authGuard]},
+    { path: "ver-adopciones-user", component: VerAdopcionesUserComponent },
     { path: "**", component: NotFoundComponent }
 ];
