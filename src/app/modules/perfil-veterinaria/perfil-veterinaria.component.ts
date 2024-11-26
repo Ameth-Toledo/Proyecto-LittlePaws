@@ -35,11 +35,10 @@ export class PerfilVeterinariaComponent {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
   
-        // Guarda la ubicación como string en el formulario
         const locationString = `${this.latitude},${this.longitude}`;
         this.entidadForm.get('location')?.setValue(locationString);
   
-        // Actualiza el iframe del mapa con las nuevas coordenadas
+       
         this.updateMapIframe(this.latitude, this.longitude);
   
         console.log(`Ubicación asignada al formulario: ${locationString}`);

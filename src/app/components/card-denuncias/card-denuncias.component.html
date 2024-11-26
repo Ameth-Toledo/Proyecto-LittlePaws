@@ -5,8 +5,6 @@
     <span class="estado" [ngClass]="estado === 'Revisado' ? 'revisado' : 'pendiente'">
       {{ estado === 'Revisado' ? 'Revisado' : 'Pendiente' }}
     </span>
-      
-
   </div>
 
   <div class="card-body">
@@ -67,14 +65,14 @@
     </div>
   </div>
 
-  
-
   <div class="input-comentario">
     <input type="text" [(ngModel)]="comentario" placeholder="Escribe un comentario..." class="comentario-input" />
     <button class="btn-enviar-comentario" (click)="enviarComentario()">Enviar</button>
-    <div class="comentarios">
-      <p *ngFor="let c of comentarios" class="comentario">{{ c }}</p>
-    </div>
   </div>
+  <!-- Comentarios -->
+  <div class="comentarios">
+    <p *ngFor="let c of comentarios" class="comentario">{{ c }}</p>
+  </div>
+  
 
 </div>

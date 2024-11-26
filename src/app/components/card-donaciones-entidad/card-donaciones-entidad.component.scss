@@ -1,0 +1,51 @@
+.card-donaciones-entidad {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    background-color: #2C3742;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; 
+    margin: 10px;
+  }
+  
+  .logo-donaciones-entidad {
+    width: 60px; 
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-donacion {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    gap: 5px;
+  }
+  
+  .title-donaciones-entidad {
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .title-donaciones-entidad .color {
+    color: #00E8F8;
+  }
+  
+  .fecha-donacion {
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  
+  .cantidad-donada {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  

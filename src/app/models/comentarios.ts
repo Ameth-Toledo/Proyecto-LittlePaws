@@ -1,6 +1,6 @@
 export interface Comentarios {
-    content: string;      // Changed from comentario to content
-    createdAt: string;    // Changed from fecha to createdAt
+    content: string;     
+    createdAt: string;   
 }
   
 export interface ComentarioResponse {

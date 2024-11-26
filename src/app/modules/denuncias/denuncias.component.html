@@ -5,9 +5,6 @@
   <button class="btn-denuncia" (click)="enviarDenunciarForm($event)">Denuncia!</button>
 </div>
 
-
-
-
 <div *ngFor="let denuncia of denuncias" class="animales-container">
   <app-card-denuncias
     [nombre]="denuncia.motivo"

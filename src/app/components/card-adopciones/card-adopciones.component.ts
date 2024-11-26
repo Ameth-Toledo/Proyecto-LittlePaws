@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdopcionResponse } from '../../models/adopcion';
 import { AdopcionService } from '../../services/adopcion/adopcion.service';
-import { GmailService } from '../../services/gmail/gmail.service';  // Import the GmailService
+import { GmailService } from '../../services/gmail/gmail.service'; 
 
 @Component({
   selector: 'app-card-adopciones',
@@ -25,7 +25,7 @@ export class CardAdopcionesComponent implements OnInit {
 
   constructor(
     private adopcionesService: AdopcionService,
-    private gmailService: GmailService  // Inject GmailService
+    private gmailService: GmailService  
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +53,6 @@ export class CardAdopcionesComponent implements OnInit {
         console.log('Estado actualizado exitosamente:', response);
         this.viewAdopciones();
         
-        // Enviar correo solo si el estado es 'aceptado' o 'rechazado'
         if (nuevoEstado === 'aceptado' || nuevoEstado === 'rechazado') {
           this.enviarCorreoNotificacion(this.adopcionSeleccionada?.id_usuario, nuevoEstado);
         }
@@ -66,7 +65,7 @@ export class CardAdopcionesComponent implements OnInit {
   }
 
   viewAdopciones(): void {
-    const entityId = 0;  // Esto probablemente deba cambiar según la lógica de tu app
+    const entityId = 0; 
     this.adopcionesService.getAllAdopciones(entityId).subscribe({
       next: (response: AdopcionResponse[]) => {
         console.log('Adopciones obtenidas:', response);

@@ -24,18 +24,33 @@
 
       <label class="label-form">Ubicación</label>
       <input formControlName="location" type="text" class="input-field" />
-      <div style="height: 500px; width: 100%;">
-        <google-map
-          *ngIf="latitude && longitude"
-          [center]="{ lat: latitude, lng: longitude }"
-          [zoom]="zoom"
-          [options]="{ scrollwheel: true }">
-          <map-marker
-            [position]="{ lat: latitude, lng: longitude }"
-            [label]="'You are here!'">
-          </map-marker>
-        </google-map>
+      <div class="map-container">
+        <!-- Botón para alternar visibilidad del mapa -->
+        <button class="toggle-map-btn" (click)="toggleMap()">
+          {{ isMapVisible ? 'Cerrar Mapa' : 'Abrir Mapa' }}
+        </button>
+      
+        <!-- Contenedor del mapa -->
+        <div 
+          *ngIf="isMapVisible" 
+          class="map-content"
+          style="height: 500px; width: 100%; margin-top: 10px;"
+        >
+          <google-map
+            *ngIf="latitude && longitude"
+            [center]="{ lat: latitude, lng: longitude }"
+            [zoom]="zoom"
+            [options]="{ scrollwheel: true }"
+          >
+            <map-marker
+              [position]="{ lat: latitude, lng: longitude }"
+              [label]="'You are here!'"
+            >
+            </map-marker>
+          </google-map>
+        </div>
       </div>
+      
       
 
       <label class="label-form">Descripción</label>

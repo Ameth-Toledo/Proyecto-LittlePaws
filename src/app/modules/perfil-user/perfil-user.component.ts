@@ -43,8 +43,20 @@ export class PerfilUserComponent {
     this.router.navigate(['/denuncias-form']);
   }
 
+  enviarAdopcionesUser(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['ver-adopciones-user']);
+  }
+
   abrirModal() {
     const modal = document.getElementById('modal-add-mascotas');
+    if (modal) {
+      modal.style.display = 'flex';
+    }
+  }
+
+  abrirModalEditProfile() {
+    const modal = document.getElementById('modal-edit-profile');
     if (modal) {
       modal.style.display = 'flex';
     }
@@ -83,6 +95,13 @@ export class PerfilUserComponent {
 
   cerrarModal() {
     const modal = document.getElementById('modal-add-mascotas');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  cerrarModalEditProfile() {
+    const modal = document.getElementById('modal-edit-profile');
     if (modal) {
       modal.style.display = 'none';
     }

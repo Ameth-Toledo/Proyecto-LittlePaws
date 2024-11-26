@@ -10,9 +10,9 @@
       <i class="fas fa-times"></i>
     </button>
     <ul class="side-bar-content">
-      <li class="side-bar-item" (click)="openModal('Bandeja')">
+      <!--<li class="side-bar-item" (click)="openModal('Bandeja')">
         <i class="fas fa-inbox"></i> Bandeja
-      </li>
+      </li>-->
       <li class="side-bar-item" (click)="openModalDenuncias('Denuncias')">
         <i class="fas fa-exclamation-circle"></i> Denuncias
       </li>
@@ -22,8 +22,8 @@
       <li class="side-bar-item" (click)="openModalView('Ver')">
         <i class="fas fa-eye"></i> Ver Mascotas
       </li>
-      <li class="side-bar-item" (click)="openModalExtraviadas('Extraviadas')">
-        <i class="fas fa-paw"></i>Mascotas Extraviadas
+      <li class="side-bar-item" (click)="openModalExtraviadas('Donaciones')">
+        <i class="fas fa-hand-holding-heart"></i>Donaciones
       </li>
       <li class="side-bar-item" (click)="openModalComentarios('Comentarios')">
         <i class="fas fa-comment"></i>Comentarios
@@ -155,23 +155,11 @@
       </div>
     </div>
 
-    <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Extraviadas'">
-      <h1 class="mascotas-extraviadas-tittle">Mascotas Extraviadas</h1>
-      <app-card-mascotas-extraviados
-      *ngFor="let mascota of mascotasExtraviadas"
-      [name]="mascota.nombre"
-      [namePet]="mascota.nombre"
-      [imgSrc]="mascota.imagen"
-      [edad]="mascota.edad"
-      [raza]="mascota.raza"
-      [sexo]="mascota.sexo"
-      [especie]="mascota.especie"
-      [telefono]="mascota.telefono"
-      [direccion]="mascota.direccion"
-      [fecha_extravio]="mascota.fecha_extravio"
-      [fecha_publicacion]="mascota.fecha_publicacion"
-      [descripcion]="mascota.descripcion">
-    </app-card-mascotas-extraviados>
+    <div class="mascotas-extraviadas-modal" *ngIf="isModalOpen && activeModal === 'Donaciones'">
+      <h1 class="mascotas-extraviadas-tittle">Donaciones</h1>
+      <app-card-donaciones-entidad
+        fecha="11/25/2024"
+        cantidad="3,000,000"/>
     </div>
 
     <div class="modal-comentarios" *ngIf="isModalOpen && activeModal === 'Comentarios'">
@@ -197,3 +185,8 @@
 
 <app-chatbot class="chat-bot"/>
 <app-footer class="footer-entidad"></app-footer>
+
+<!--
+  cantidad
+  fecha
+-->

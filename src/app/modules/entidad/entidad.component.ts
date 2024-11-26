@@ -18,6 +18,7 @@ import { CardDenunciasEntidadComponent } from '../../components/card-denuncias-e
 import { CardAdopcionesComponent } from "../../components/card-adopciones/card-adopciones.component";
 import { DenunciasService } from '../../services/denuncia/denuncia.service';
 import { DenunciaResponse } from '../../models/denuncias';
+import { CardDonacionesEntidadComponent } from '../../components/card-donaciones-entidad/card-donaciones-entidad.component';
 
 interface Message {
   senderName: string;
@@ -30,7 +31,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, ChatbotComponent, CardDenunciasEntidadComponent, CardAdopcionesComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, ChatbotComponent, CardDenunciasEntidadComponent, CardAdopcionesComponent, CardDonacionesEntidadComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })

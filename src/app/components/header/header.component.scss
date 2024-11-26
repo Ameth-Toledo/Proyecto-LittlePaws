@@ -52,6 +52,16 @@
     transition: color 0.3s ease;
 }
 
+.little-menu-li-a-config {
+    color: #fff;
+    text-decoration: none;
+    position: relative; 
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: none;
+}
+
 .little-menu-li-a:hover {
     color: #f0a500;
     font-weight: bold;
@@ -77,6 +87,7 @@
     font-weight: bold;
     border-bottom: 2px solid #f0a500;
 }
+
 .little-hamburger {
     display: none;
     background: none;
@@ -136,6 +147,17 @@
     color: #f0a500; 
 }
 
+.settings-icon {
+    font-size: 1.8rem;  
+    margin-left: 20px;  
+    color: #fff;
+    cursor: pointer;
+}
+
+.settings-icon:hover {
+    color: #f0a500;
+}
+
 @media (max-width: 1024px) {
     .little-menu {
         gap: 15px;
@@ -143,6 +165,10 @@
 }
 
 @media (max-width: 768px) {
+    .settings-icon {
+        display: none;
+    }
+
     .close-button {
         display: block;
     }
@@ -175,7 +201,7 @@
     }
 
     .little-nav.open {
-        height: 200px;
+        height: 230px;
     }
 
     .little-menu {
@@ -202,5 +228,11 @@
 
     .little-logo {
         font-size: 20px;
+    }
+
+    .little-menu-li-a-config {
+        display: block;
+        font-size: 1rem;
+        color: #f0a500;
     }
 }

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   isOpen: boolean = false;
   isUserLoggedIn : boolean = false;
+  isMobileView : boolean = false;
 
   constructor(private router: Router) {}
 

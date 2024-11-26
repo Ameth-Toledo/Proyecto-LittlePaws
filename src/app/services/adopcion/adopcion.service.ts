@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AdopcionService {
-  private apiUrl = 'http://localhost:8000/adopciones'; // Base URL for your API
+  private apiUrl = 'http://localhost:8000/adopciones'; 
 
   private getHeaders(): HttpHeaders {
     const token = sessionStorage.getItem('access_token') || localStorage.getItem('access_token') || '';

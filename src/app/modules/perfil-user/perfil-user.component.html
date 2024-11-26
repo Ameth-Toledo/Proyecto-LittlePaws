@@ -24,23 +24,23 @@
       <div class="action-description">Ayuda a encontrar mascotas perdidas.</div>
     </div>
 
-    <div class="action-card view-adoptions" aria-label="Ver adopciones">
+    <div class="action-card view-adoptions" aria-label="Ver adopciones" (click)="enviarAdopcionesUser($event)">
       <i class="fas fa-heart"></i>
       <div class="action-title">Ver Adopciones</div>
       <div class="action-description">Descubre mascotas en busca de un hogar.</div>
     </div>
 
-    <div class="action-card edit-profile" aria-label="Editar perfil">
+    <div class="action-card edit-profile" aria-label="Editar perfil" (click)="abrirModalEditProfile()">
       <i class="fas fa-cog"></i>
       <div class="action-title">Editar Perfil</div>
       <div class="action-description">Actualiza tus datos de usuario.</div>
     </div>
 
-    <div class="action-card messages" aria-label="Mensajes">
+    <!--<div class="action-card messages" aria-label="Mensajes">
       <i class="fas fa-envelope"></i>
       <div class="action-title">Mensajes</div>
       <div class="action-description">Revisa tus mensajes recientes.</div>
-    </div>
+    </div>-->
   </nav>
 </section>
 
@@ -98,4 +98,30 @@
   </div>
 </div>
 
+<div class="modal-edit-profile" id="modal-edit-profile">
+  <div class="form-edit-profile">
+    <h2 class="modal-title">Editar Perfil</h2>
+    <form>
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" placeholder="Escribe tu nombre de usuario">
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" placeholder="Escribe tu correo electrónico">
+
+      <label for="password">Nueva contraseña:</label>
+      <input type="password" id="password" placeholder="Escribe tu nueva contraseña">
+
+      <button type="submit" class="modal-btn">Guardar Cambios</button>
+      <button type="button" class="btn-cerrar-modal" (click)="cerrarModalEditProfile()">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+
 <app-footer class="app-footer"></app-footer>
+
+<!--
+  nombre:
+  correo:
+  contraseña:
+-->

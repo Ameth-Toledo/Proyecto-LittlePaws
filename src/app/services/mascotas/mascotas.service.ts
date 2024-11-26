@@ -24,7 +24,7 @@ export class MascotasService {
 
   getAllMascotas(entityId: number): Observable<PetsResponse[]> {
     return this.http.get<PetsResponse[]>(`${this.url}/mascotas_all/`, {
-      params: { entity_id: entityId.toString() }, // Pass the entity_id as a query parameter
+      params: { entity_id: entityId.toString() },
     }).pipe(
       catchError(this.handleError)
     );

@@ -38,6 +38,12 @@ export class RegistrarVeterinariaComponent {
   selectedFile: File | null = null;
   fileName: any;
 
+  isMapVisible = true;
+
+  toggleMap() : void {
+    this.isMapVisible = !this.isMapVisible;
+  }
+
   constructor(
     private router: Router,
     private fb: FormBuilder,

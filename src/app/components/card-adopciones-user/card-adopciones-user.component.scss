@@ -1,0 +1,75 @@
+.card-adopciones {
+    background-color: #2C3742;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    margin: 15px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00BFFF;
+    padding-bottom: 10px;
+}
+
+.card-header .icon {
+    color: #00BFFF;
+    font-size: 24px; 
+    margin-right: 10px;
+}
+
+.name-pet {
+    font-size: 22px; 
+    font-weight: bold;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.card-body {
+    padding-top: 10px;
+}
+
+.card-body .name-refugio,
+.card-body .user-adopcion {
+    font-size: 18px; 
+    margin: 10px 0;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card-body .icon {
+    font-size: 20px; 
+    margin-right: 10px;
+}
+
+.card-body .name-refugio i,
+.card-body .user-adopcion i {
+    font-size: 20px; 
+    color: #00BFFF;
+}
+
+.id-mascota {
+    font-size: 16px;
+    color: #00BFFF;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.id-mascota i {
+    font-size: 18px;
+    margin-right: 10px;
+}

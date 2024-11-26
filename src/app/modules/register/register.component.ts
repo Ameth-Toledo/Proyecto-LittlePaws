@@ -19,19 +19,17 @@ export class RegisterComponent {
     private gmailService: GmailService
   ) {}
 
-  // Navegar al login
+
   enviarLogin(event: Event) {
     event.preventDefault();
     this.router.navigate(['/login']);
   }
 
-  // Alternar la visibilidad de la contraseña
   togglePassword(inputId: string) {
     const inputElement = document.getElementById(inputId) as HTMLInputElement;
     inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
   }
 
-  // Validación del formulario y registro
   async validarFormulario(event: Event) {
     event.preventDefault();
 
@@ -48,7 +46,6 @@ export class RegisterComponent {
     } else if (password !== passwordConfirm) {
       this.mostrarPasswordMismatchModal();
     } else {
-      // Llamada al servicio de registro
       this.registerService.addUser({
         nombre_completo: { name, last_name: lastName },
         email,
@@ -57,7 +54,7 @@ export class RegisterComponent {
       }).subscribe(
         async () => {
           console.log('Usuario registrado en la base de datos');
-          await this.enviarCorreoBienvenida(email, name);  // Llama al método para enviar el correo
+          await this.enviarCorreoBienvenida(email, name);  
           this.mostrarSuccessModal();
         },
         (error) => {
@@ -76,11 +73,10 @@ export class RegisterComponent {
       <p>Gracias por unirte.</p>
     `;
     
-    // Suscríbete al estado de gapiLoaded$
     this.gmailService.gapiLoaded$.subscribe(async (isLoaded) => {
       if (isLoaded) {
         try {
-          await this.gmailService.sendEmail(email, subject, body);  // Llama al servicio GmailService para enviar el correo
+          await this.gmailService.sendEmail(email, subject, body);  
           console.log('Correo de bienvenida enviado');
         } catch (error) {
           console.error('Error al enviar el correo de bienvenida:', error);
@@ -91,7 +87,7 @@ export class RegisterComponent {
     });
   }
 
-  // Métodos para mostrar modales de error y éxito
+  
   mostrarEmailErrorModal() {
     const modal = document.getElementById('emailErrorModal')!;
     modal.style.display = 'flex';

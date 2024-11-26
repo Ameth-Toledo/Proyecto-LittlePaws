@@ -58,8 +58,8 @@ export class FooterComponent {
       this.comentariosService.createComentario(this.comentarioRequest).subscribe(
         (response) => {
           console.log('Comentario enviado con éxito:', response);
-          this.comentarioRequest.content = '';  // Reset content field
-          this.openThanksModal();  // Open thanks modal
+          this.comentarioRequest.content = '';  
+          this.openThanksModal();
         },
         (error) => {
           console.error('Error al enviar el comentario:', error);

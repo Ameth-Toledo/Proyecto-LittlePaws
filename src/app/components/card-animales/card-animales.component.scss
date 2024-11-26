@@ -1,35 +1,42 @@
 .card-animales {
     display: flex;
     align-items: center;
+    justify-content: space-between; 
     background-color: #2C3742;
     border-radius: 15px;
-    padding: 10px; 
+    padding: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: #FFFFFF;
     transition: transform 0.3s;
-    max-width: 600px; 
-    margin: 0.05rem auto; 
+    width: 600px; 
+    height: 240px;
+    box-sizing: border-box; 
+    overflow: hidden; 
 }
 
 .image-animales {
     border-radius: 15px;
     width: 150px;
-    height: 150px; 
-    object-fit: cover; 
-    margin-right: 10px; 
-    margin-bottom: 10px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 .info-animales {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; 
+    height: 100%; 
+    overflow: hidden; 
 }
 
 .name-animales {
     font-family: 'Poppins';
     font-size: 24px;
-    margin: 2px 0; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    overflow: hidden;
 }
 
 .raza, .refugio, .edad {
@@ -38,6 +45,9 @@
     margin: 2px 0;
     display: flex;
     align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .raza i, .refugio i, .edad i {
@@ -48,10 +58,11 @@
 .adop-btn {
     background-color: #00BFFF;
     border: none;
-    width: 100%; 
+    width: 100%;
     height: 40px;
     border-radius: 10px;
     font-family: 'Poppins';
+    font-weight: bold;
     margin-top: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -63,32 +74,25 @@
 
 @media (max-width: 768px) {
     .card-animales {
-        background-color: transparent;
-        display: flex;
         flex-direction: column;
-        text-align: center;
-        max-width: 80%;
-        margin: 0.3rem auto;
-        padding: 15px;
-        transform: scale(0.95);
-        box-sizing: border-box; 
+        width: 100%; 
+        max-width: 350px; 
+        height: auto; 
+        padding: 10px;
     }
 
     .image-animales {
-        width: 100%; 
-        max-width: 400px; 
-        height: auto; 
-        margin: 0 auto;
-        margin-bottom: 10px;
+        width: 150px;
+        height: 150px;
         object-fit: cover;
+        margin: 0 auto 10px auto;
     }
 
-    .name-animales {
-        font-size: 24px;
-    }
-
-    .raza, .refugio, .edad {
-        font-size: 18px;
+    .info-animales {
+        align-items: flex-start;
+        text-align: left;
+        height: auto; 
+        width: 100%;
     }
 
     .adop-btn {
@@ -96,5 +100,7 @@
         height: 50px;
         font-size: 18px;
         margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
