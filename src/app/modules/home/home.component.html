@@ -126,18 +126,21 @@
 
 
 <div class="animales-container">
-    <div *ngFor="let mascota of mascotas">
-        <app-card-animales
-          [imgSrc]="mascota.image"
-          [name]="mascota.name"
-          [namePet]="mascota.name"
-          [refugio]="mascota.entity_name"
-          [edad]="mascota.age "
-          [raza]="mascota.race"
-          [idMascota]="mascota.id_mascota"
-          [entityId]="mascota.entity_id">
-        </app-card-animales>
-      </div>
+    <app-card-mascotas-extraviados
+    *ngFor="let mascota of mascotasExtraviadas"
+    [name]="mascota.nombre"
+    [namePet]="mascota.nombre"
+    [imgSrc]="mascota.imagen"
+    [edad]="mascota.edad"
+    [raza]="mascota.raza"
+    [sexo]="mascota.sexo"
+    [especie]="mascota.especie"
+    [telefono]="mascota.telefono"
+    [direccion]="mascota.direccion"
+    [fecha_extravio]="mascota.fecha_extravio"
+    [fecha_publicacion]="mascota.fecha_publicacion"
+    [descripcion]="mascota.descripcion">
+  </app-card-mascotas-extraviados>
 </div>
 
 <app-chatbot></app-chatbot>

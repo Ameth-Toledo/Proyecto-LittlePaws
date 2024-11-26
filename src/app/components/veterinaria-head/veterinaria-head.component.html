@@ -21,9 +21,20 @@
             <a href="#" target="_blank" class="social-link">Twitter</a>
         </div>
         
-        <button class="btn-solicitar-cita">
+        <button class="btn-solicitar-cita" (click)="abrirModal()">
             Donar
             <i class="fas fa-donate"></i>
         </button>
     </div>
 </div>
+
+<div class="modal" *ngIf="modalAbierto">
+    <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h2 class="modal-titulo">Donación para {{ tituloDonacion }}</h2>
+        <label class="modal-label" for="cantidadDonacion">Cantidad a donar:</label>
+        <input class="modal-input" type="number" id="cantidadDonacion" [(ngModel)]="cantidadDonacion" />
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
+

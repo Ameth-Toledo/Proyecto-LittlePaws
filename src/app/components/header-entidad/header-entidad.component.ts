@@ -54,7 +54,6 @@ export class HeaderEntidadComponent {
     return this.router.url === route;
   }
 
-  //para ver el local
   ngOnInit() {
     this.isUserLoggedIn = !!localStorage.getItem('session');
   }

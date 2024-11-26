@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   isOpen: boolean = false;
   isUserLoggedIn : boolean = false;
+  isMobileView : boolean = false;
 
   constructor(private router: Router) {}
 
@@ -65,5 +66,10 @@ export class HeaderComponent {
     localStorage.removeItem('session');
     this.isUserLoggedIn = false;
     this.router.navigate(['/login']);
+  }
+
+  redirectToPerfilUser(event : Event) {
+    event.preventDefault();
+    this.router.navigate(['perfil-user']);
   }
 }

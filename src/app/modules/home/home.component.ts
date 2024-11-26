@@ -9,11 +9,16 @@ import { AdopcionService } from '../../services/adopcion/adopcion.service';
 import { MascotasService } from '../../services/mascotas/mascotas.service';
 import { PetsResponse } from '../../models/pets';
 import { AdopcionResponse } from '../../models/adopcion';
+import { MascotasExtraviadasService } from '../../services/mascotas_e/mascotas-extraviadas.service';
+import { CardMascotasExtraviadosComponent } from '../../components/card-mascotas-extraviados/card-mascotas-extraviados.component';
+import { MascotasExtraviadas } from '../../models/mascotas-extraviadas';
+import { MapsService } from '../../services/ubicacion/maps.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, ChatbotComponent],
+  imports: [CommonModule ,HeaderComponent, CardAnimalesComponent, FooterComponent, ChatbotComponent, CardMascotasExtraviadosComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -25,9 +30,21 @@ export class HomeComponent implements OnInit {
   timer: any;
   @Input() mascotas!: PetsResponse[];
   adopciones: AdopcionResponse[] = []; 
+  mascotasExtraviadas: any[] = [];
+  latitude!: number;
+  longitude!: number;
+  entidadForm!: FormGroup;
+  
+  constructor(private router: Router,  private mascotasExtraviadasService: MascotasExtraviadasService,private mascotasService: MascotasService, private geolocationService: MapsService,   private fb: FormBuilder,) {
+    this.entidadForm = this.fb.group({
+      location: [''] 
+    });
+  }
+
 
   ngOnInit(): void {
     this.view_mascotas(); 
+    this.cargarMascotas();
   }
 
 
@@ -57,6 +74,35 @@ export class HomeComponent implements OnInit {
     this.imageViewed = true; 
   }
 
+  getUserLocation() {
+    this.geolocationService.getCurrentPosition()
+      .then(position => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+  
+        const locationString = `${this.latitude},${this.longitude}`;
+        this.entidadForm.get('location')?.setValue(locationString);
+
+        this.updateMapIframe(this.latitude, this.longitude);
+  
+        console.log(`Ubicación asignada al formulario: ${locationString}`);
+      })
+      .catch(error => {
+        console.error('Error al obtener la ubicación', error);
+        alert('No se pudo obtener la ubicación, por favor actívela y recargue la página.');
+      });
+  }
+  
+
+  updateMapIframe(lat: number, lng: number) {
+    const iframe = document.getElementById('googleMapIframe') as HTMLIFrameElement;
+    if (iframe) {
+      const googleMapsUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1`;
+      iframe.src = googleMapsUrl;
+    }
+  }
+  
+
   startProgressBar() {
     const totalDuration = 10; 
     const intervalDuration = 100; 
@@ -72,8 +118,7 @@ export class HomeComponent implements OnInit {
     }, intervalDuration); 
   }
 
-  constructor(private router: Router,  private adopcionesService : AdopcionService,private mascotasService: MascotasService) {}
-
+  
   enviarVeterinarias(event: Event) {
     event.preventDefault();
     this.router.navigate(['/veterinarias']);
@@ -97,14 +142,25 @@ export class HomeComponent implements OnInit {
     if (entityId) {
       this.mascotasService.getAllMascotas(entityId).subscribe((response: PetsResponse[]) => {
         console.log(response);
-        this.mascotas = response; // Solo las mascotas de la entidad seleccionada
+        this.mascotas = response; 
       });
     } else {
-      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => { // Puedes usar un valor como 0 si no se pasa un entityId
+      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => {
         console.log(response);
-        this.mascotas = response; // Esto carga todas las mascotas si no se pasa entidadId
+        this.mascotas = response; 
       });
     }
+  }
+
+  cargarMascotas() {
+    this.mascotasExtraviadasService.getMascotasExtraviadas().subscribe(
+      (response) => {
+        this.mascotasExtraviadas = response; 
+      },
+      (error) => {
+        console.error('Error al cargar las mascotas:', error);
+      }
+    );
   }
 
 }

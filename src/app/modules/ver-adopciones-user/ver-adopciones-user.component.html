@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div *ngIf="adopciones.length > 0; else noAdopciones">
+  <div *ngFor="let adopcion of adopciones">
+    <app-card-adopciones-user
+      [namePet]="adopcion.nombre_mascota"
+      [nameRefugio]="adopcion.nombre_entidad"
+      [userAdopcion]="adopcion.nombre_usuario"
+      [status]="adopcion.id_status"
+      [idAdopcion]="adopcion.id_adopcion"
+    ></app-card-adopciones-user>
+  </div>
+</div>
+
+<ng-template #noAdopciones>
+  <p>No hay adopciones disponibles para este usuario.</p>
+</ng-template>
+
+<app-footer></app-footer>

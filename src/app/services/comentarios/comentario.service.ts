@@ -8,7 +8,7 @@ import { Comentarios, ComentarioResponse } from '../../models/comentarios';
 })
 export class ComentarioService {
 
-  private url: string = 'http://127.0.0.1:8000/comments';  
+  private url: string = 'https://littlepawsback.integrador.xyz/comments';  
 
   constructor(private http: HttpClient) {}
 

@@ -7,7 +7,7 @@ import { DenunciaResponse, Denuncias } from '../../models/denuncias';
   providedIn: 'root',
 })
 export class DenunciasService {
-  private url: string = 'http://127.0.0.1:8000/denuncias';
+  private url: string = 'https://littlepawsback.integrador.xyz/denuncias';
 
   constructor(private http: HttpClient) {}
 
@@ -46,15 +46,15 @@ export class DenunciasService {
   }
   
 
-  updateDenuncia(denuncia_id: number, denunciaRequest: Denuncias): Observable<DenunciaResponse> {
-    return this.http.put<DenunciaResponse>(`${this.url}/denuncias/${denuncia_id}/`, denunciaRequest, {
+  updateSeguimiento(denunciaId: number, seguimientoData: any): Observable<any> {
+    return this.http.put<any>(`${this.url}/denuncias/${denunciaId}/`, seguimientoData, {
       headers: this.getHeaders(),
     }).pipe(
-      tap((response) => console.log('Denuncia actualizada:', response)),
+      tap((response) => console.log('Seguimiento actualizado:', response)),
       catchError(this.handleError)
     );
   }
-
+  
   deleteDenuncia(denuncia_id: number): Observable<any> {
     return this.http.delete(`${this.url}/denuncias/${denuncia_id}/`, {
       headers: this.getHeaders(),
@@ -63,6 +63,7 @@ export class DenunciasService {
       catchError(this.handleError)
     );
   }
+  
 
   private handleError(error: any) {
     let errorMessage = 'Ha ocurrido un error';

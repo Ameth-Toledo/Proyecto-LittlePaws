@@ -13,8 +13,12 @@ import { ChatbotComponent } from "../../components/chatbot/chatbot.component";
 import { PetsRequest, PetsResponse } from '../../models/pets';
 import { AdopcionService } from '../../services/adopcion/adopcion.service';
 import { AdopcionResponse } from '../../models/adopcion';
+import { MascotasExtraviadasService } from '../../services/mascotas_e/mascotas-extraviadas.service';
 import { CardDenunciasEntidadComponent } from '../../components/card-denuncias-entidad/card-denuncias-entidad.component';
 import { CardAdopcionesComponent } from "../../components/card-adopciones/card-adopciones.component";
+import { DenunciasService } from '../../services/denuncia/denuncia.service';
+import { DenunciaResponse } from '../../models/denuncias';
+import { CardDonacionesEntidadComponent } from '../../components/card-donaciones-entidad/card-donaciones-entidad.component';
 
 interface Message {
   senderName: string;
@@ -27,7 +31,7 @@ interface Message {
 @Component({
   selector: 'app-entidad',
   standalone: true,
-  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, ChatbotComponent, CardDenunciasEntidadComponent, CardAdopcionesComponent],
+  imports: [FormsModule, CommonModule, FooterComponent, HeaderEntidadComponent, CardAnimalesEntidadComponent, CardMascotasExtraviadosComponent, CardComentariosComponent, ChatbotComponent, CardDenunciasEntidadComponent, CardAdopcionesComponent, CardDonacionesEntidadComponent],
   templateUrl: './entidad.component.html',
   styleUrls: ['./entidad.component.scss']
 })
@@ -39,6 +43,7 @@ export class EntidadComponent {
   isSidebarOpen = false;
   isModalOpen = false;
   activeModal: string | null = null;
+  denuncias: DenunciaResponse[] = [];
   
   comentarios: any[] = [];
   messages: Message[] = [
@@ -51,12 +56,15 @@ export class EntidadComponent {
   imageUrl: string | undefined;
   pets: any[] = [];
   adopciones: AdopcionResponse[] = []; 
+  mascotasExtraviadas: any[] = [];
 
   constructor(
     private router: Router,
     private mascotasService: MascotasService,
     private comentarioService: ComentarioService,
-    private adopcionesService: AdopcionService
+    private adopcionesService: AdopcionService,
+    private mascotasExtraviadasService: MascotasExtraviadasService,
+    private denunciasService: DenunciasService
   ) {}
 
   selectedMessage: Message | null = null;
@@ -69,6 +77,8 @@ export class EntidadComponent {
     }
     this.view_adopciones(this.mascota.entity_id);
     this.loadComentarios();
+    this.cargarMascotas()
+    this. getDenuncias()
   }
 
   setEntityId() {
@@ -186,7 +196,7 @@ export class EntidadComponent {
   }
 
   onPetUpdated(updatedPet: any) {
-    this.view_mascotas(this.mascota.entity_id);  // Refresh pets list
+    this.view_mascotas(this.mascota.entity_id);  
     const index = this.mascotas.findIndex(mascota => mascota.id_mascota === updatedPet.idMascota);
     if (index !== -1) {
       this.mascotas[index] = updatedPet;
@@ -264,6 +274,30 @@ export class EntidadComponent {
       (error) => {
         console.error('Error al cargar los comentarios:', error);
         alert('Hubo un error al cargar los comentarios.');
+      }
+    );
+  }
+
+  cargarMascotas() {
+    this.mascotasExtraviadasService.getMascotasExtraviadas().subscribe(
+      (response) => {
+        this.mascotasExtraviadas = response; 
+      },
+      (error) => {
+        console.error('Error al cargar las mascotas:', error);
+      }
+    );
+  }
+
+
+  getDenuncias(): void {
+    this.denunciasService.getAllDenuncias().subscribe(
+      (response: DenunciaResponse[]) => {
+        this.denuncias = response;
+        console.log('Datos recibidos de la API:', response);  
+      },
+      (error: any) => {
+        console.error('Error fetching denuncias:', error);
       }
     );
   }

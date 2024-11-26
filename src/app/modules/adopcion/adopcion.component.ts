@@ -15,25 +15,23 @@ import { MascotasService } from '../../services/mascotas/mascotas.service';
   styleUrls: ['./adopcion.component.scss']
 })
 export class AdopcionComponent implements OnInit {
-  @Input() mascotas: PetsResponse[] = [];  // Initialize as an empty array
-  adopciones: AdopcionResponse[] = []; 
+  @Input() mascotas: PetsResponse[] = [];
+  adopciones: AdopcionResponse[] = [];
 
   constructor(private mascotasService: MascotasService) {}
 
   ngOnInit(): void {
-    this.view_mascotas(); // Call the method to fetch mascotas on initialization
+    this.view_mascotas();
   }
   
   view_mascotas(entityId?: number): void {
     if (entityId) {
       this.mascotasService.getAllMascotas(entityId).subscribe((response: PetsResponse[]) => {
-        console.log(response);
-        this.mascotas = response; // Solo las mascotas de la entidad seleccionada
+        this.mascotas = response;
       });
     } else {
-      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => { // Puedes usar un valor como 0 si no se pasa un entityId
-        console.log(response);
-        this.mascotas = response; // Esto carga todas las mascotas si no se pasa entidadId
+      this.mascotasService.getAllMascotas(0).subscribe((response: PetsResponse[]) => {
+        this.mascotas = response;
       });
     }
   }

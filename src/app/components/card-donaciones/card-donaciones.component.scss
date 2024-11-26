@@ -87,7 +87,7 @@
     align-items: center;
     z-index: 9999;
     padding: 10px;
-    overflow-y: auto; /* Agrega desplazamiento en el fondo */
+    overflow-y: auto; 
 }
 
 .modal-content {
@@ -100,8 +100,8 @@
     text-align: center;
     transform: scale(0.95);
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-    max-height: 80vh; /* Limita la altura máxima */
-    overflow-y: auto; /* Agrega desplazamiento vertical */
+    max-height: 80vh; 
+    overflow-y: auto; 
 }
 
 .modal-content--expandido {

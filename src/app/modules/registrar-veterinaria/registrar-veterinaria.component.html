@@ -24,7 +24,32 @@
 
       <label class="label-form">Ubicación</label>
       <input formControlName="location" type="text" class="input-field" />
-
+      <div class="map-container">
+        <!-- Botón para alternar visibilidad del mapa -->
+        <button class="toggle-map-btn" (click)="toggleMap()">
+          {{ isMapVisible ? 'Cerrar Mapa' : 'Abrir Mapa' }}
+        </button>
+      
+        <div 
+          *ngIf="isMapVisible" 
+          class="map-content"
+          style="height: 500px; width: 100%; margin-top: 10px;"
+        >
+          <google-map
+            *ngIf="latitude && longitude"
+            [center]="{ lat: latitude, lng: longitude }"
+            [zoom]="zoom"
+            [options]="{ scrollwheel: true }"
+          >
+            <map-marker
+              [position]="{ lat: latitude, lng: longitude }"
+              [label]="'You are here!'"
+            >
+            </map-marker>
+          </google-map>
+        </div>
+      </div>
+      
       <label class="label-form">Descripción</label>
       <textarea formControlName="description" class="input-field" required></textarea>
 
@@ -53,6 +78,22 @@
     <button type="submit" class="btn-enviar-registro">Enviar datos</button>
   </form>
 </div>
+
+<app-modal-warning *ngIf="showModalWarning" 
+  message="Por favor rellene todos los campos"
+  (close)="closeModalWarning()">
+</app-modal-warning>
+
+<app-modal-error *ngIf="showModalError" 
+  message="Ocurrió un error al registrar el refugio"
+  (close)="closeModalError()">
+</app-modal-error>
+
+<app-modal-exito *ngIf="showModalExito" 
+  message="Refugio registrado exitosamente"
+  (close)="closeModalExito()">
+</app-modal-exito>
+
 <app-footer></app-footer>
 
 <!--agregar modales falta nadamas-->

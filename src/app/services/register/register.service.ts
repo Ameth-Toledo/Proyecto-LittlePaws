@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RegisterService {
-  private url: string = 'http://127.0.0.1:8000/users/';
+  private url: string = 'https://littlepawsback.integrador.xyz/users/';
 
   constructor(private http: HttpClient) {}
 
@@ -24,8 +24,8 @@ export class RegisterService {
     return this.http.get<UserOut[]>(urlApi, { headers: this.getHeaders() });
   }
 
-  getCarById(user_id: number): Observable<UserOut> {
-    const urlApi = `${this.url}/cars/${user_id}`;
+  getUserById(user_id: number): Observable<UserOut> {
+    const urlApi = `https://littlepawsback.integrador.xyz/users/users/${user_id}`;
     return this.http.get<UserOut>(urlApi, { headers: this.getHeaders() });
   }
 
@@ -53,6 +53,9 @@ export class RegisterService {
   
 }
 
+  updateUser(userId: number, userData: UserCreate): Observable<UserOut> {
+  return this.http.put<UserOut>(`${this.url}users/${userId}`, userData, { headers: this.getHeaders() } );
+  }
 
 
   getAuthToken() {

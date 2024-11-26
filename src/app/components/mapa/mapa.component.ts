@@ -16,25 +16,11 @@ import { CommonModule } from '@angular/common';
 
 export class MapaComponent {
   searchQuery = '';
-  center: google.maps.LatLngLiteral = { lat: 19.432608, lng: -99.133209 }; // Coordenadas iniciales (CDMX)
+  center: google.maps.LatLngLiteral = { lat: 19.432608, lng: -99.133209 }; 
   zoom = 15;
 
   constructor(private placesService: MapsService) {}
 
-  searchPlace() {
-    this.placesService.getPlaceLocation(this.searchQuery).subscribe(
-      (response) => {
-        if (response?.candidates?.length) {
-          const location = response.candidates[0].geometry.location;
-          this.center = { lat: location.lat, lng: location.lng };
-        } else {
-          alert('Lugar no encontrado');
-        }
-      },
-      (error) => {
-        console.error('Error al buscar lugar:', error);
-      }
-    );
-  }
+  
 }
 

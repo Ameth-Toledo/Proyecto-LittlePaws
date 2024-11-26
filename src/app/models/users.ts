@@ -12,7 +12,7 @@ export interface UserCreate {
 
 export interface UserOut {
   id_user: number;
-  nombre_completo: string;  
+  nombre_completo: NombreCompleto;  
   email: string;
   rol: 'usuario' | 'entidad';
 }
@@ -30,4 +30,11 @@ export interface LoginResponse {
   rol: 'usuario' | 'entidad';
   access_token: string;
   id_entidad?: number;  
+}
+
+export interface UserUpdate {
+  nombre_completo: NombreCompleto;
+  email: string;
+  password: string;
+  rol: string;
 }

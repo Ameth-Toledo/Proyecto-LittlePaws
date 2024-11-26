@@ -34,7 +34,7 @@ export const routes: Routes = [
     { path: "registrar-veterinaria", component: RegistrarVeterinariaComponent, canActivate : [authGuard] },
     { path: "denuncias", component: DenunciasComponent, canActivate : [authGuard]},
     { path: "entidad-littlepaws", component: EntidadComponent },
-    { path: "perfil-veterinaria/:id", component: TemplateVeterinariaComponent, canActivate : [authGuard] },
+    { path: "perfil-veterinaria/:id", component: TemplateVeterinariaComponent, /*canActivate : [authGuard] */},
     { path: "mascotas-extraviadas", component: MascotasExtraviadasComponent, canActivate : [authGuard] },
     { path: "perfil-user", component: PerfilUserComponent, canActivate : [authGuard]},
     { path: "**", component: NotFoundComponent }

@@ -7,6 +7,7 @@ import { BannerComponent } from '../../components/banner/banner.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { GmailService } from '../../services/gmail/gmail.service'; // Import GmailService
 
 @Component({
   selector: 'app-adopcion',
@@ -16,7 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./adopcion-form.component.scss']
 })
 export class AdopcionFormComponent implements OnInit {
-  showIds: boolean = false; 
+  showIds: boolean = false;
   fileName: string = '';
   adopcionForm: FormGroup;
   selectedFile: File | null = null;
@@ -25,7 +26,8 @@ export class AdopcionFormComponent implements OnInit {
     private fb: FormBuilder,
     private adopcionService: AdopcionService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private gmailService: GmailService // Inject GmailService
   ) {
     this.adopcionForm = this.fb.group({
       id_mascota: [''], 
@@ -43,7 +45,6 @@ export class AdopcionFormComponent implements OnInit {
       cellphone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       agreement: [false, Validators.requiredTrue],
     });
-    
   }
 
   ngOnInit(): void {
@@ -51,23 +52,15 @@ export class AdopcionFormComponent implements OnInit {
       const idMascota = Number(params['id_mascota']);
       const idEntidad = Number(params['id_entidad']);
   
-      console.log('Datos obtenidos de la URL:', { idMascota, idEntidad });
-  
       if (!isNaN(idMascota) && !isNaN(idEntidad)) {
         this.adopcionForm.patchValue({
           id_mascota: idMascota,
           id_entidad: idEntidad,
         });
-  
-        console.log('Formulario actualizado con:', this.adopcionForm.value);
-      } else {
-        console.warn('Parámetros inválidos:', params);
       }
     });
   }
-  
-  
-  
+
   enviarTerminos(event: Event): void {
     event.preventDefault();
     this.router.navigate(['/terms-and-conditions']);
@@ -82,7 +75,6 @@ export class AdopcionFormComponent implements OnInit {
       if (file) {
         this.selectedFile = file;
         this.fileName = file.name;
-        console.log('Archivo seleccionado:', file.name); 
       }
     };
     fileInput.click();
@@ -94,7 +86,6 @@ export class AdopcionFormComponent implements OnInit {
       id_usuario: null,
       fecha_adopcion: '',
       curp: '',
-      imagen: '',
       seguimiento: '',
       observaciones: '',
       condiciones: '',
@@ -115,11 +106,7 @@ export class AdopcionFormComponent implements OnInit {
   
     const formData = new FormData();
     Object.entries(this.adopcionForm.value).forEach(([key, value]) => {
-        if (key === 'id_mascota' || key === 'id_entidad') {
-        formData.append(key, value as string);
-      } else {
-        formData.append(key, value as string);
-      }
+      formData.append(key, value as string);
     });
   
     if (this.selectedFile) {
@@ -127,17 +114,64 @@ export class AdopcionFormComponent implements OnInit {
     }
   
     this.adopcionService.createAdopcion(formData).subscribe(
-      (response: AdopcionResponse) => {
+      async (response: AdopcionResponse) => {
         console.log('Adopción creada:', response);
+        await this.enviarCorreoConfirmacion(this.adopcionForm.value.email, this.adopcionForm.value.name);
       },
       (error: any) => {
         console.error('Error al crear la adopción:', error);
       }
     );
   }
-  
 
-    getFormValidationErrors(): any {
+
+  async iniciarSesion() {
+    const userEmail = localStorage.getItem('email');
+    if (!userEmail) {
+      try {
+        await this.gmailService.signIn();
+        console.log('Usuario autenticado');
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+      }
+    } else {
+      console.log('Correo autenticado:', userEmail);
+    }
+  }
+
+  async cerrarSesion() {
+    try {
+      await this.gmailService.signOut();
+      console.log('Sesión cerrada correctamente');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  }
+
+  async enviarCorreoConfirmacion(email: string, name: string) {
+    const subject = 'Confirmación de solicitud de adopción';
+    const body = `
+      <p>Hola ${name},</p>
+      <p>Tu solicitud de adopción ha sido recibida exitosamente.</p>
+      <p>Pronto nos pondremos en contacto contigo para continuar el proceso.</p>
+      <p>Gracias por adoptar.</p>
+    `;
+
+    this.gmailService.gapiLoaded$.subscribe(async (isLoaded) => {
+      if (isLoaded) {
+        try {
+          await this.gmailService.sendEmail(email, subject, body);
+          console.log('Correo de confirmación enviado');
+        } catch (error) {
+          console.error('Error al enviar el correo de confirmación:', error);
+        }
+      } else {
+        console.error('gapi no está listo');
+      }
+    });
+  }
+
+  getFormValidationErrors(): any {
     const errors: any = {};
     Object.keys(this.adopcionForm.controls).forEach(key => {
       const controlErrors = this.adopcionForm.get(key)?.errors;

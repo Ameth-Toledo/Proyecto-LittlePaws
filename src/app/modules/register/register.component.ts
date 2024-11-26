@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { RegisterService } from '../../services/register/register.service';
+import { GmailService } from '../../services/gmail/gmail.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,12 @@ import { RegisterService } from '../../services/register/register.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private router: Router, private registerService: RegisterService) {}
+  constructor(
+    private router: Router, 
+    private registerService: RegisterService,
+    private gmailService: GmailService
+  ) {}
+
 
   enviarLogin(event: Event) {
     event.preventDefault();
@@ -24,7 +30,7 @@ export class RegisterComponent {
     inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
   }
 
-  validarFormulario(event: Event) {
+  async validarFormulario(event: Event) {
     event.preventDefault();
 
     const name = (document.getElementById('user') as HTMLInputElement).value;
@@ -40,9 +46,15 @@ export class RegisterComponent {
     } else if (password !== passwordConfirm) {
       this.mostrarPasswordMismatchModal();
     } else {
-      this.registerService.addUser({ nombre_completo: { name, last_name: lastName }, email, password, rol: 'usuario' }).subscribe(
-        () => {
+      this.registerService.addUser({
+        nombre_completo: { name, last_name: lastName },
+        email,
+        password,
+        rol: 'usuario'
+      }).subscribe(
+        async () => {
           console.log('Usuario registrado en la base de datos');
+          await this.enviarCorreoBienvenida(email, name);  
           this.mostrarSuccessModal();
         },
         (error) => {
@@ -53,6 +65,29 @@ export class RegisterComponent {
     }
   }
 
+  async enviarCorreoBienvenida(email: string, name: string) {
+    const subject = 'Bienvenido a LittlePaws';
+    const body = `
+      <p>Bienvenido a LittlePaws, ${name}!</p>
+      <p>Has registrado este correo electrónico en LittlePaws.</p>
+      <p>Gracias por unirte.</p>
+    `;
+    
+    this.gmailService.gapiLoaded$.subscribe(async (isLoaded) => {
+      if (isLoaded) {
+        try {
+          await this.gmailService.sendEmail(email, subject, body);  
+          console.log('Correo de bienvenida enviado');
+        } catch (error) {
+          console.error('Error al enviar el correo de bienvenida:', error);
+        }
+      } else {
+        console.error('gapi no está listo');
+      }
+    });
+  }
+
+  
   mostrarEmailErrorModal() {
     const modal = document.getElementById('emailErrorModal')!;
     modal.style.display = 'flex';

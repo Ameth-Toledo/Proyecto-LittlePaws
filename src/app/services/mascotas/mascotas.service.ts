@@ -8,7 +8,7 @@ import { PetsRequest, PetsResponse } from '../../models/pets';
 })
 export class MascotasService {
 
-  private url: string = 'http://127.0.0.1:8000/mascotas';
+  private url: string = 'https://littlepawsback.integrador.xyz/mascotas';
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class MascotasService {
 
   getAllMascotas(entityId: number): Observable<PetsResponse[]> {
     return this.http.get<PetsResponse[]>(`${this.url}/mascotas_all/`, {
-      params: { entity_id: entityId.toString() }, // Pass the entity_id as a query parameter
+      params: { entity_id: entityId.toString() },
     }).pipe(
       catchError(this.handleError)
     );

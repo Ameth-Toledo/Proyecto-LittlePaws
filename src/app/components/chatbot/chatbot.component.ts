@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { ChatbotApiService } from '../../services/chatbot-api.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chatbot',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterOutlet],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './chatbot.component.html',
   styleUrl: './chatbot.component.scss'
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,6 @@ export class CardMascotasExtraviadosComponent {
   @Input() name : string = "";
   @Input() imgSrc : string = "";
   @Input() namePet : string = "";
-  @Input() descripciom : string = "";
   @Input() edad : string = "";
   @Input() raza : string = "";
   @Input() sexo : string = "";
@@ -24,6 +23,7 @@ export class CardMascotasExtraviadosComponent {
   @Input() telefono : string = "";
   @Input() fecha_extravio : string = "";
   @Input() fecha_publicacion : string = "";
+  @Input() descripcion: string = "";
 
   cambiarEstado() {
     this.estado = this.estado === 'Extraviado' ? 'Encontrado' : 'Extraviado';

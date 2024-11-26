@@ -7,7 +7,7 @@ import { Entidad, EntidadResponse } from '../../models/entidad';
   providedIn: 'root',
 })
 export class EntidadService {
-  private apiUrl = 'http://localhost:8000/entidades';
+  private apiUrl = 'https://littlepawsback.integrador.xyz/entidades';
 
   constructor(private http: HttpClient) {}
 
